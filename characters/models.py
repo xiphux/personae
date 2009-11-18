@@ -11,7 +11,7 @@ class Revision(models.Model):
 	rev_date = models.DateTimeField('revision date')
 
 	def __unicode__(self):
-		return self.rev_date
+		return self.rev_date.ctime()
 
 class Attribute(models.Model):
 	revision = models.ForeignKey(Revision)
