@@ -1,6 +1,13 @@
 from django.db import models
 
+class Universe(models.Model):
+	name = models.CharField(max_length=200)
+
+	def __unicode__(self):
+		return self.name
+
 class Character(models.Model):
+	universe = models.ForeignKey(Universe)
 	name = models.CharField(max_length=200)
 
 	def __unicode__(self):
