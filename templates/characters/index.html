@@ -1,0 +1,11 @@
+<h1>Characters</h1>
+
+{% regroup characters by universe as universe_group %}
+
+{% for universe in universe_group %}
+  <h2>{{ universe.grouper.name }}</h2>
+  <br />
+  {% for character in universe.list %}
+    <a href="/characters/{{ character.id }}/">{{ character.name }}</a><br />
+  {% endfor %}
+{% endfor %}

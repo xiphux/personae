@@ -7,6 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('personae.characters.views',
     # Example
     # (r'^personae/', include('personae.foo.urls')),
+    (r'^$', 'index'),
     (r'^new/$', 'newcharacter'),
     (r'^create/$', 'createcharacter'),
     (r'^(?P<character_id>\d+)/$', 'detail'),
