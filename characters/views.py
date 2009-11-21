@@ -1,5 +1,5 @@
 import datetime
-from personae.characters.models import Universe, Character, Revision
+from personae.characters.models import Universe, Character, Revision, Attribute, AttributeIntegerValue, AttributeStringValue, AttributeTextValue
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -135,6 +135,19 @@ def saverevision(request, character_id):
 	return HttpResponseRedirect(reverse('personae.characters.views.viewrevision', args=(character_id, newrevision.id,)))
 
 #
+# Jump to revision
+#
+def gotorevision(request, character_id):
+	try:
+		revision_id = request.POST['revision']
+		if len(revision_id) == 0:
+			raise ValueError
+	except (KeyError, ValueError):
+		return HttpResponse("No revision specified.")
+	
+	return HttpResponseRedirect(reverse('personae.characters.views.viewrevision', args=(character_id, revision_id,)))
+
+#
 # View revision page
 #
 def viewrevision(request, character_id, revision_id):
@@ -157,9 +170,16 @@ def viewrevision(request, character_id, revision_id):
 
 	template = "characters/universes/" + character.universe.descriptor + ".html"
 
+	try:
+		revision_list = character.revision_set.all()
+	except:
+		revision_list = False
+
 	return render_to_response(template, {
 		'attribute_list': attribute_list,
 		'character': character,
+		'revision_list': revision_list,
+		'revision': revision,
 	})
 
 def buildattributelist(universe_attributes, revision):
@@ -181,7 +201,7 @@ def buildattributelist(universe_attributes, revision):
 		try:
 			val = attrvaluelist.get(attribute=attr.id)
 			attribute_list[attr.descriptor] = val.value
-		except (AtttributeIntegerValue.DoesNotExist):
+		except (AttributeIntegerValue.DoesNotExist):
 			attribute_list[attr.descriptor] = 0
 		except (AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
 			pass
