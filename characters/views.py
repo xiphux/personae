@@ -92,32 +92,7 @@ def newrevision(request, character_id):
 	except:
 		return HttpResponse("Error: universe has no attributes defined.")
 
-	try:
-		revision_integer_attributes = revision.attributeintegervalue_set.all()
-		revision_string_attributes = revision.attributestringvalue_set.all()
-		revision_text_attributes = revision.attributetextvalue_set.all()
-	except:
-		return HttpResponse("Error getting revision data.")
-
-	attribute_list = {}
-	for attr in universe_attributes:
-		try:
-			if attr.type == 1:
-				attrvaluelist = revision_integer_attributes
-			elif attr.type == 2:
-				attrvaluelist = revision_string_attributes
-			elif attr.type == 3:
-				attrvaluelist = revision_text_attributes
-		except:
-			return HttpResponse("Attribute %s has an invalid type." % attr.name)
-
-		try:
-			val = attrvaluelist.get(attribute=attr.id)
-			attribute_list[attr.descriptor] = val.value
-		except (AttributeIntegerValue.DoesNotExist):
-			attribute_list[attr.descriptor] = 0
-		except (AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
-			pass
+	attribute_list = buildattributelist(universe_attributes, revision)
 
 	return render_to_response(template, {
 		'attribute_list': attribute_list,
@@ -150,6 +125,7 @@ def saverevision(request, character_id):
 		try:
 			val = request.POST[attr.descriptor]
 			if attr.type == 1:
+				val = int(val)
 				if val > 0:
 					newrevision.attributeintegervalue_set.create(attribute=attr, value=val)
 			elif attr.type == 2:
@@ -182,33 +158,32 @@ def viewrevision(request, character_id, revision_id):
 	except:
 		return HttpResponse("Error: universe has no attributes defined.")
 
-	try:
-		revision_integer_attributes = revision.attributeintegervalue_set.all()
-		revision_string_attributes = revision.attributestringvalue_set.all()
-		revision_text_attributes = revision.attributetextvalue_set.all()
-	except:
-		return HttpResponse("Error getting revision data.")
-
-	attribute_list = {}
-	for attr in universe_attributes:
-		try:
-			if attr.type == 1:
-				attrvaluelist = revision_integer_attributes
-			elif attr.type == 2:
-				attrvaluelist = revision_string_attributes
-			elif attr.type == 3:
-				attrvaluelist = revision_text_attributes
-		except:
-			return HttpResponse("Attribute %s has an invalid type." % attr.name)
-
-		try:
-			val = attrvaluelist.get(attribute=attr.id)
-			attribute_list[attr.descriptor] = val.value
-		except (AttributeIntegerValue.DoesNotExist):
-			attribute_list[attr.descriptor] = 0
-		except (AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
-			pass
+	attribute_list = buildattributelist(universe_attributes, revision)
 
 	return HttpResponse("You're looking at revision %s of character %s." % (revision_id, character_id))
 
+def buildattributelist(universe_attributes, revision):
+	revision_integer_attributes = revision.attributeintegervalue_set.all()
+	revision_string_attributes = revision.attributestringvalue_set.all()
+	revision_text_attributes = revision.attributetextvalue_set.all()
+
+	attribute_list = {}
+
+	for attr in universe_attributes:
+		if attr.type == 1:
+			attrvaluelist = revision_integer_attributes
+		elif attr.type == 2:
+			attrvaluelist = revision_string_attributes
+		elif attr.type == 3:
+			attrvaluelist = revision_text_attributes
+		else:
+			continue
+		try:
+			val = attrvaluelist.get(attribute=attr.id)
+			attribute_list[attr.descriptor] = val.value
+		except (AtttributeIntegerValue.DoesNotExist):
+			attribute_list[attr.descriptor] = 0
+		except (AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
+			pass
 	
+	return attribute_list
