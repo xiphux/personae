@@ -1,25 +1,10 @@
+{% extends "characters/basesheet.html" %}
+
+{% block header %}
 <h1>Scion</h1>
+{% endblock %}
 
-{% if not editmode %}
-<a href="/characters/{{ character.id }}/edit/">Edit</a>
- {% if revision_list %} 
-   <br />
-   <form action="/characters/{{ character.id }}/gotorev/" method="post">
-     <label for="revision">Revisions:</label>
-     <select name="revision">
-       {% for rev in revision_list %}
-         <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}</option>
-       {% endfor %}
-     </select>
-     <input type="submit" value="View" />
-   </form>
- {% endif %}
-{% endif %}
-
-{% if editmode %}
-<form action="/characters/{{ character.id }}/save/" method="post">
-{% endif %}
-
+{% block sheet %}
 <table>
   <tr>
     <td>
@@ -82,8 +67,4 @@
     </td>
   </tr>
 </table>
-
-{% if editmode %}
-<input type="submit" value="Save" />
-</form> 
-{% endif %}
+{% endblock %}
