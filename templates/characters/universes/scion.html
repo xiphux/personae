@@ -1,0 +1,73 @@
+<h1>Scion</h1>
+
+{% if editmode %}
+<form action="/characters/{{ character.id }}/save/" method="post">
+{% endif %}
+
+<table>
+  <tr>
+    <td>
+      <label>Name:</label>
+    </td>
+    <td>
+      {{ character.name }}
+    </td>
+    <td>
+      <label for="calling">Calling:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="calling" value="{{ attribute_list.calling }}" />
+      {% else %}
+        {{ attribute_list.calling }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="pantheon">Pantheon:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="pantheon" value="{{ attribute_list.pantheon }}" />
+      {% else %}
+        {{ attribute_list.pantheon }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="player">Player:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="player" value="{{ attribute_list.player }}" />
+      {% else %}
+        {{ attribute_list.player }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="nature">Nature:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="nature" value="{{ attribute_list.nature }}" />
+      {% else %}
+        {{ attribute_list.nature }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="god">God:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="god" value="{{ attribute_list.god }}" />
+      {% else %}
+        {{ attribute_list.god }}
+      {% endif %}
+    </td>
+  </tr>
+</table>
+
+{% if editmode %}
+<input type="submit" value="Save" />
+</form> 
+{% endif %}

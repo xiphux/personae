@@ -11,6 +11,7 @@ class Attribute(models.Model):
 	universe = models.ForeignKey(Universe)
 	name = models.CharField(max_length=200)
 	descriptor = models.CharField(max_length=200)
+	#multiple = models.BooleanField()
 	type = models.PositiveSmallIntegerField()
 
 	def __unicode__(self):

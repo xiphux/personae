@@ -80,12 +80,12 @@ def newrevision(request, character_id):
 	if len(character.universe.descriptor) == 0:
 		return HttpResponse("Invalid universe descriptor.")
 	
-	template = "characters/" + character.universe.descriptor + "/edit.html"
+	template = "characters/universes/" + character.universe.descriptor + ".html"
 
 	try:
 		revision = Revision.objects.filter(character=character_id).order_by('-rev_date')[0]
 	except (Revision.DoesNotExist, IndexError):
-		return render_to_response(template, {'character': character,})
+		return render_to_response(template, {'character': character, 'editmode': True})
 
 	try:
 		universe_attributes = character.universe.attribute_set.all()
@@ -97,6 +97,7 @@ def newrevision(request, character_id):
 	return render_to_response(template, {
 		'attribute_list': attribute_list,
 		'character': character,
+		'editmode': True,
 	}, context_instance=RequestContext(request))
 
 #
@@ -160,7 +161,12 @@ def viewrevision(request, character_id, revision_id):
 
 	attribute_list = buildattributelist(universe_attributes, revision)
 
-	return HttpResponse("You're looking at revision %s of character %s." % (revision_id, character_id))
+	template = "characters/universes/" + character.universe.descriptor + ".html"
+
+	return render_to_response(template, {
+		'attribute_list': attribute_list,
+		'character': character,
+	})
 
 def buildattributelist(universe_attributes, revision):
 	revision_integer_attributes = revision.attributeintegervalue_set.all()
