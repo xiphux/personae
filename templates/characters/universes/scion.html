@@ -1,5 +1,9 @@
 <h1>Scion</h1>
 
+{% if not editmode %}
+<a href="/characters/{{ character.id }}/edit/">Edit</a>
+{% endif %}
+
 {% if editmode %}
 <form action="/characters/{{ character.id }}/save/" method="post">
 {% endif %}

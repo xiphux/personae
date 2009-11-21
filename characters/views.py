@@ -66,12 +66,6 @@ def detail(request, character_id):
 # Edit character action
 #
 def edit(request, character_id):
-	return HttpResponseRedirect(reverse('personae.characters.views.newrevision', args=(character_id,)))
-
-#
-# Create new revision (edit) page
-#
-def newrevision(request, character_id):
 	try:
 		character = Character.objects.get(pk=character_id)
 	except (Character.DoesNotExist):
