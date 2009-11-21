@@ -1,6 +1,13 @@
-from personae.characters.models import Character, Universe, Revision
+from personae.characters.models import Character, Universe, Revision, Attribute
 from django.contrib import admin
 
-admin.site.register(Universe)
+class AttributeInline(admin.TabularInline):
+	model = Attribute
+	extra = 3
+
+class UniverseAdmin(admin.ModelAdmin):
+	inlines = [AttributeInline]
+
+admin.site.register(Universe, UniverseAdmin)
 admin.site.register(Character)
 admin.site.register(Revision)
