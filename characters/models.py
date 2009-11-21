@@ -25,6 +25,7 @@ class Character(models.Model):
 
 class Revision(models.Model):
 	character = models.ForeignKey(Character)
+	revision = models.PositiveIntegerField()
 	rev_date = models.DateTimeField('revision date')
 
 	def __unicode__(self):
