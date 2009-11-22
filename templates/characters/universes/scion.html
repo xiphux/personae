@@ -74,11 +74,11 @@
 <table>
   <tr>
     <td></td>
-    <td>Physical</td>
+    <td><h3>Physical</h3></td>
     <td></td>
-    <td>Social</td>
+    <td><h3>Social</h3></td>
     <td></td>
-    <td>Mental</td>
+    <td><h3>Mental</h3></td>
   </tr>
   <tr>
     <td>
@@ -269,6 +269,266 @@
         <input type="text" name="epicwits" value="{{ attribute_list.epicwits }}" />
       {% else %}
         {{ attribute_list.epicwits|squares:10 }}
+      {% endif %}
+    </td>
+  </tr>
+</table>
+<hr />
+<h2>Abilities</h2>
+<table>
+  <tr>
+    <td>
+      <label for="academics">Academics:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="academics" value="{{ attribute_list.academics }}" />
+      {% else %}
+        {{ attribute_list.academics|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="craft">Craft:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="craft" value="{{ attribute_list.craft }}" />
+      {% else %}
+        {{ attribute_list.craft|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="melee">Melee:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="melee" value="{{ attribute_list.melee }}" />
+      {% else %}
+        {{ attribute_list.melee|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="animalken">Animal Ken:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="animalken" value="{{ attribute_list.animalken }}" />
+      {% else %}
+        {{ attribute_list.animalken|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="empathy">Empathy:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="empathy" value="{{ attribute_list.empathy }}" />
+      {% else %}
+        {{ attribute_list.empathy|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="occult">Occult:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="occult" value="{{ attribute_list.occult }}" />
+      {% else %}
+        {{ attribute_list.occult|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="art">Art:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="art" value="{{ attribute_list.art }}" />
+      {% else %}
+        {{ attribute_list.art|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="fortitude">Fortitude:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="fortitude" value="{{ attribute_list.fortitude }}" />
+      {% else %}
+        {{ attribute_list.fortitude|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="politics">Politics:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="politics" value="{{ attribute_list.politics }}" />
+      {% else %}
+        {{ attribute_list.politics|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="athletics">Athletics:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="athletics" value="{{ attribute_list.athletics }}" />
+      {% else %}
+        {{ attribute_list.athletics|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="integrity">Integrity:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="integrity" value="{{ attribute_list.integrity }}" />
+      {% else %}
+        {{ attribute_list.integrity|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="presence">Presence:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="presence" value="{{ attribute_list.presence }}" />
+      {% else %}
+        {{ attribute_list.presence|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="awareness">Awareness:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="awareness" value="{{ attribute_list.awareness }}" />
+      {% else %}
+        {{ attribute_list.awareness|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="investigation">Investigation:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="investigation" value="{{ attribute_list.investigation }}" />
+      {% else %}
+        {{ attribute_list.investigation|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="science">Science:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="science" value="{{ attribute_list.science }}" />
+      {% else %}
+        {{ attribute_list.science|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="brawl">Brawl:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="brawl" value="{{ attribute_list.brawl }}" />
+      {% else %}
+        {{ attribute_list.brawl|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="larceny">Larceny:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="larceny" value="{{ attribute_list.larceny }}" />
+      {% else %}
+        {{ attribute_list.larceny|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="stealth">Stealth:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="stealth" value="{{ attribute_list.stealth }}" />
+      {% else %}
+        {{ attribute_list.stealth|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="command">Command:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="command" value="{{ attribute_list.command }}" />
+      {% else %}
+        {{ attribute_list.command|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="marksmanship">Marksmanship:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="marksmanship" value="{{ attribute_list.marksmanship }}" />
+      {% else %}
+        {{ attribute_list.marksmanship|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="survival">Survival:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="survival" value="{{ attribute_list.survival }}" />
+      {% else %}
+        {{ attribute_list.survival|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="control">Control:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="control" value="{{ attribute_list.control }}" />
+      {% else %}
+        {{ attribute_list.control|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="medicine">Medicine:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="medicine" value="{{ attribute_list.medicine }}" />
+      {% else %}
+        {{ attribute_list.medicine|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="thrown">Thrown:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="thrown" value="{{ attribute_list.thrown }}" />
+      {% else %}
+        {{ attribute_list.thrown|dots:5 }}
       {% endif %}
     </td>
   </tr>
