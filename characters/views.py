@@ -168,6 +168,10 @@ def viewrevision(request, character_id, revision_id):
 
 	attribute_list = buildattributelist(universe_attributes, revision)
 
+	universe_attribute_list = {}
+	for attr in universe_attributes:
+		universe_attribute_list[attr.descriptor] = attr
+
 	template = "characters/universes/" + character.universe.descriptor + ".html"
 
 	try:
@@ -180,6 +184,7 @@ def viewrevision(request, character_id, revision_id):
 		'character': character,
 		'revision_list': revision_list,
 		'revision': revision,
+		'universe_attribute_list': universe_attribute_list,
 	})
 
 def buildattributelist(universe_attributes, revision):

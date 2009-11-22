@@ -1,4 +1,5 @@
 {% extends "characters/basesheet.html" %}
+{% load characters_utils %}
 
 {% block header %}
 <h1>Scion</h1>
@@ -63,6 +64,211 @@
         <input type="text" name="god" value="{{ attribute_list.god }}" />
       {% else %}
         {{ attribute_list.god }}
+      {% endif %}
+    </td>
+  </tr>
+</table>
+
+<hr />
+<h2>Attributes</h2>
+<table>
+  <tr>
+    <td></td>
+    <td>Physical</td>
+    <td></td>
+    <td>Social</td>
+    <td></td>
+    <td>Mental</td>
+  </tr>
+  <tr>
+    <td>
+      <label for="strength">Strength:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="strength" value="{{ attribute_list.strength }}" />
+      {% else %}
+        {{ attribute_list.strength|dots:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="charisma">Charisma:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="charisma" value="{{ attribute_list.charisma }}" />
+      {% else %}
+        {{ attribute_list.charisma|dots:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="perception">Perception:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="perception" value="{{ attribute_list.perception }}" />
+      {% else %}
+        {{ attribute_list.perception|dots:10 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="epicstrength">Epic Strength:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicstrength" value="{{ attribute_list.epicstrength }}" />
+      {% else %}
+        {{ attribute_list.epicstrength|squares:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="epiccharisma">Epic Charisma:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epiccharisma" value="{{ attribute_list.epiccharisma }}" />
+      {% else %}
+        {{ attribute_list.epiccharisma|squares:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="epicperception">Epic Perception:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicperception" value="{{ attribute_list.epicperception }}" />
+      {% else %}
+        {{ attribute_list.epicperception|squares:10 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="dexterity">Dexterity:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="dexterity" value="{{ attribute_list.dexterity }}" />
+      {% else %}
+        {{ attribute_list.dexterity|dots:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="manipulation">Manipulation:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="manipulation" value="{{ attribute_list.manipulation }}" />
+      {% else %}
+        {{ attribute_list.manipulation|dots:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="intelligence">Intelligence:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="intelligence" value="{{ attribute_list.intelligence }}" />
+      {% else %}
+        {{ attribute_list.intelligence|dots:10 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="epicdexterity">Epic Dexterity:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicdexterity" value="{{ attribute_list.epicdexterity }}" />
+      {% else %}
+        {{ attribute_list.epicdexterity|squares:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="epicmanipulation">Epic Manipulation:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicmanipulation" value="{{ attribute_list.epicmanipulation }}" />
+      {% else %}
+        {{ attribute_list.epicmanipulation|squares:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="epicintelligence">Epic Intelligence:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicintelligence" value="{{ attribute_list.epicintelligence }}" />
+      {% else %}
+        {{ attribute_list.epicintelligence|squares:10 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="stamina">Stamina:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="stamina" value="{{ attribute_list.stamina }}" />
+      {% else %}
+        {{ attribute_list.stamina|dots:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="appearance">Appearance:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="appearance" value="{{ attribute_list.appearance }}" />
+      {% else %}
+        {{ attribute_list.appearance|dots:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="wits">Wits:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="wits" value="{{ attribute_list.wits }}" />
+      {% else %}
+        {{ attribute_list.wits|dots:10 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="epicstamina">Epic Stamina:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicstamina" value="{{ attribute_list.epicstamina }}" />
+      {% else %}
+        {{ attribute_list.epicstamina|squares:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="epicappearance">Epic Appearance:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicappearance" value="{{ attribute_list.epicappearance }}" />
+      {% else %}
+        {{ attribute_list.epicappearance|squares:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="epicwits">Epic Wits:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicwits" value="{{ attribute_list.epicwits }}" />
+      {% else %}
+        {{ attribute_list.epicwits|squares:10 }}
       {% endif %}
     </td>
   </tr>

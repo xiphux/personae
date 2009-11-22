@@ -12,6 +12,7 @@ class Attribute(models.Model):
 	name = models.CharField(max_length=200)
 	descriptor = models.CharField(max_length=200)
 	#multiple = models.BooleanField()
+	#max = models.PositiveIntegerField()
 	type = models.PositiveSmallIntegerField()
 
 	def __unicode__(self):
