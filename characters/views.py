@@ -93,10 +93,10 @@ def edit(request, character_id):
 	attribute_list = buildattributelist(universe_attributes, revision)
 
 	return render_to_response(template, {
-		'attribute_list': attribute_list,
+		'attributes': attribute_list,
 		'character': character,
 		'editmode': True,
-		'universe_attribute_list': universe_attribute_list,
+		'universe_attributes': universe_attribute_list,
 	}, context_instance=RequestContext(request))
 
 #
@@ -185,11 +185,11 @@ def viewrevision(request, character_id, revision_id):
 		revision_list = False
 
 	return render_to_response(template, {
-		'attribute_list': attribute_list,
+		'attributes': attribute_list,
 		'character': character,
 		'revision_list': revision_list,
 		'revision': revision,
-		'universe_attribute_list': universe_attribute_list,
+		'universe_attributes': universe_attribute_list,
 	})
 
 def buildattributelist(universe_attributes, revision):
@@ -210,10 +210,8 @@ def buildattributelist(universe_attributes, revision):
 			continue
 		try:
 			val = attrvaluelist.get(attribute=attr.id)
-			attribute_list[attr.descriptor] = val.value
-		except (AttributeIntegerValue.DoesNotExist):
-			attribute_list[attr.descriptor] = 0
-		except (AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
+			attribute_list[attr.descriptor] = val
+		except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
 			pass
 	
 	return attribute_list

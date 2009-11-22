@@ -1,10 +1,16 @@
 from django import template
 from django.utils.safestring import mark_safe
+from django.template.defaultfilters import stringfilter
 
 register = template.Library()
 
 @register.filter
+@stringfilter
 def dots(value, max):
+	if len(value) == 0:
+		value = 0
+	else:
+		value = int(value)
 	if max > 0:
 		ret = ""
 		for num in range(max):
@@ -17,7 +23,12 @@ def dots(value, max):
 		return mark_safe(''.join(['&#9673;' for num in xrange(value)]))
 
 @register.filter
+@stringfilter
 def squares(value, max):
+	if len(value) == 0:
+		value = 0
+	else:
+		value = int(value)
 	if max > 0:
 		ret = ""
 		for num in range(max):

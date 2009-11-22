@@ -39,7 +39,7 @@ class AttributeIntegerValue(models.Model):
 	value = models.IntegerField()
 
 	def __unicode__(self):
-		return self.value
+		return str(self.value)
 
 class AttributeStringValue(models.Model):
 	revision = models.ForeignKey(Revision)

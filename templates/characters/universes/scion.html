@@ -15,55 +15,55 @@
       {{ character.name }}
     </td>
     <td>
-      <label for="calling">{{ universe_attribute_list.calling.name }}:</label>
+      <label for="calling">{{ universe_attributes.calling.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="calling" value="{{ attribute_list.calling }}" />
+        <input type="text" name="calling" value="{{ attributes.calling.value }}" />
       {% else %}
-        {{ attribute_list.calling }}
+        {{ attributes.calling }}
       {% endif %}
     </td>
     <td>
-      <label for="pantheon">{{ universe_attribute_list.pantheon.name }}:</label>
+      <label for="pantheon">{{ universe_attributes.pantheon.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="pantheon" value="{{ attribute_list.pantheon }}" />
+        <input type="text" name="pantheon" value="{{ attributes.pantheon }}" />
       {% else %}
-        {{ attribute_list.pantheon }}
+        {{ attributes.pantheon }}
       {% endif %}
     </td>
   </tr>
   <tr>
     <td>
-      <label for="player">{{ universe_attribute_list.player.name }}:</label>
+      <label for="player">{{ universe_attributes.player.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="player" value="{{ attribute_list.player }}" />
+        <input type="text" name="player" value="{{ attributes.player }}" />
       {% else %}
-        {{ attribute_list.player }}
+        {{ attributes.player }}
       {% endif %}
     </td>
     <td>
-      <label for="nature">{{ universe_attribute_list.nature.name }}:</label>
+      <label for="nature">{{ universe_attributes.nature.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="nature" value="{{ attribute_list.nature }}" />
+        <input type="text" name="nature" value="{{ attributes.nature }}" />
       {% else %}
-        {{ attribute_list.nature }}
+        {{ attributes.nature }}
       {% endif %}
     </td>
     <td>
-      <label for="god">{{ universe_attribute_list.god.name }}:</label>
+      <label for="god">{{ universe_attributes.god.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="god" value="{{ attribute_list.god }}" />
+        <input type="text" name="god" value="{{ attributes.god }}" />
       {% else %}
-        {{ attribute_list.god }}
+        {{ attributes.god }}
       {% endif %}
     </td>
   </tr>
@@ -82,193 +82,193 @@
   </tr>
   <tr>
     <td>
-      <label for="strength">{{ universe_attribute_list.strength.name }}:</label>
+      <label for="strength">{{ universe_attributes.strength.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="strength" value="{{ attribute_list.strength }}" />
+        <input type="text" name="strength" value="{{ attributes.strength|default:"0" }}" />
       {% else %}
-        {{ attribute_list.strength|dots:10 }}
+        {{ attributes.strength.value|dots:10 }}
       {% endif %}
     </td>
     <td>
-      <label for="charisma">{{ universe_attribute_list.charisma.name }}:</label>
+      <label for="charisma">{{ universe_attributes.charisma.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="charisma" value="{{ attribute_list.charisma }}" />
+        <input type="text" name="charisma" value="{{ attributes.charisma|default:"0" }}" />
       {% else %}
-        {{ attribute_list.charisma|dots:10 }}
+        {{ attributes.charisma.value|dots:10 }}
       {% endif %}
     </td>
     <td>
-      <label for="perception">{{ universe_attribute_list.perception.name }}:</label>
+      <label for="perception">{{ universe_attributes.perception.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="perception" value="{{ attribute_list.perception }}" />
+        <input type="text" name="perception" value="{{ attributes.perception|default:"0" }}" />
       {% else %}
-        {{ attribute_list.perception|dots:10 }}
-      {% endif %}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <label for="epicstrength">{{ universe_attribute_list.epicstrength.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="epicstrength" value="{{ attribute_list.epicstrength }}" />
-      {% else %}
-        {{ attribute_list.epicstrength|squares:10 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="epiccharisma">{{ universe_attribute_list.epiccharisma.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="epiccharisma" value="{{ attribute_list.epiccharisma }}" />
-      {% else %}
-        {{ attribute_list.epiccharisma|squares:10 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="epicperception">{{ universe_attribute_list.epicperception.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="epicperception" value="{{ attribute_list.epicperception }}" />
-      {% else %}
-        {{ attribute_list.epicperception|squares:10 }}
+        {{ attributes.perception.value|dots:10 }}
       {% endif %}
     </td>
   </tr>
   <tr>
     <td>
-      <label for="dexterity">{{ universe_attribute_list.dexterity.name }}:</label>
+      <label for="epicstrength">{{ universe_attributes.epicstrength.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="dexterity" value="{{ attribute_list.dexterity }}" />
+        <input type="text" name="epicstrength" value="{{ attributes.epicstrength|default:"0" }}" />
       {% else %}
-        {{ attribute_list.dexterity|dots:10 }}
+        {{ attributes.epicstrength|squares:10 }}
       {% endif %}
     </td>
     <td>
-      <label for="manipulation">{{ universe_attribute_list.manipulation.name }}:</label>
+      <label for="epiccharisma">{{ universe_attributes.epiccharisma.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="manipulation" value="{{ attribute_list.manipulation }}" />
+        <input type="text" name="epiccharisma" value="{{ attributes.epiccharisma|default:"0" }}" />
       {% else %}
-        {{ attribute_list.manipulation|dots:10 }}
+        {{ attributes.epiccharisma|squares:10 }}
       {% endif %}
     </td>
     <td>
-      <label for="intelligence">{{ universe_attribute_list.intelligence.name }}:</label>
+      <label for="epicperception">{{ universe_attributes.epicperception.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="intelligence" value="{{ attribute_list.intelligence }}" />
+        <input type="text" name="epicperception" value="{{ attributes.epicperception|default:"0" }}" />
       {% else %}
-        {{ attribute_list.intelligence|dots:10 }}
-      {% endif %}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <label for="epicdexterity">{{ universe_attribute_list.epicdexterity.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="epicdexterity" value="{{ attribute_list.epicdexterity }}" />
-      {% else %}
-        {{ attribute_list.epicdexterity|squares:10 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="epicmanipulation">{{ universe_attribute_list.epicmanipulation.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="epicmanipulation" value="{{ attribute_list.epicmanipulation }}" />
-      {% else %}
-        {{ attribute_list.epicmanipulation|squares:10 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="epicintelligence">{{ universe_attribute_list.epicintelligence.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="epicintelligence" value="{{ attribute_list.epicintelligence }}" />
-      {% else %}
-        {{ attribute_list.epicintelligence|squares:10 }}
+        {{ attributes.epicperception|squares:10 }}
       {% endif %}
     </td>
   </tr>
   <tr>
     <td>
-      <label for="stamina">{{ universe_attribute_list.stamina.name }}:</label>
+      <label for="dexterity">{{ universe_attributes.dexterity.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="stamina" value="{{ attribute_list.stamina }}" />
+        <input type="text" name="dexterity" value="{{ attributes.dexterity|default:"0" }}" />
       {% else %}
-        {{ attribute_list.stamina|dots:10 }}
+        {{ attributes.dexterity.value|dots:10 }}
       {% endif %}
     </td>
     <td>
-      <label for="appearance">{{ universe_attribute_list.appearance.name }}:</label>
+      <label for="manipulation">{{ universe_attributes.manipulation.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="appearance" value="{{ attribute_list.appearance }}" />
+        <input type="text" name="manipulation" value="{{ attributes.manipulation|default:"0" }}" />
       {% else %}
-        {{ attribute_list.appearance|dots:10 }}
+        {{ attributes.manipulation.value|dots:10 }}
       {% endif %}
     </td>
     <td>
-      <label for="wits">{{ universe_attribute_list.wits.name }}:</label>
+      <label for="intelligence">{{ universe_attributes.intelligence.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="wits" value="{{ attribute_list.wits }}" />
+        <input type="text" name="intelligence" value="{{ attributes.intelligence|default:"0" }}" />
       {% else %}
-        {{ attribute_list.wits|dots:10 }}
+        {{ attributes.intelligence.value|dots:10 }}
       {% endif %}
     </td>
   </tr>
   <tr>
     <td>
-      <label for="epicstamina">{{ universe_attribute_list.epicstamina.name }}:</label>
+      <label for="epicdexterity">{{ universe_attributes.epicdexterity.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="epicstamina" value="{{ attribute_list.epicstamina }}" />
+        <input type="text" name="epicdexterity" value="{{ attributes.epicdexterity|default:"0" }}" />
       {% else %}
-        {{ attribute_list.epicstamina|squares:10 }}
+        {{ attributes.epicdexterity|squares:10 }}
       {% endif %}
     </td>
     <td>
-      <label for="epicappearance">{{ universe_attribute_list.epicappearance.name }}:</label>
+      <label for="epicmanipulation">{{ universe_attributes.epicmanipulation.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="epicappearance" value="{{ attribute_list.epicappearance }}" />
+        <input type="text" name="epicmanipulation" value="{{ attributes.epicmanipulation|default:"0" }}" />
       {% else %}
-        {{ attribute_list.epicappearance|squares:10 }}
+        {{ attributes.epicmanipulation|squares:10 }}
       {% endif %}
     </td>
     <td>
-      <label for="epicwits">{{ universe_attribute_list.epicwits.name }}:</label>
+      <label for="epicintelligence">{{ universe_attributes.epicintelligence.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="epicwits" value="{{ attribute_list.epicwits }}" />
+        <input type="text" name="epicintelligence" value="{{ attributes.epicintelligence|default:"0" }}" />
       {% else %}
-        {{ attribute_list.epicwits|squares:10 }}
+        {{ attributes.epicintelligence|squares:10 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="stamina">{{ universe_attributes.stamina.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="stamina" value="{{ attributes.stamina|default:"0" }}" />
+      {% else %}
+        {{ attributes.stamina.value|dots:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="appearance">{{ universe_attributes.appearance.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="appearance" value="{{ attributes.appearance|default:"0" }}" />
+      {% else %}
+        {{ attributes.appearance.value|dots:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="wits">{{ universe_attributes.wits.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="wits" value="{{ attributes.wits|default:"0" }}" />
+      {% else %}
+        {{ attributes.wits.value|dots:10 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="epicstamina">{{ universe_attributes.epicstamina.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicstamina" value="{{ attributes.epicstamina|default:"0" }}" />
+      {% else %}
+        {{ attributes.epicstamina|squares:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="epicappearance">{{ universe_attributes.epicappearance.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicappearance" value="{{ attributes.epicappearance|default:"0" }}" />
+      {% else %}
+        {{ attributes.epicappearance|squares:10 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="epicwits">{{ universe_attributes.epicwits.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="epicwits" value="{{ attributes.epicwits|default:"0" }}" />
+      {% else %}
+        {{ attributes.epicwits|squares:10 }}
       {% endif %}
     </td>
   </tr>
@@ -278,257 +278,257 @@
 <table>
   <tr>
     <td>
-      <label for="academics">{{ universe_attribute_list.academics.name }}:</label>
+      <label for="academics">{{ universe_attributes.academics.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="academics" value="{{ attribute_list.academics }}" />
+        <input type="text" name="academics" value="{{ attributes.academics|default:"0" }}" />
       {% else %}
-        {{ attribute_list.academics|dots:5 }}
+        {{ attributes.academics.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="craft">{{ universe_attribute_list.craft.name }}:</label>
+      <label for="craft">{{ universe_attributes.craft.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="craft" value="{{ attribute_list.craft }}" />
+        <input type="text" name="craft" value="{{ attributes.craft|default:"0" }}" />
       {% else %}
-        {{ attribute_list.craft|dots:5 }}
+        {{ attributes.craft.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="melee">{{ universe_attribute_list.melee.name }}:</label>
+      <label for="melee">{{ universe_attributes.melee.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="melee" value="{{ attribute_list.melee }}" />
+        <input type="text" name="melee" value="{{ attributes.melee|default:"0" }}" />
       {% else %}
-        {{ attribute_list.melee|dots:5 }}
-      {% endif %}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <label for="animalken">{{ universe_attribute_list.animalken.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="animalken" value="{{ attribute_list.animalken }}" />
-      {% else %}
-        {{ attribute_list.animalken|dots:5 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="empathy">{{ universe_attribute_list.empathy.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="empathy" value="{{ attribute_list.empathy }}" />
-      {% else %}
-        {{ attribute_list.empathy|dots:5 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="occult">{{ universe_attribute_list.occult.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="occult" value="{{ attribute_list.occult }}" />
-      {% else %}
-        {{ attribute_list.occult|dots:5 }}
+        {{ attributes.melee.value|dots:5 }}
       {% endif %}
     </td>
   </tr>
   <tr>
     <td>
-      <label for="art">{{ universe_attribute_list.art.name }}:</label>
+      <label for="animalken">{{ universe_attributes.animalken.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="art" value="{{ attribute_list.art }}" />
+        <input type="text" name="animalken" value="{{ attributes.animalken|default:"0" }}" />
       {% else %}
-        {{ attribute_list.art|dots:5 }}
+        {{ attributes.animalken.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="fortitude">{{ universe_attribute_list.fortitude.name }}:</label>
+      <label for="empathy">{{ universe_attributes.empathy.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="fortitude" value="{{ attribute_list.fortitude }}" />
+        <input type="text" name="empathy" value="{{ attributes.empathy|default:"0" }}" />
       {% else %}
-        {{ attribute_list.fortitude|dots:5 }}
+        {{ attributes.empathy.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="politics">{{ universe_attribute_list.politics.name }}:</label>
+      <label for="occult">{{ universe_attributes.occult.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="politics" value="{{ attribute_list.politics }}" />
+        <input type="text" name="occult" value="{{ attributes.occult|default:"0" }}" />
       {% else %}
-        {{ attribute_list.politics|dots:5 }}
-      {% endif %}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <label for="athletics">{{ universe_attribute_list.athletics.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="athletics" value="{{ attribute_list.athletics }}" />
-      {% else %}
-        {{ attribute_list.athletics|dots:5 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="integrity">{{ universe_attribute_list.integrity.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="integrity" value="{{ attribute_list.integrity }}" />
-      {% else %}
-        {{ attribute_list.integrity|dots:5 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="presence">{{ universe_attribute_list.presence.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="presence" value="{{ attribute_list.presence }}" />
-      {% else %}
-        {{ attribute_list.presence|dots:5 }}
+        {{ attributes.occult.value|dots:5 }}
       {% endif %}
     </td>
   </tr>
   <tr>
     <td>
-      <label for="awareness">{{ universe_attribute_list.awareness.name }}:</label>
+      <label for="art">{{ universe_attributes.art.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="awareness" value="{{ attribute_list.awareness }}" />
+        <input type="text" name="art" value="{{ attributes.art|default:"0" }}" />
       {% else %}
-        {{ attribute_list.awareness|dots:5 }}
+        {{ attributes.art.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="investigation">{{ universe_attribute_list.investigation.name }}:</label>
+      <label for="fortitude">{{ universe_attributes.fortitude.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="investigation" value="{{ attribute_list.investigation }}" />
+        <input type="text" name="fortitude" value="{{ attributes.fortitude|default:"0" }}" />
       {% else %}
-        {{ attribute_list.investigation|dots:5 }}
+        {{ attributes.fortitude.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="science">{{ universe_attribute_list.science.name }}:</label>
+      <label for="politics">{{ universe_attributes.politics.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="science" value="{{ attribute_list.science }}" />
+        <input type="text" name="politics" value="{{ attributes.politics|default:"0" }}" />
       {% else %}
-        {{ attribute_list.science|dots:5 }}
-      {% endif %}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <label for="brawl">{{ universe_attribute_list.brawl.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="brawl" value="{{ attribute_list.brawl }}" />
-      {% else %}
-        {{ attribute_list.brawl|dots:5 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="larceny">{{ universe_attribute_list.larceny.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="larceny" value="{{ attribute_list.larceny }}" />
-      {% else %}
-        {{ attribute_list.larceny|dots:5 }}
-      {% endif %}
-    </td>
-    <td>
-      <label for="stealth">{{ universe_attribute_list.stealth.name }}:</label>
-    </td>
-    <td>
-      {% if editmode %}
-        <input type="text" name="stealth" value="{{ attribute_list.stealth }}" />
-      {% else %}
-        {{ attribute_list.stealth|dots:5 }}
+        {{ attributes.politics.value|dots:5 }}
       {% endif %}
     </td>
   </tr>
   <tr>
     <td>
-      <label for="command">{{ universe_attribute_list.command.name }}:</label>
+      <label for="athletics">{{ universe_attributes.athletics.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="command" value="{{ attribute_list.command }}" />
+        <input type="text" name="athletics" value="{{ attributes.athletics|default:"0" }}" />
       {% else %}
-        {{ attribute_list.command|dots:5 }}
+        {{ attributes.athletics.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="marksmanship">{{ universe_attribute_list.marksmanship.name }}:</label>
+      <label for="integrity">{{ universe_attributes.integrity.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="marksmanship" value="{{ attribute_list.marksmanship }}" />
+        <input type="text" name="integrity" value="{{ attributes.integrity|default:"0" }}" />
       {% else %}
-        {{ attribute_list.marksmanship|dots:5 }}
+        {{ attributes.integrity.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="survival">{{ universe_attribute_list.survival.name }}:</label>
+      <label for="presence">{{ universe_attributes.presence.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="survival" value="{{ attribute_list.survival }}" />
+        <input type="text" name="presence" value="{{ attributes.presence|default:"0" }}" />
       {% else %}
-        {{ attribute_list.survival|dots:5 }}
+        {{ attributes.presence.value|dots:5 }}
       {% endif %}
     </td>
   </tr>
   <tr>
     <td>
-      <label for="control">{{ universe_attribute_list.control.name }}:</label>
+      <label for="awareness">{{ universe_attributes.awareness.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="control" value="{{ attribute_list.control }}" />
+        <input type="text" name="awareness" value="{{ attributes.awareness|default:"0" }}" />
       {% else %}
-        {{ attribute_list.control|dots:5 }}
+        {{ attributes.awareness.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="medicine">{{ universe_attribute_list.medicine.name }}:</label>
+      <label for="investigation">{{ universe_attributes.investigation.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="medicine" value="{{ attribute_list.medicine }}" />
+        <input type="text" name="investigation" value="{{ attributes.investigation|default:"0" }}" />
       {% else %}
-        {{ attribute_list.medicine|dots:5 }}
+        {{ attributes.investigation.value|dots:5 }}
       {% endif %}
     </td>
     <td>
-      <label for="thrown">{{ universe_attribute_list.thrown.name }}:</label>
+      <label for="science">{{ universe_attributes.science.name }}:</label>
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="thrown" value="{{ attribute_list.thrown }}" />
+        <input type="text" name="science" value="{{ attributes.science|default:"0" }}" />
       {% else %}
-        {{ attribute_list.thrown|dots:5 }}
+        {{ attributes.science.value|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="brawl">{{ universe_attributes.brawl.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="brawl" value="{{ attributes.brawl|default:"0" }}" />
+      {% else %}
+        {{ attributes.brawl.value|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="larceny">{{ universe_attributes.larceny.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="larceny" value="{{ attributes.larceny|default:"0" }}" />
+      {% else %}
+        {{ attributes.larceny.value|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="stealth">{{ universe_attributes.stealth.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="stealth" value="{{ attributes.stealth|default:"0" }}" />
+      {% else %}
+        {{ attributes.stealth.value|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="command">{{ universe_attributes.command.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="command" value="{{ attributes.command|default:"0" }}" />
+      {% else %}
+        {{ attributes.command.value|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="marksmanship">{{ universe_attributes.marksmanship.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="marksmanship" value="{{ attributes.marksmanship|default:"0" }}" />
+      {% else %}
+        {{ attributes.marksmanship.value|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="survival">{{ universe_attributes.survival.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="survival" value="{{ attributes.survival|default:"0" }}" />
+      {% else %}
+        {{ attributes.survival.value|dots:5 }}
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="control">{{ universe_attributes.control.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="control" value="{{ attributes.control|default:"0" }}" />
+      {% else %}
+        {{ attributes.control.value|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="medicine">{{ universe_attributes.medicine.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="medicine" value="{{ attributes.medicine|default:"0" }}" />
+      {% else %}
+        {{ attributes.medicine.value|dots:5 }}
+      {% endif %}
+    </td>
+    <td>
+      <label for="thrown">{{ universe_attributes.thrown.name }}:</label>
+    </td>
+    <td>
+      {% if editmode %}
+        <input type="text" name="thrown" value="{{ attributes.thrown|default:"0" }}" />
+      {% else %}
+        {{ attributes.thrown.value|dots:5 }}
       {% endif %}
     </td>
   </tr>
