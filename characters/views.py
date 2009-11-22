@@ -86,12 +86,17 @@ def edit(request, character_id):
 	except:
 		return HttpResponse("Error: universe has no attributes defined.")
 
+	universe_attribute_list = {}
+	for attr in universe_attributes:
+		universe_attribute_list[attr.descriptor] = attr
+
 	attribute_list = buildattributelist(universe_attributes, revision)
 
 	return render_to_response(template, {
 		'attribute_list': attribute_list,
 		'character': character,
 		'editmode': True,
+		'universe_attribute_list': universe_attribute_list,
 	}, context_instance=RequestContext(request))
 
 #
