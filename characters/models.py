@@ -32,6 +32,8 @@ class Revision(models.Model):
 	character = models.ForeignKey(Character)
 	revision = models.PositiveIntegerField()
 	rev_date = models.DateTimeField('revision date')
+	name = models.CharField(max_length=200, null=True)
+	notes = models.TextField(null=True)
 
 	class Meta:
 		unique_together = (('character','revision'),)

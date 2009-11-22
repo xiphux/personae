@@ -126,6 +126,20 @@ def saverevision(request, character_id):
 
 	newrevision = character.revision_set.create(revision=revisionnum, rev_date=datetime.datetime.now())
 
+	try:
+		revname = request.POST['revisionname']
+		if len(revname) > 0:
+			newrevision.name = revname
+	except (KeyError):
+		pass
+
+	try:
+		revnotes = request.POST['revisionnotes']
+		if len(revnotes) > 0:
+			newrevision.notes = revnotes
+	except (KeyError):
+		pass
+
 	for attr in universe_attributes:
 		try:
 			val = request.POST[attr.descriptor]
@@ -171,6 +185,8 @@ def saverevision(request, character_id):
 				pass
 		if createnew:
 			newattrset.create(attribute=attr, value=val)
+
+	newrevision.save()
 
 	return HttpResponseRedirect(reverse('personae.characters.views.viewrevision', args=(character_id, newrevision.id,)))
 

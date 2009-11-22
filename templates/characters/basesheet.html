@@ -5,7 +5,28 @@
 {% block header %}
 {% endblock %}
 
-{% if not editmode %}
+{% if editmode %}
+<form action="/characters/{{ character.id }}/save/" method="post">
+<table>
+  <tr>
+    <td>
+      <label for="revisionname">Revision name:</label>
+    </td>
+    <td>
+      <input type="text" name="revisionname" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <label for="revisionnotes">Revision notes:</label>
+    </td>
+    <td>
+      <textarea name="revisionnotes" rows=5 cols=40 ></textarea>
+    </td>
+  </tr>
+</table>
+<hr />
+{% else %}
 <a href="/characters/{{ character.id }}/edit/">Edit</a>
  {% if revision_list %} 
    <br />
@@ -13,19 +34,18 @@
      <label for="revision">Revisions:</label>
      <select name="revision">
        {% for rev in revision_list %}
-         <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}</option>
+         <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% if rev.name %} [{{rev.name}}]{% endif %}</option>
        {% endfor %}
      </select>
      <input type="submit" value="View" />
    </form>
  {% endif %}
+{% if revision.notes %}
+Notes: {{ revision.notes }}
 {% endif %}
-
 <hr />
-
-{% if editmode %}
-<form action="/characters/{{ character.id }}/save/" method="post">
 {% endif %}
+
 
 {% block sheet %}
 {% endblock %}
