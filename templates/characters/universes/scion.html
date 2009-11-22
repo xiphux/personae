@@ -29,9 +29,14 @@
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="pantheon" value="{{ attributes.pantheon }}" />
+      	<select name="pantheon">
+	  <option value="0"></option>
+	  {% for choice in universe_attributes.pantheon.choices %}
+	  <option value="{{ choice.id }}" {% ifequal choice attributes.pantheon.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+	  {% endfor %}
+	</select>
       {% else %}
-        {{ attributes.pantheon }}
+        {{ attributes.pantheon.choice.name }}
       {% endif %}
     </td>
   </tr>
@@ -51,9 +56,14 @@
     </td>
     <td>
       {% if editmode %}
-        <input type="text" name="nature" value="{{ attributes.nature }}" />
+        <select name="nature">
+	  <option value="0"></option>
+	  {% for choice in universe_attributes.nature.choices %}
+	  <option value="{{ choice.id }}" {% ifequal choice attributes.nature.choice %}selected{%endifequal %}>{{ choice.name }}</option>
+	  {% endfor %}
+	</select>
       {% else %}
-        {{ attributes.nature }}
+        {{ attributes.nature.choice.name }}
       {% endif %}
     </td>
     <td>

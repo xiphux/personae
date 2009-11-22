@@ -1,5 +1,5 @@
 import datetime
-from personae.characters.models import Universe, Character, Revision, Attribute, AttributeIntegerValue, AttributeStringValue, AttributeTextValue
+from personae.characters.models import Universe, Character, Revision, Attribute, AttributeChoice, AttributeIntegerValue, AttributeStringValue, AttributeTextValue, AttributeChoiceValue
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -149,7 +149,7 @@ def saverevision(request, character_id):
 		if len(val) == 0:
 			continue
 
-		if attr.type == 1:
+		if attr.type == 1 or attr.type == 4:
 			val = int(val)
 			if val < 1:
 				continue
@@ -172,19 +172,36 @@ def saverevision(request, character_id):
 			else:
 				oldattrset = None
 			newattrset = newrevision.attributetextvalue_set
+		elif attr.type == 4:
+			if revision is not None:
+				oldattrset = revision.attributechoicevalue_set
+			else:
+				oldattrset = None
+			newattrset = newrevision.attributechoicevalue_set
 
 		createnew = True
 		if revision is not None:
 			try:
-				oldval = oldattrset.get(attribute=attr.id)
-				if oldval.value == val:
-					oldval.revisions.add(newrevision)
-					oldval.save()
-					createnew = False
-			except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
+				if attr.type == 4:
+					oldval = oldattrset.get(attribute=attr.id)
+					if oldval.choice.id == val:
+						oldval.revisions.add(newrevision)
+						oldval.save()
+						createnew = False
+				else:
+					oldval = oldattrset.get(attribute=attr.id)
+					if oldval.value == val:
+						oldval.revisions.add(newrevision)
+						oldval.save()
+						createnew = False
+			except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist, AttributeChoiceValue.DoesNotExist):
 				pass
 		if createnew:
-			newattrset.create(attribute=attr, value=val)
+			if attr.type == 4:
+				ch = AttributeChoice.objects.get(pk=val)
+				newattrset.create(attribute=attr, choice=ch)
+			else:
+				newattrset.create(attribute=attr, value=val)
 
 	newrevision.save()
 
@@ -195,7 +212,7 @@ def saverevision(request, character_id):
 #
 def gotorevision(request, character_id):
 	try:
-		revision_id = request.POST['revision']
+		revision_id = request.GET['revision']
 		if len(revision_id) == 0:
 			raise ValueError
 	except (KeyError, ValueError):
@@ -247,6 +264,7 @@ def buildattributelist(universe_attributes, revision):
 	revision_integer_attributes = revision.attributeintegervalue_set.all()
 	revision_string_attributes = revision.attributestringvalue_set.all()
 	revision_text_attributes = revision.attributetextvalue_set.all()
+	revision_choice_attributes = revision.attributechoicevalue_set.all()
 
 	attribute_list = {}
 
@@ -257,12 +275,14 @@ def buildattributelist(universe_attributes, revision):
 			attrvaluelist = revision_string_attributes
 		elif attr.type == 3:
 			attrvaluelist = revision_text_attributes
+		elif attr.type == 4:
+			attrvaluelist = revision_choice_attributes
 		else:
 			continue
 		try:
 			val = attrvaluelist.get(attribute=attr.id)
 			attribute_list[attr.descriptor] = val
-		except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
+		except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist, AttributeChoiceValue.DoesNotExist):
 			pass
 	
 	return attribute_list

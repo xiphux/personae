@@ -30,7 +30,7 @@
 <a href="/characters/{{ character.id }}/edit/">Edit</a>
  {% if revision_list %} 
    <br />
-   <form action="/characters/{{ character.id }}/gotorev/" method="post">
+   <form action="/characters/{{ character.id }}/goto/" method="get">
      <label for="revision">Revisions:</label>
      <select name="revision">
        {% for rev in revision_list %}

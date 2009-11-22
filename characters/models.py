@@ -21,6 +21,13 @@ class Attribute(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	def choices(self):
+		return self.attributechoice_set.all().order_by('name')
+
+class AttributeChoice(models.Model):
+	attribute = models.ForeignKey(Attribute)
+	name = models.CharField(max_length=200)
+
 class Character(models.Model):
 	universe = models.ForeignKey(Universe)
 	name = models.CharField(max_length=200)
@@ -64,3 +71,11 @@ class AttributeTextValue(models.Model):
 
 	def __unicode__(self):
 		return self.value
+
+class AttributeChoiceValue(models.Model):
+	revisions = models.ManyToManyField(Revision)
+	attribute = models.ForeignKey(Attribute)
+	choice = models.ForeignKey(AttributeChoice)
+
+	def __unicode__(self):
+		return choice.name
