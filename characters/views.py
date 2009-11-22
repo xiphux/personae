@@ -77,11 +77,6 @@ def edit(request, character_id):
 	template = "characters/universes/" + character.universe.descriptor + ".html"
 
 	try:
-		revision = Revision.objects.filter(character=character_id).order_by('-rev_date')[0]
-	except (Revision.DoesNotExist, IndexError):
-		return render_to_response(template, {'character': character, 'editmode': True})
-
-	try:
 		universe_attributes = character.universe.attribute_set.all()
 	except:
 		return HttpResponse("Error: universe has no attributes defined.")
@@ -89,6 +84,15 @@ def edit(request, character_id):
 	universe_attribute_list = {}
 	for attr in universe_attributes:
 		universe_attribute_list[attr.descriptor] = attr
+
+	try:
+		revision = Revision.objects.filter(character=character_id).order_by('-rev_date')[0]
+	except (Revision.DoesNotExist, IndexError):
+		return render_to_response(template, {
+			'character': character,
+			'editmode': True,
+			'universe_attributes': universe_attribute_list,
+		})
 
 	attribute_list = buildattributelist(universe_attributes, revision)
 
@@ -113,6 +117,7 @@ def saverevision(request, character_id):
 	except:
 		return HttpResponse("Error: universe has no attributes defined.")
 
+	revision = None
 	try:
 		revision = Revision.objects.filter(character=character_id).order_by('-rev_date')[0]
 		revisionnum = revision.revision + 1
@@ -124,18 +129,48 @@ def saverevision(request, character_id):
 	for attr in universe_attributes:
 		try:
 			val = request.POST[attr.descriptor]
-			if attr.type == 1:
-				val = int(val)
-				if val > 0:
-					newrevision.attributeintegervalue_set.create(attribute=attr, value=val)
-			elif attr.type == 2:
-				if len(val) > 0:
-					newrevision.attributestringvalue_set.create(attribute=attr, value=val)
-			elif attr.type == 3:
-				if len(val) > 0:
-					newrevision.attributetextvalue_set.create(attribute=attr, value=val)
 		except (KeyError):
-			pass
+			continue
+
+		if len(val) == 0:
+			continue
+
+		if attr.type == 1:
+			val = int(val)
+			if val < 1:
+				continue
+
+		if attr.type == 1:
+			if revision is not None:
+				oldattrset = revision.attributeintegervalue_set
+			else:
+				oldattrset = None
+			newattrset = newrevision.attributeintegervalue_set
+		elif attr.type == 2:
+			if revision is not None:
+				oldattrset = revision.attributestringvalue_set
+			else:
+				oldattrset = None
+			newattrset = newrevision.attributestringvalue_set
+		elif attr.type == 3:
+			if revision is not None:
+				oldattrset = revision.attributetextvalue_set
+			else:
+				oldattrset = None
+			newattrset = newrevision.attributetextvalue_set
+
+		createnew = True
+		if revision is not None:
+			try:
+				oldval = oldattrset.get(attribute=attr.id)
+				if oldval.value == val:
+					oldval.revisions.add(newrevision)
+					oldval.save()
+					createnew = False
+			except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist):
+				pass
+		if createnew:
+			newattrset.create(attribute=attr, value=val)
 
 	return HttpResponseRedirect(reverse('personae.characters.views.viewrevision', args=(character_id, newrevision.id,)))
 
