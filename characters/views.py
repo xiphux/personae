@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response
 
 #
 # Front index page
+# request: django request object
 #
 def index(request):
 	characters = Character.objects.all().order_by('name')
@@ -14,6 +15,7 @@ def index(request):
 
 #
 # Create new character form
+# request: django request object
 #
 def newcharacter(request):
 	universe_list = Universe.objects.all().order_by('name')
@@ -21,6 +23,7 @@ def newcharacter(request):
 
 #
 # Create new character form POST action
+# request: django request object
 #
 def createcharacter(request):
 	try:
@@ -48,6 +51,8 @@ def createcharacter(request):
 		
 #
 # Character detail page
+# request: django request object
+# character_id: character id
 #
 def detail(request, character_id):
 	try:
@@ -64,6 +69,8 @@ def detail(request, character_id):
 	
 #
 # Edit character action
+# request: django request object
+# character_id: character id
 #
 def edit(request, character_id):
 	try:
@@ -105,6 +112,8 @@ def edit(request, character_id):
 
 #
 # Save revision post action
+# request: django request object
+# character_id: character id
 #
 def saverevision(request, character_id):
 	try:
@@ -152,6 +161,8 @@ def saverevision(request, character_id):
 
 #
 # Jump to revision
+# request: django request object
+# character_id: character id
 #
 def gotorevision(request, character_id):
 	try:
@@ -165,6 +176,9 @@ def gotorevision(request, character_id):
 
 #
 # View revision page
+# request: django request object
+# character_id: character id
+# revision_id: revision id
 #
 def viewrevision(request, character_id, revision_id):
 	try:
@@ -183,8 +197,6 @@ def viewrevision(request, character_id, revision_id):
 		return HttpResponse("Error: universe has no attributes defined.")
 
 	attribute_list = buildattributelist(universe_attributes, revision)
-
-	#raise Exception(attribute_list)
 
 	universe_attribute_list = {}
 	for attr in universe_attributes:
@@ -205,6 +217,11 @@ def viewrevision(request, character_id, revision_id):
 		'universe_attributes': universe_attribute_list,
 	})
 
+#
+# Build attribute list
+# universe_attributes: list of universe attributes to build data for
+# revision: revision with data
+#
 def buildattributelist(universe_attributes, revision):
 	attribute_list = {}
 
@@ -217,6 +234,11 @@ def buildattributelist(universe_attributes, revision):
 	
 	return attribute_list
 
+#
+# read attribute
+# attr: attribute to read data for
+# revision: revision with data
+#
 def readattribute(attr, revision):
 	if attr.type == 1:
 		attrvaluelist = revision.attributeintegervalue_set.all()
@@ -268,6 +290,13 @@ def readattribute(attr, revision):
 		except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist, AttributeChoiceValue.DoesNotExist):
 			pass
 
+#
+# save attribute set
+# attr: attribute of type set
+# postdata: POST data dictionary
+# newrevision: new revision to save to
+# oldrevision: old revision to copy forward from
+#
 def saveattributeset(attr, postdata, newrevision, oldrevision):
 	vallist = {}
 	maxlines = 0
@@ -304,6 +333,13 @@ def saveattributeset(attr, postdata, newrevision, oldrevision):
 					setattr.revisions.add(newrevision)
 					setattr.save()
 
+#
+# save attribute
+# attr: attribute to save
+# postdata: POST data dictionary
+# newrevision: new revision to save to
+# oldrevision: old revision to copy forward from
+#
 def saveattribute(attr, postdata, newrevision, oldrevision):
 	if attr.multiple == True:
 		try:
@@ -337,6 +373,14 @@ def saveattribute(attr, postdata, newrevision, oldrevision):
 
 		savesingleattribute(attr, 0, val, newrevision, oldrevision)
 
+#
+# save single line of attribute
+# attr: attribute to save
+# line: line of data to save
+# data: data to save
+# newrevision: new revision to save to
+# oldrevision: old revision to copy forward from
+#
 def savesingleattribute(attr, line, data, newrevision, oldrevision):
 	if line < 0:
 		return
