@@ -543,4 +543,66 @@
     </td>
   </tr>
 </table>
+<div>
+  <h2>Birthrights</h2>
+  <table>
+    {% if editmode %}
+      <tr>
+        <td>
+          <input type="text" name="birthrightname" />
+	</td>
+	<td>
+	  <input type="text" name="birthrightlevel" />
+	</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name="birthrightname" />
+	</td>
+	<td>
+	  <input type="text" name="birthrightlevel" />
+	</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name="birthrightname" />
+	</td>
+	<td>
+	  <input type="text" name="birthrightlevel" />
+	</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name="birthrightname" />
+	</td>
+	<td>
+	  <input type="text" name="birthrightlevel" />
+	</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name="birthrightname" />
+	</td>
+	<td>
+	  <input type="text" name="birthrightlevel" />
+	</td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" name="birthrightname" />
+	</td>
+	<td>
+	  <input type="text" name="birthrightlevel" />
+	</td>
+      </tr>
+    {% else %}
+      {% for num, birthright in attributes.birthrights.items %}
+        <tr>
+	  <td>{{ birthright.birthrightname }}</td>
+	  <td>{{ birthright.birthrightlevel.value|dots:5 }}</td>
+	</tr>
+      {% endfor %}
+    {% endif %}
+  </table>
+</div>
 {% endblock %}

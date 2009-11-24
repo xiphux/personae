@@ -10,7 +10,7 @@ class AttributeChoiceInline(admin.TabularInline):
 	extra = 3
 
 class AttributeAdmin(admin.ModelAdmin):
-	inlines = [AttributeChoiceInline]
+	inlines = [AttributeChoiceInline, AttributeInline]
 
 class UniverseAdmin(admin.ModelAdmin):
 	inlines = [AttributeInline]

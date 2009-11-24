@@ -8,12 +8,20 @@ class Universe(models.Model):
 		return self.name
 
 class Attribute(models.Model):
+	TYPE_CHOICES = (
+		(1, 'Integer'),
+		(2, 'String'),
+		(3, 'Text'),
+		(4, 'Choice'),
+		(5, 'Set'),
+	)
 	universe = models.ForeignKey(Universe)
 	name = models.CharField(max_length=200)
 	descriptor = models.CharField(max_length=200)
 	multiple = models.BooleanField()
 	max = models.PositiveIntegerField(default=0)
-	type = models.PositiveSmallIntegerField()
+	type = models.PositiveSmallIntegerField(choices=TYPE_CHOICES)
+	parentattribute = models.ForeignKey('self', null=True, blank=True)
 
 	class Meta:
 		unique_together = (('universe','descriptor'),)
@@ -48,10 +56,17 @@ class Revision(models.Model):
 	def __unicode__(self):
 		return self.rev_date.ctime()
 
+class AttributeSetValue(models.Model):
+	revisions = models.ManyToManyField(Revision)
+	attribute = models.ForeignKey(Attribute)
+	line = models.PositiveIntegerField(default=0)
+
 class AttributeIntegerValue(models.Model):
 	revisions = models.ManyToManyField(Revision)
 	attribute = models.ForeignKey(Attribute)
 	value = models.IntegerField()
+	line = models.PositiveIntegerField(default=0)
+	attributesetvalue = models.ManyToManyField(AttributeSetValue, null=True)
 
 	def __unicode__(self):
 		return str(self.value)
@@ -60,6 +75,8 @@ class AttributeStringValue(models.Model):
 	revisions = models.ManyToManyField(Revision)
 	attribute = models.ForeignKey(Attribute)
 	value = models.CharField(max_length=200)
+	line = models.PositiveIntegerField(default=0)
+	attributesetvalue = models.ManyToManyField(AttributeSetValue, null=True)
 
 	def __unicode__(self):
 		return self.value
@@ -68,6 +85,8 @@ class AttributeTextValue(models.Model):
 	revisions = models.ManyToManyField(Revision)
 	attribute = models.ForeignKey(Attribute)
 	value = models.TextField()
+	line = models.PositiveIntegerField(default=0)
+	attributesetvalue = models.ManyToManyField(AttributeSetValue, null=True)
 
 	def __unicode__(self):
 		return self.value
@@ -76,6 +95,9 @@ class AttributeChoiceValue(models.Model):
 	revisions = models.ManyToManyField(Revision)
 	attribute = models.ForeignKey(Attribute)
 	choice = models.ForeignKey(AttributeChoice)
+	line = models.PositiveIntegerField(default=0)
+	attributesetvalue = models.ManyToManyField(AttributeSetValue, null=True)
 
 	def __unicode__(self):
-		return choice.name
+		return self.choice.name
+
