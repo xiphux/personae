@@ -551,6 +551,9 @@
          var id = document.getElementById("birthrightid").value;
          id = (id * 1) + 1;
          $("#birthrights").append("<tr id='birthright" + id + "'><td><input type='text' name='birthrightname' /></td><td><input type='text' name='birthrightlevel' value='0' /></td><td><a href='#' onclick='removeBirthright(\"#birthright" + id + "\"); return false;'>X</a></td></tr>");
+	 $("#birthright" + id).highlightFade({
+	   speed:1000
+	 });
          document.getElementById("birthrightid").value = id.toString();
        }
        function removeBirthright(id) {
