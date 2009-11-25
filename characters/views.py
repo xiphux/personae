@@ -306,32 +306,32 @@ def saveattributeset(attr, postdata, newrevision, oldrevision):
 			maxlines = len(data)
 		vallist[subattr.descriptor] = data
 	
-		for i in range(maxlines):
-			newvallist = []
-			for subattr in attr.attribute_set.all():
-				try:
-					val = savesingleattribute(subattr, i+1, vallist[subattr.descriptor][i], newrevision, oldrevision)
-					if val is not None:
-						newvallist.append(val)
-				except (IndexError, KeyError):
-					pass
-			if len(newvallist) > 0:
-				needsnew = False
-				if oldrevision is None:
-					needsnew = True
-				else:
-					for item in newvallist:
-						if item.attributesetvalue.count() == 0:
-							needsnew = True
-				if needsnew == True:
-					setattr = newrevision.attributesetvalue_set.create(attribute=attr, line=i+1)
-					for item in newvallist:
-						item.attributesetvalue.add(setattr)
-						item.save()
-				else:
-					setattr = oldrevision.attributesetvalue_set.get(attribute=attr, line=i+1)
-					setattr.revisions.add(newrevision)
-					setattr.save()
+	for i in range(maxlines):
+		newvallist = []
+		for subattr in attr.attribute_set.all():
+			try:
+				val = savesingleattribute(subattr, i+1, vallist[subattr.descriptor][i], newrevision, oldrevision)
+				if val is not None:
+					newvallist.append(val)
+			except (IndexError, KeyError):
+				pass
+		if len(newvallist) > 0:
+			needsnew = False
+			if oldrevision is None:
+				needsnew = True
+			else:
+				for item in newvallist:
+					if item.attributesetvalue.count() == 0:
+						needsnew = True
+			if needsnew == True:
+				setattr = newrevision.attributesetvalue_set.create(attribute=attr, line=i+1)
+				for item in newvallist:
+					item.attributesetvalue.add(setattr)
+					item.save()
+			else:
+				setattr = oldrevision.attributesetvalue_set.get(attribute=attr, line=i+1)
+				setattr.revisions.add(newrevision)
+				setattr.save()
 
 #
 # save attribute

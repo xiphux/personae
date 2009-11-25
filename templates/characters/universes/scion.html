@@ -545,64 +545,58 @@
 </table>
 <div>
   <h2>Birthrights</h2>
-  <table>
     {% if editmode %}
-      <tr>
-        <td>
-          <input type="text" name="birthrightname" />
+       <script type="text/javascript">
+         function addBirthright() {
+         var id = document.getElementById("birthrightid").value;
+         id = (id * 1) + 1;
+         $("#birthrights").append("<tr id='birthright" + id + "'><td><input type='text' name='birthrightname' /></td><td><input type='text' name='birthrightlevel' value='0' /></td><td><a href='#' onclick='removeBirthright(\"#birthright" + id + "\"); return false;'>X</a></td></tr>");
+         document.getElementById("birthrightid").value = id.toString();
+       }
+       function removeBirthright(id) {
+         $(id).remove();
+       }
+      </script>
+      <table>
+      <tbody id="birthrights">
+      {% for num, birthright in attributes.birthrights.items %}
+        <tr id="birthright{{ num }}">
+	  <td>
+	    <input type="text" name="birthrightname" value="{{ birthright.birthrightname }}" />
+	  </td>
+	  <td>
+	    <input type="text" name="birthrightlevel" value="{{ birthright.birthrightlevel|default:"0" }}" ,>
+	  </td>
+	  <td>
+	    <a href="#" onclick="removeBirthright('#birthright{{ num }}'); return false;">X</a>
+	  </td>
+	</tr>
+	{% if forloop.last %}
+      	  <input type="hidden" id="birthrightid" value="{{ forloop.counter }}" />
+	{% endif %}
+      {% empty %}
+        <tr id="birthright0">
+      	<td>
+	  <input type="text" name="birthrightname" />
 	</td>
 	<td>
-	  <input type="text" name="birthrightlevel" />
+	  <input type="text" name="birthrightlevel" value="0" />
 	</td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" name="birthrightname" />
-	</td>
-	<td>
-	  <input type="text" name="birthrightlevel" />
-	</td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" name="birthrightname" />
-	</td>
-	<td>
-	  <input type="text" name="birthrightlevel" />
-	</td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" name="birthrightname" />
-	</td>
-	<td>
-	  <input type="text" name="birthrightlevel" />
-	</td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" name="birthrightname" />
-	</td>
-	<td>
-	  <input type="text" name="birthrightlevel" />
-	</td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" name="birthrightname" />
-	</td>
-	<td>
-	  <input type="text" name="birthrightlevel" />
-	</td>
-      </tr>
+	</tr>
+	<input type="hidden" id="birthrightid" value="0" />
+      {% endfor %}
+      </tbody>
+      </table>
+      <a href="#" onclick="addBirthright(); return false;">Add</a>
     {% else %}
+      <table>
       {% for num, birthright in attributes.birthrights.items %}
         <tr>
 	  <td>{{ birthright.birthrightname }}</td>
 	  <td>{{ birthright.birthrightlevel.value|dots:5 }}</td>
 	</tr>
       {% endfor %}
+      </table>
     {% endif %}
-  </table>
 </div>
 {% endblock %}
