@@ -45,14 +45,20 @@
 
         {% if revision_list %}
 
-          <form action="/characters/{{ character.id }}/goto/" method="get">
+	  <script type="text/javascript">
+	    $(document).ready(function(){
+	      $('#revisionnavsubmit').remove();
+	    })
+	  </script>
+
+          <form name="revisionnavform" action="/characters/{{ character.id }}/goto/" method="get">
             <label for="revision">Revisions:</label>
-            <select name="revision">
+            <select name="revision" onchange="document.revisionnavform.submit()">
               {% for rev in revision_list %}
                 <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% if rev.name %} [{{rev.name}}]{% endif %}</option>
               {% endfor %}
             </select>
-            <input type="submit" value="View" />
+            <input id="revisionnavsubmit" type="submit" value="View" />
           </form>
 
         {% endif %}
