@@ -1,0 +1,92 @@
+div#basicinfo {
+	width: 100%;
+}
+
+div#basicinfo div#basicinfoleft {
+	width: 32%;
+	float: left;
+}
+
+div#basicinfo div#basicinfomiddle {
+	width: 32%;
+	float: left;
+}
+
+div#basicinfo div#basicinforight {
+	width: 32%;
+	float: right;
+}
+
+div#attributes {
+	width: 100%;
+}
+
+div#attributes div#physicalattributes {
+	width: 32%;
+	float: left;
+}
+
+div#attributes div#socialattributes {
+	width: 32%;
+	float: left;
+}
+
+div#attributes div#mentalattributes {
+	width: 32%;
+	float: right;
+}
+
+div#abilities {
+	width: 100%;
+}
+
+div#abilities div#abilitiesleft {
+	width: 32%;
+	float: left;
+}
+
+div#abilities div#abilitiesmiddle {
+	width: 32%;
+	float: left;
+}
+
+div#abilities div#abilitiesright {
+	width: 32%;
+	float: right;
+}
+
+div#birthrights {
+  width: 48%;
+  float: left;
+}
+
+div#birthrights table {
+  margin: 0 auto;
+}
+
+div#weapons {
+  width: 48%;
+  float: right;
+}
+
+.clear {
+	clear: both;
+	display: block;
+	height: 1px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+.blockcenter {
+	margin: 0 auto;
+}
+
+.textcenter {
+	text-align: center;
+}
+
+.sectionheader {
+  background-color: #000;
+  color: #fff;
+}
