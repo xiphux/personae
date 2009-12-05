@@ -1,3 +1,15 @@
+body {
+	background-color: black
+}
+
+div#body {
+	background-color: white;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
 div#basicinfo {
 	width: 100%;
 }
@@ -5,16 +17,20 @@ div#basicinfo {
 div#basicinfo div#basicinfoleft {
 	width: 32%;
 	float: left;
+	padding-right: 9px;
 }
 
 div#basicinfo div#basicinfomiddle {
 	width: 32%;
 	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 div#basicinfo div#basicinforight {
 	width: 32%;
-	float: right;
+	float: left;
+	padding-left: 9px;
 }
 
 div#attributes {
@@ -24,35 +40,49 @@ div#attributes {
 div#attributes div#physicalattributes {
 	width: 32%;
 	float: left;
+	padding-right: 9px;
 }
 
 div#attributes div#socialattributes {
 	width: 32%;
 	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 div#attributes div#mentalattributes {
 	width: 32%;
-	float: right;
+	float: left;
+	padding-left: 9px;
 }
 
 div#abilities {
 	width: 100%;
 }
 
+div#abilities td.abilityname {
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	border-color: #c8cace;
+}
+
 div#abilities div#abilitiesleft {
 	width: 32%;
 	float: left;
+	padding-right: 9px;
 }
 
 div#abilities div#abilitiesmiddle {
 	width: 32%;
 	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 div#abilities div#abilitiesright {
 	width: 32%;
-	float: right;
+	float: left;
+	padding-left: 9px;
 }
 
 div#birthrights {
@@ -60,13 +90,35 @@ div#birthrights {
   float: left;
 }
 
-div#birthrights table {
-  margin: 0 auto;
+div#birthrights td.birthrightname {
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #c8cace;
 }
 
 div#weapons {
   width: 48%;
   float: right;
+}
+
+div#weapons table#weapontable .weaponname {
+  text-align: left;
+}
+
+div#weapons table#weapontable td.weaponname {
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #c8cace;
+}
+
+div#weapons table#weapontable .weaponattribute {
+  text-align: center;
+}
+
+div#weapons table#weapontable td.weaponattribute {
+  border-width: 0px 0px 1px 1px;
+  border-style: solid;
+  border-color: #c8cace;
 }
 
 .clear {
@@ -89,4 +141,12 @@ div#weapons {
 .sectionheader {
   background-color: #000;
   color: #fff;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.statfield {
+  width: 30px;
 }

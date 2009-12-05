@@ -135,12 +135,12 @@
     <table>
 
       <tr>
-        <td rowspan="2">
+        <td rowspan="2" class="fullwidth">
           <label for="strength">{{ universe_attributes.strength.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="strength" value="{{ attributes.strength|default:"0" }}" />
+            <input type="text" name="strength" value="{{ attributes.strength|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.strength.value|dots:universe_attributes.strength.max }}
           {% endif %}
@@ -150,7 +150,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicstrength" value="{{ attributes.epicstrength|default:"0" }}" />
+            <input type="text" name="epicstrength" value="{{ attributes.epicstrength|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.epicstrength|squares:universe_attributes.epicstrength.max }}
           {% endif %}
@@ -158,12 +158,12 @@
       </tr>
 
       <tr>
-        <td rowspan="2">
+        <td rowspan="2" class="fullwidth">
           <label for="dexterity">{{ universe_attributes.dexterity.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="dexterity" value="{{ attributes.dexterity|default:"0" }}" />
+            <input type="text" name="dexterity" value="{{ attributes.dexterity|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.dexterity.value|dots:universe_attributes.dexterity.max }}
           {% endif %}
@@ -173,7 +173,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicdexterity" value="{{ attributes.epicdexterity|default:"0" }}" />
+            <input type="text" name="epicdexterity" value="{{ attributes.epicdexterity|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.epicdexterity|squares:universe_attributes.epicdexterity.max }}
           {% endif %}
@@ -181,12 +181,12 @@
       </tr>
 
       <tr>
-        <td rowspan="2">
+        <td rowspan="2" class="fullwidth">
           <label for="stamina">{{ universe_attributes.stamina.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="stamina" value="{{ attributes.stamina|default:"0" }}" />
+            <input type="text" name="stamina" value="{{ attributes.stamina|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.stamina.value|dots:universe_attributes.stamina.max }}
           {% endif %}
@@ -196,7 +196,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicstamina" value="{{ attributes.epicstamina|default:"0" }}" />
+            <input type="text" name="epicstamina" value="{{ attributes.epicstamina|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.epicstamina|squares:universe_attributes.epicstamina.max }}
           {% endif %}
@@ -214,12 +214,12 @@
     <table>
 
       <tr>
-				<td rowspan="2">
+				<td rowspan="2" class="fullwidth">
 					<label for="charisma">{{ universe_attributes.charisma.name }}:</label>
 				</td>
 				<td>
 					{% if editmode %}
-						<input type="text" name="charisma" value="{{ attributes.charisma|default:"0" }}" />
+						<input type="text" name="charisma" value="{{ attributes.charisma|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.charisma.value|dots:universe_attributes.charisma.max }}
 					{% endif %}
@@ -229,7 +229,7 @@
       <tr>
 				<td>
 					{% if editmode %}
-						<input type="text" name="epiccharisma" value="{{ attributes.epiccharisma|default:"0" }}" />
+						<input type="text" name="epiccharisma" value="{{ attributes.epiccharisma|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.epiccharisma|squares:universe_attributes.epiccharisma.max }}
 					{% endif %}
@@ -237,12 +237,12 @@
       </tr>
 
       <tr>
-				<td rowspan="2">
+				<td rowspan="2" class="fullwidth">
 					<label for="manipulation">{{ universe_attributes.manipulation.name }}:</label>
 				</td>
 				<td>
 					{% if editmode %}
-						<input type="text" name="manipulation" value="{{ attributes.manipulation|default:"0" }}" />
+						<input type="text" name="manipulation" value="{{ attributes.manipulation|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.manipulation.value|dots:universe_attributes.manipulation.max }}
 					{% endif %}
@@ -252,7 +252,7 @@
       <tr>
 				<td>
 					{% if editmode %}
-						<input type="text" name="epicmanipulation" value="{{ attributes.epicmanipulation|default:"0" }}" />
+						<input type="text" name="epicmanipulation" value="{{ attributes.epicmanipulation|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.epicmanipulation|squares:universe_attributes.epicmanipulation.max }}
 					{% endif %}
@@ -260,12 +260,12 @@
       </tr>
 
       <tr>
-				<td rowspan="2">
+				<td rowspan="2" class="fullwidth">
 					<label for="appearance">{{ universe_attributes.appearance.name }}:</label>
 				</td>
 				<td>
 					{% if editmode %}
-						<input type="text" name="appearance" value="{{ attributes.appearance|default:"0" }}" />
+						<input type="text" name="appearance" value="{{ attributes.appearance|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.appearance.value|dots:universe_attributes.appearance.max }}
 					{% endif %}
@@ -275,7 +275,7 @@
       <tr>
 				<td>
 					{% if editmode %}
-						<input type="text" name="epicappearance" value="{{ attributes.epicappearance|default:"0" }}" />
+						<input type="text" name="epicappearance" value="{{ attributes.epicappearance|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.epicappearance|squares:universe_attributes.epicappearance.max }}
 					{% endif %}
@@ -293,12 +293,12 @@
 		<table>
 
 			<tr>
-				<td rowspan="2">
+				<td rowspan="2" class="fullwidth">
 					<label for="perception">{{ universe_attributes.perception.name }}:</label>
 				</td>
 				<td>
 					{% if editmode %}
-						<input type="text" name="perception" value="{{ attributes.perception|default:"0" }}" />
+						<input type="text" name="perception" value="{{ attributes.perception|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.perception.value|dots:universe_attributes.perception.max }}
 					{% endif %}
@@ -308,7 +308,7 @@
 			<tr>
 				<td>
 					{% if editmode %}
-						<input type="text" name="epicperception" value="{{ attributes.epicperception|default:"0" }}" />
+						<input type="text" name="epicperception" value="{{ attributes.epicperception|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.epicperception|squares:universe_attributes.epicperception.max }}
 					{% endif %}
@@ -316,12 +316,12 @@
 			</tr>
 			
 			<tr>
-				<td rowspan="2">
+				<td rowspan="2" class="fullwidth">
 					<label for="intelligence">{{ universe_attributes.intelligence.name }}:</label>
 				</td>
 				<td>
 					{% if editmode %}
-						<input type="text" name="intelligence" value="{{ attributes.intelligence|default:"0" }}" />
+						<input type="text" name="intelligence" value="{{ attributes.intelligence|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.intelligence.value|dots:universe_attributes.intelligence.max }}
 					{% endif %}
@@ -331,7 +331,7 @@
 			<tr>
 				<td>
 					{% if editmode %}
-						<input type="text" name="epicintelligence" value="{{ attributes.epicintelligence|default:"0" }}" />
+						<input type="text" name="epicintelligence" value="{{ attributes.epicintelligence|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.epicintelligence|squares:universe_attributes.epicintelligence.max }}
 					{% endif %}
@@ -339,12 +339,12 @@
 			</tr>
 			
 			<tr>
-				<td rowspan="2">
+				<td rowspan="2" class="fullwidth">
 					<label for="wits">{{ universe_attributes.wits.name }}:</label>
 				</td>
 				<td>
 					{% if editmode %}
-						<input type="text" name="wits" value="{{ attributes.wits|default:"0" }}" />
+						<input type="text" name="wits" value="{{ attributes.wits|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.wits.value|dots:universe_attributes.wits.max }}
 					{% endif %}
@@ -354,7 +354,7 @@
 			<tr>
 				<td>
 					{% if editmode %}
-						<input type="text" name="epicwits" value="{{ attributes.epicwits|default:"0" }}" />
+						<input type="text" name="epicwits" value="{{ attributes.epicwits|default:"0" }}" class="statfield" />
 					{% else %}
 						{{ attributes.epicwits|squares:universe_attributes.epicwits.max }}
 					{% endif %}
@@ -378,12 +378,12 @@
     <table>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="academics">{{ universe_attributes.academics.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="academics" value="{{ attributes.academics|default:"0" }}" />
+            <input type="text" name="academics" value="{{ attributes.academics|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.academics.value|dots:universe_attributes.academics.max }}
           {% endif %}
@@ -391,12 +391,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="animalken">{{ universe_attributes.animalken.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="animalken" value="{{ attributes.animalken|default:"0" }}" />
+            <input type="text" name="animalken" value="{{ attributes.animalken|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.animalken.value|dots:universe_attributes.animalken.max }}
           {% endif %}
@@ -404,12 +404,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="art">{{ universe_attributes.art.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="art" value="{{ attributes.art|default:"0" }}" />
+            <input type="text" name="art" value="{{ attributes.art|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.art.value|dots:universe_attributes.art.max }}
           {% endif %}
@@ -417,12 +417,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="athletics">{{ universe_attributes.athletics.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="athletics" value="{{ attributes.athletics|default:"0" }}" />
+            <input type="text" name="athletics" value="{{ attributes.athletics|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.athletics.value|dots:universe_attributes.athletics.max }}
           {% endif %}
@@ -430,12 +430,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="awareness">{{ universe_attributes.awareness.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="awareness" value="{{ attributes.awareness|default:"0" }}" />
+            <input type="text" name="awareness" value="{{ attributes.awareness|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.awareness.value|dots:universe_attributes.awareness.max }}
           {% endif %}
@@ -443,12 +443,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="brawl">{{ universe_attributes.brawl.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="brawl" value="{{ attributes.brawl|default:"0" }}" />
+            <input type="text" name="brawl" value="{{ attributes.brawl|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.brawl.value|dots:universe_attributes.brawl.max }}
           {% endif %}
@@ -456,12 +456,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="command">{{ universe_attributes.command.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="command" value="{{ attributes.command|default:"0" }}" />
+            <input type="text" name="command" value="{{ attributes.command|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.command.value|dots:universe_attributes.command.max }}
           {% endif %}
@@ -469,12 +469,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="control">{{ universe_attributes.control.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="control" value="{{ attributes.control|default:"0" }}" />
+            <input type="text" name="control" value="{{ attributes.control|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.control.value|dots:universe_attributes.control.max }}
           {% endif %}
@@ -490,12 +490,12 @@
     <table>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="craft">{{ universe_attributes.craft.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="craft" value="{{ attributes.craft|default:"0" }}" />
+            <input type="text" name="craft" value="{{ attributes.craft|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.craft.value|dots:universe_attributes.craft.max }}
           {% endif %}
@@ -503,12 +503,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="empathy">{{ universe_attributes.empathy.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="empathy" value="{{ attributes.empathy|default:"0" }}" />
+            <input type="text" name="empathy" value="{{ attributes.empathy|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.empathy.value|dots:universe_attributes.empathy.max }}
           {% endif %}
@@ -516,12 +516,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="fortitude">{{ universe_attributes.fortitude.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="fortitude" value="{{ attributes.fortitude|default:"0" }}" />
+            <input type="text" name="fortitude" value="{{ attributes.fortitude|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.fortitude.value|dots:universe_attributes.fortitude.max }}
           {% endif %}
@@ -529,12 +529,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="integrity">{{ universe_attributes.integrity.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="integrity" value="{{ attributes.integrity|default:"0" }}" />
+            <input type="text" name="integrity" value="{{ attributes.integrity|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.integrity.value|dots:universe_attributes.integrity.max }}
           {% endif %}
@@ -542,12 +542,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="investigation">{{ universe_attributes.investigation.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="investigation" value="{{ attributes.investigation|default:"0" }}" />
+            <input type="text" name="investigation" value="{{ attributes.investigation|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.investigation.value|dots:universe_attributes.investigation.max }}
           {% endif %}
@@ -555,12 +555,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="larceny">{{ universe_attributes.larceny.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="larceny" value="{{ attributes.larceny|default:"0" }}" />
+            <input type="text" name="larceny" value="{{ attributes.larceny|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.larceny.value|dots:universe_attributes.larceny.max }}
           {% endif %}
@@ -568,12 +568,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="marksmanship">{{ universe_attributes.marksmanship.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="marksmanship" value="{{ attributes.marksmanship|default:"0" }}" />
+            <input type="text" name="marksmanship" value="{{ attributes.marksmanship|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.marksmanship.value|dots:universe_attributes.marksmanship.max }}
           {% endif %}
@@ -581,12 +581,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="medicine">{{ universe_attributes.medicine.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="medicine" value="{{ attributes.medicine|default:"0" }}" />
+            <input type="text" name="medicine" value="{{ attributes.medicine|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.medicine.value|dots:universe_attributes.medicine.max }}
           {% endif %}
@@ -602,12 +602,12 @@
     <table>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="melee">{{ universe_attributes.melee.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="melee" value="{{ attributes.melee|default:"0" }}" />
+            <input type="text" name="melee" value="{{ attributes.melee|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.melee.value|dots:universe_attributes.melee.max }}
           {% endif %}
@@ -615,12 +615,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="occult">{{ universe_attributes.occult.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="occult" value="{{ attributes.occult|default:"0" }}" />
+            <input type="text" name="occult" value="{{ attributes.occult|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.occult.value|dots:universe_attributes.occult.max }}
           {% endif %}
@@ -628,12 +628,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="politics">{{ universe_attributes.politics.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="politics" value="{{ attributes.politics|default:"0" }}" />
+            <input type="text" name="politics" value="{{ attributes.politics|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.politics.value|dots:universe_attributes.politics.max }}
           {% endif %}
@@ -641,12 +641,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="presence">{{ universe_attributes.presence.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="presence" value="{{ attributes.presence|default:"0" }}" />
+            <input type="text" name="presence" value="{{ attributes.presence|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.presence.value|dots:universe_attributes.presence.max }}
           {% endif %}
@@ -654,12 +654,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="science">{{ universe_attributes.science.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="science" value="{{ attributes.science|default:"0" }}" />
+            <input type="text" name="science" value="{{ attributes.science|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.science.value|dots:universe_attributes.science.max }}
           {% endif %}
@@ -667,12 +667,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="stealth">{{ universe_attributes.stealth.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="stealth" value="{{ attributes.stealth|default:"0" }}" />
+            <input type="text" name="stealth" value="{{ attributes.stealth|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.stealth.value|dots:universe_attributes.stealth.max }}
           {% endif %}
@@ -680,12 +680,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="survival">{{ universe_attributes.survival.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="survival" value="{{ attributes.survival|default:"0" }}" />
+            <input type="text" name="survival" value="{{ attributes.survival|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.survival.value|dots:universe_attributes.survival.max }}
           {% endif %}
@@ -693,12 +693,12 @@
       </tr>
 
       <tr>
-        <td>
+        <td class="fullwidth abilityname">
           <label for="thrown">{{ universe_attributes.thrown.name }}:</label>
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="thrown" value="{{ attributes.thrown|default:"0" }}" />
+            <input type="text" name="thrown" value="{{ attributes.thrown|default:"0" }}" class="statfield" />
           {% else %}
             {{ attributes.thrown.value|dots:universe_attributes.thrown.max }}
           {% endif %}
@@ -726,7 +726,7 @@
         function addBirthright() {
           var id = document.getElementById("birthrightid").value;
           id = (id * 1) + 1;
-          $("#birthrights").append("<tr id='birthright" + id + "'><td><input type='text' name='birthrightname' /></td><td><input type='text' name='birthrightlevel' value='0' /></td><td><a href='#' onclick='removeBirthright(\"#birthright" + id + "\"); return false;'>X</a></td></tr>");
+          $("#birthrightsrows").append("<tr id='birthright" + id + "'><td class='fullwidth'><input type='text' name='birthrightname' class='fullwidth' /></td><td><input type='text' name='birthrightlevel' value='0' class='statfield' /></td><td><a href='#' onclick='removeBirthright(\"#birthright" + id + "\"); return false;'>X</a></td></tr>");
           $("#birthright" + id).highlightFade({
             speed:1000
           });
@@ -741,18 +741,18 @@
 
       <table>
 
-        <tbody id="birthrights">
+        <tbody id="birthrightsrows">
 
           {% for num, birthright in attributes.birthrights.items %}
 
             <tr id="birthright{{ num }}">
 
-              <td>
-                <input type="text" name="birthrightname" value="{{ birthright.birthrightname }}" />
+              <td class="fullwidth">
+                <input type="text" name="birthrightname" value="{{ birthright.birthrightname }}" class="fullwidth" />
               </td>
 
               <td>
-                <input type="text" name="birthrightlevel" value="{{ birthright.birthrightlevel|default:"0" }}" />
+                <input type="text" name="birthrightlevel" value="{{ birthright.birthrightlevel|default:"0" }}" class="statfield" />
               </td>
 
               <td>
@@ -769,12 +769,12 @@
 
             <tr id="birthright0">
 
-              <td>
-                <input type="text" name="birthrightname" />
+              <td class="fullwidth">
+                <input type="text" name="birthrightname" class="fullwidth" />
               </td>
 
               <td>
-                <input type="text" name="birthrightlevel" value="0" />
+                <input type="text" name="birthrightlevel" value="0" class="statfield" />
               </td>
 
             </tr>
@@ -796,7 +796,7 @@
         {% for num, birthright in attributes.birthrights.items %}
 
           <tr>
-            <td>{{ birthright.birthrightname }}</td>
+            <td class="fullwidth birthrightname">{{ birthright.birthrightname }}</td>
             <td>{{ birthright.birthrightlevel.value|dots:universe_attributes.birthrightlevel.max }}</td>
           </tr>
 
@@ -816,25 +816,25 @@
 
     {% else %}
 
-      <table>
+      <table id="weapontable">
 
         <tr>
-          <th>{{ universe_attributes.weaponname.name }}</th>
-          <th>{{ universe_attributes.weaponspeed.name }}</th>
-          <th>{{ universe_attributes.weaponaccuracy.name }}</th>
-          <th>{{ universe_attributes.weapondamage.name }}</th>
-          <th>{{ universe_attributes.weapondefense.name }}</th>
-          <th>{{ universe_attributes.weaponrange.name }}</th>
+          <th class="fullwidth weaponname">{{ universe_attributes.weaponname.name }}</th>
+          <th class="weaponattribute">{{ universe_attributes.weaponspeed.name }}</th>
+          <th class="weaponattribute">{{ universe_attributes.weaponaccuracy.name }}</th>
+          <th class="weaponattribute">{{ universe_attributes.weapondamage.name }}</th>
+          <th class="weaponattribute">{{ universe_attributes.weapondefense.name }}</th>
+          <th class="weaponattribute">{{ universe_attributes.weaponrange.name }}</th>
         </tr>
 
         {% for num, weapon in attributes.weapons.items %}
           <tr>
-            <td>{{ weapon.weaponname }}</td>
-            <td>{{ weapon.weaponspeed }}</td>
-            <td>{{ weapon.weaponaccuracy }}</td>
-            <td>{{ weapon.weapondamage }}</td>
-            <td>{{ weapon.weapondefense }}</td>
-            <td>{{ weapon.weaponrange }}</td>
+            <td class="fullwidth weaponname">{{ weapon.weaponname }}</td>
+            <td class="weaponattribute">{{ weapon.weaponspeed }}</td>
+            <td class="weaponattribute">{{ weapon.weaponaccuracy }}</td>
+            <td class="weaponattribute">{{ weapon.weapondamage }}</td>
+            <td class="weaponattribute">{{ weapon.weapondefense }}</td>
+            <td class="weaponattribute">{{ weapon.weaponrange }}</td>
           </tr>
         {% endfor %}
 
