@@ -121,6 +121,39 @@ div#weapons table#weapontable td.weaponattribute {
   border-color: #c8cace;
 }
 
+div#revisioneditfields {
+  width: 100%;
+}
+
+div#revisioneditfields div#revisionnamefield {
+  width: 48%;
+  float: left;
+  vertical-align: center;
+}
+
+div#revisioneditfields div#revisionnotesfield {
+  width: 48%;
+  float: right;
+}
+
+div#revisionnav {
+  width: 100%;
+}
+
+div#revisionnav div#revisions {
+  width: 48%;
+  float: left;
+}
+
+div#revisionnav div#editaction {
+  width: 48%;
+  float: right;
+}
+
+div#revisionnav div#editaction a {
+  font-size: larger;
+}
+
 .clear {
 	clear: both;
 	display: block;
@@ -141,6 +174,7 @@ div#weapons table#weapontable td.weaponattribute {
 .sectionheader {
   background-color: #000;
   color: #fff;
+  font-variant: small-caps;
 }
 
 .fullwidth {

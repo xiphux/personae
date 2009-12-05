@@ -12,43 +12,75 @@
 
 {% if editmode %}
 <form action="/characters/{{ character.id }}/save/" method="post">
-<table>
-  <tr>
-    <td>
+
+  <div id="revisioneditfields">
+
+    <div id="revisionnamefield">
+
       <label for="revisionname">Revision name:</label>
-    </td>
-    <td>
-      <input type="text" name="revisionname" />
-    </td>
-  </tr>
-  <tr>
-    <td>
+      <input type="text" name="revisionname" class="fullwidth" />
+
+    </div>
+
+    <div id="revisionnotesfield">
+
       <label for="revisionnotes">Revision notes:</label>
-    </td>
-    <td>
-      <textarea name="revisionnotes" rows=5 cols=40 ></textarea>
-    </td>
-  </tr>
+      <textarea name="revisionnotes" rows=5 class="fullwidth" ></textarea>
+
+    </div>
+
+    <div class="clear sectionheader">&nbsp;</div>
+  
+  </div>
+
 </table>
-<hr />
+
 {% else %}
-<a href="/characters/{{ character.id }}/edit/">Edit</a>
- {% if revision_list %} 
-   <br />
-   <form action="/characters/{{ character.id }}/goto/" method="get">
-     <label for="revision">Revisions:</label>
-     <select name="revision">
-       {% for rev in revision_list %}
-         <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% if rev.name %} [{{rev.name}}]{% endif %}</option>
-       {% endfor %}
-     </select>
-     <input type="submit" value="View" />
-   </form>
- {% endif %}
-{% if revision.notes %}
-Notes: {{ revision.notes }}
-{% endif %}
-<hr />
+
+  <div id="revisionnav">
+
+    <div id="revisions">
+
+      <div id="revisionlist">
+
+        {% if revision_list %}
+
+          <form action="/characters/{{ character.id }}/goto/" method="get">
+            <label for="revision">Revisions:</label>
+            <select name="revision">
+              {% for rev in revision_list %}
+                <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% if rev.name %} [{{rev.name}}]{% endif %}</option>
+              {% endfor %}
+            </select>
+            <input type="submit" value="View" />
+          </form>
+
+        {% endif %}
+        
+
+      </div>
+
+      <div id="revisionnotes">
+
+        {% if revision.notes %}
+          Notes: {{ revision.notes }}
+        {% endif %}
+
+      </div>
+
+    </div>
+
+    <div id="editaction">
+
+      <a href="/characters/{{ character.id }}/edit/">Edit</a>
+
+    </div>
+
+    <div class="clear sectionheader">&nbsp;</div>
+
+  </div>
+
+
 {% endif %}
 
 
