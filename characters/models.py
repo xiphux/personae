@@ -61,42 +61,35 @@ class AttributeSetValue(models.Model):
 	attribute = models.ForeignKey(Attribute)
 	line = models.PositiveIntegerField(default=0)
 
-class AttributeIntegerValue(models.Model):
+class AttributeValue(models.Model):
 	revisions = models.ManyToManyField(Revision)
 	attribute = models.ForeignKey(Attribute)
-	value = models.IntegerField()
 	line = models.PositiveIntegerField(default=0)
 	attributesetvalue = models.ManyToManyField(AttributeSetValue, null=True)
+
+	class Meta:
+		abstract = True
+	
+class AttributeIntegerValue(AttributeValue):
+	value = models.IntegerField()
 
 	def __unicode__(self):
 		return str(self.value)
 
-class AttributeStringValue(models.Model):
-	revisions = models.ManyToManyField(Revision)
-	attribute = models.ForeignKey(Attribute)
+class AttributeStringValue(AttributeValue):
 	value = models.CharField(max_length=200)
-	line = models.PositiveIntegerField(default=0)
-	attributesetvalue = models.ManyToManyField(AttributeSetValue, null=True)
 
 	def __unicode__(self):
 		return self.value
 
-class AttributeTextValue(models.Model):
-	revisions = models.ManyToManyField(Revision)
-	attribute = models.ForeignKey(Attribute)
+class AttributeTextValue(AttributeValue):
 	value = models.TextField()
-	line = models.PositiveIntegerField(default=0)
-	attributesetvalue = models.ManyToManyField(AttributeSetValue, null=True)
 
 	def __unicode__(self):
 		return self.value
 
-class AttributeChoiceValue(models.Model):
-	revisions = models.ManyToManyField(Revision)
-	attribute = models.ForeignKey(Attribute)
+class AttributeChoiceValue(AttributeValue):
 	choice = models.ForeignKey(AttributeChoice)
-	line = models.PositiveIntegerField(default=0)
-	attributesetvalue = models.ManyToManyField(AttributeSetValue, null=True)
 
 	def __unicode__(self):
 		return self.choice.name
