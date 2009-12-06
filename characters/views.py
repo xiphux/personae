@@ -425,10 +425,16 @@ def savesingleattribute(attr, line, data, newrevision, oldrevision):
 	if oldrevision is not None:
 		try:
 			oldval = oldattrset.get(attribute=attr, line=line)
-			if ((attr.type == 4) and (oldval.choice.id == val)) or (oldval.value == val):
-				oldval.revisions.add(newrevision)
-				oldval.save()
-				return oldval
+			if attr.type == 4:
+				if oldval.choice.id == val:
+					oldval.revisions.add(newrevision)
+					oldval.save()
+					return oldval
+			else:
+				if oldval.value == val:
+					oldval.revisions.add(newrevision)
+					oldval.save()
+					return oldval
 		except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist, AttributeChoiceValue.DoesNotExist):
 			pass
 	if attr.type == 4:
