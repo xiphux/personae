@@ -105,6 +105,10 @@ div#weapons table#weapontable .weaponname {
   text-align: left;
 }
 
+div#weapons table#weapontable .weaponnameedit {
+  text-align: left;
+}
+
 div#weapons table#weapontable td.weaponname {
   border-width: 0px 0px 1px 0px;
   border-style: solid;
@@ -113,6 +117,18 @@ div#weapons table#weapontable td.weaponname {
 
 div#weapons table#weapontable .weaponattribute {
   text-align: center;
+}
+
+div#weapons table#weapontable .weaponattributeedit {
+  text-align: center;
+}
+
+div#weapons table#weapontable th.weaponattribute {
+  font-variant: small-caps;
+}
+
+div#weapons table#weapontable th.weaponattributeedit {
+  font-variant: small-caps;
 }
 
 div#weapons table#weapontable td.weaponattribute {
@@ -154,6 +170,29 @@ div#revisionnav div#editaction a {
   font-size: larger;
 }
 
+div#boons {
+	width: 32%;
+	float: left;
+	padding-right: 9px;
+}
+
+div#willpowercombat {
+	width: 32%;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+div#willpowercombat div#combat td {
+  white-space: nowrap;
+}
+
+div#virtues {
+	width: 32%;
+	float: left;
+	padding-left: 9px;
+}
+
 .clear {
 	clear: both;
 	display: block;
@@ -163,7 +202,7 @@ div#revisionnav div#editaction a {
 	padding: 0;
 }
 
-.blockcenter {
+.tablecenter {
 	margin: 0 auto;
 }
 

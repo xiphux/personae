@@ -814,6 +814,120 @@
 
     {% if editmode %}
 
+      <script type="text/javascript">
+
+        function addWeapon() {
+          var id = document.getElementById("weaponid").value;
+          id = (id * 1) + 1;
+          $("#weapontablerows").append("<tr id='weapon" + id + "'><td class='fullwidth weaponnameedit'><input type='text' name='weaponname' class='fullwidth' /></td><td class='weaponattributeedit'><input type='text' name='weaponspeed' class='statfield' /></td><td class='weaponattributeedit'><input type='text' name='weaponaccuracy' class='statfield' /></td><td class='weaponattributeedit'><input type='text' name='weapondamage' class='statfield' /></td><td class='weaponattributeedit'><input type='text' name='weapondefense' class='statfield' /></td><td class='weaponattributeedit'><input type='text' name='weaponrange' class='statfield' /></td><td class='weaponattributeedit'><a href='#' onclick='removeWeapon(\"#weapon" + id + "\"); return false;'>X</a></td></tr>");
+          $("#weapon" + id).highlightFade({
+            speed:1000
+           })
+          document.getElementById("weaponid").value = id.toString();
+        }
+
+        function removeWeapon(id) {
+          $(id).remove();
+        }
+
+      </script>
+
+      <table id="weapontable">
+
+        <thead>
+
+          <tr>
+            <th class="fullwidth weaponnameedit">{{ universe_attributes.weaponname.name }}</th>
+            <th class="weaponattributeedit">{{ universe_attributes.weaponspeed.name }}</th>
+            <th class="weaponattributeedit">{{ universe_attributes.weaponaccuracy.name }}</th>
+            <th class="weaponattributeedit">{{ universe_attributes.weapondamage.name }}</th>
+            <th class="weaponattributeedit">{{ universe_attributes.weapondefense.name }}</th>
+            <th class="weaponattributeedit">{{ universe_attributes.weaponrange.name }}</th>
+            <th></th>
+          </tr>
+
+        </thead>
+
+        <tbody id="weapontablerows">
+
+          {% for num, weapon in attributes.weapons.items %}
+
+            <tr id="weapon{{ num }}">
+
+              <td class="fullwidth weaponnameedit">
+                <input type="text" name="weaponname" value="{{ weapon.weaponname }}" class="fullwidth" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weaponspeed" value="{{ weapon.weaponspeed }}" class="statfield" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weaponaccuracy" value="{{ weapon.weaponaccuracy }}" class="statfield" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weapondamage" value="{{ weapon.weapondamage }}" class="statfield" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weapondefense" value="{{ weapon.weapondefense }}" class="statfield" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weaponrange" value="{{ weapon.weaponrange }}" class="statfield" />
+              </td>
+
+              <td>
+                <a href="#" onclick="removeWeapon('#weapon{{ num }}'); return false;">X</a>
+              </td>
+
+            </tr>
+
+            {% if forloop.last %}
+              <input type="hidden" id="weaponid" value="{{ forloop.counter }}" />
+            {% endif %}
+
+          {% empty %}
+
+            <tr id="weapon0">
+
+              <td class="fullwidth weaponnameedit">
+                <input type="text" name="weaponname" class="fullwidth" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weaponspeed" class="statfield" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weaponaccuracy" class="statfield" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weapondamage" class="statfield" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weapondefense" class="statfield" />
+              </td>
+
+              <td class="weaponattributeedit">
+                <input type="text" name="weaponrange" class="statfield" />
+              </td>
+
+            </tr>
+
+            <input type="hidden" id="weaponid" value="0" />
+
+          {% endfor %}
+
+        </tbody>
+
+      </table>
+
+      <a href="#" onclick="addWeapon(); return false;">Add</a>
+
     {% else %}
 
       <table id="weapontable">
@@ -841,6 +955,229 @@
       </table>
 
     {% endif %}
+
+  </div>
+
+  <div class="clear">&nbsp;</div>
+
+</div>
+
+<div>
+
+  <div id="boons">
+
+    <h2 class="textcenter sectionheader">{{ universe_attributes.boons.name }}</h2>
+
+    {% if editmode %}
+
+      <script type="text/javascript">
+
+        function addBoon() {
+          var id = document.getElementById("boonid").value;
+          id = (id * 1) + 1;
+          $("#boonsrows").append("<tr id='boon" + id + "'><td class='fullwidth'><input type='text' name='boons' class='fullwidth' /></td><td><a href='#' onclick='removeBoon(\"#boon" + id + "\"); return false;'>X</a></td></tr>");
+          $("#boon" + id).highlightFade({
+            speed:1000
+          });
+          document.getElementById("boonid").value = id.toString();
+        }
+
+        function removeBoon(id) {
+          $(id).remove();
+        }
+
+      </script>
+
+      <table>
+
+        <tbody id="boonsrows">
+
+          {% for num, boon in attributes.boons.items %}
+
+            <tr id="boon{{ num }}">
+
+              <td class="fullwidth">
+                <input type="text" name="boons" value="{{ boon }}" class="fullwidth" />
+              </td>
+
+              <td>
+                <a href="#" onclick="removeBoon('#boon{{ num }}'); return false;">X</a>
+              </td>
+
+            </tr>
+
+            {% if forloop.last %}
+              <input type="hidden" id="boonid" value="{{ forloop.counter }}" />
+            {% endif %}
+
+          {% empty %}
+
+            <tr id="boon0">
+
+              <td class="fullwidth">
+                <input type="text" name="boons" class="fullwidth" />
+              </td>
+
+            </tr>
+          
+          {% endfor %}
+
+        </tbody>
+
+      </table>
+
+      <a href="#" onclick="addBoon(); return false;">Add</a>
+
+    {% else %}
+
+      <table>
+
+        {% for num, boon in attributes.boons.items %}
+
+          <tr>
+            <td class="fullwidth">{{ boon }}</td>
+          </tr>
+
+        {% endfor %}
+
+      </table>
+
+    {% endif %}
+
+  </div>
+
+  <div id="willpowercombat">
+
+    <div id="willpower">
+
+      <h2 class="textcenter sectionheader">Willpower</h2>
+
+      <table class="tablecenter">
+
+        <tr>
+          <td>
+            {% if editmode %}
+              <input type="text" name="willpowermax" value="{{ attributes.willpowermax|default:"0" }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.willpowermax|dots:universe_attributes.willpowermax.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            {% if editmode %}
+              <input type="text" name="willpowercurrent" value="{{ attributes.willpowercurrent|default:"0" }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.willpowercurrent|squares:universe_attributes.willpowercurrent.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+
+    <div id="combat">
+
+      <h2 class="textcenter sectionheader">Combat</h2>
+
+      <table class="tablecenter">
+
+        <tr>
+          <td>
+            <label for="dodgedv">{{ universe_attributes.dodgedv.name }}:<label>
+          </td>
+          <td>
+            {% if editmode %}
+              <input type="text" name="dodgedv" value="{{ attributes.dodgedv }}" />
+            {% else %}
+              {{ attributes.dodgedv }}
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="parrydv">{{ universe_attributes.parrydv.name }}:</label>
+          </td>
+          <td>
+            {% if editmode %}
+              <input type="text" name="parrydv" value="{{ attributes.parrydv }}" />
+            {% else %}
+              {{ attributes.parrydv }}
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="joinbattle">{{ universe_attributes.joinbattle.name }}:</label>
+          </td>
+          <td>
+            {% if editmode %}
+              <input type="text" name="joinbattle" value="{{ attributes.joinbattle }}" />
+            {% else %}
+              {{ attributes.joinbattle }}
+            {% endif %}
+          </td>
+        </tr>
+
+      </table>
+
+    </div>
+  
+  </div>
+
+  <div id="virtues">
+
+    <h2 class="textcenter sectionheader">{{ universe_attributes.virtues.name }}</h2>
+
+  </div>
+
+  <div class="clear">&nbsp;</div>
+
+</div>
+
+<div>
+
+  <div id="knacksmovement">
+
+    <div id="knacks">
+
+    </div>
+
+    <div id="movement">
+
+    </div>
+
+  </div>
+
+  <div id="soakarmorexp">
+
+    <div id="soak">
+
+    </div>
+
+    <div id="armor">
+
+    </div>
+
+    <div id="experience">
+
+    </div>
+
+  </div>
+
+  <div id="legendhealth">
+
+    <div id="legend">
+
+    </div>
+
+    <div id="health">
+
+    </div>
 
   </div>
 
