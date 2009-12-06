@@ -199,6 +199,36 @@ div#virtues table#virtuetable .virtuename {
   border-color: #c8cace;
 }
 
+div#movementexp {
+  width: 32%;
+  float: left;
+  padding-right: 9px;
+}
+
+div#movement .movementfield {
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #c8cace;
+  text-align: center;
+}
+
+div#movement .movementlabel {
+  text-align: center;
+}
+
+div#soakarmor {
+  width: 32%;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+div#legendhealth {
+  width: 32%;
+  float: left;
+  padding-left: 9px;
+}
+
 .clear {
 	clear: both;
 	display: block;

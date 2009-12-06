@@ -1327,29 +1327,81 @@
 
 <div>
 
-  <div id="knacksmovement">
+  <div id="movementexp">
 
-    <div id="knacks">
+    <div id="movement">
+
+      <h2 class="sectionheader">Movement</h2>
+
+      <table class="fullwidth">
+
+        <tr>
+
+          <td class="movementfield">
+            {% if editmode %}
+              <input type="text" name="move" value="{{ attributes.move }}" class="statfield" />
+            {% else %}
+              {{ attributes.move }}
+            {% endif %}
+          </td>
+
+          <td class="movementfield">
+            {% if editmode %}
+              <input type="text" name="dash" value="{{ attributes.dash }}" class="statfield" />
+            {% else %}
+              {{ attributes.dash }}
+            {% endif %}
+          </td>
+
+          <td class="movementfield">
+            {% if editmode %}
+              <input type="text" name="jump" value="{{ attributes.jump }}" class="statfield" />
+            {% else %}
+              {{ attributes.dash }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td class="movementlabel">
+            <label for="move">{{ universe_attributes.move.name }}</label>
+          </td>
+
+          <td class="movementlabel">
+            <label for="dash">{{ universe_attributes.dash.name }}</label>
+          </td>
+
+          <td class="movementlabel">
+            <label for="jump">{{ universe_attributes.jump.name }}</label>
+          </td>
+
+        </tr>
+
+      </table>
 
     </div>
 
-    <div id="movement">
+    <div id="experience">
+
+      <h2 class="sectionheader">Experience</h2>
 
     </div>
 
   </div>
 
-  <div id="soakarmorexp">
+  <div id="soakarmor">
 
     <div id="soak">
+
+      <h2 class="sectionheader">Soak</h2>
 
     </div>
 
     <div id="armor">
 
-    </div>
-
-    <div id="experience">
+      <h2 class="sectionheader">{{ universe_attributes.armor.name }}</h2>
 
     </div>
 
@@ -1359,9 +1411,13 @@
 
     <div id="legend">
 
+      <h2 class="sectionheader">Legend</h2>
+
     </div>
 
     <div id="health">
+
+      <h2 class="sectionheader">Health</h2>
 
     </div>
 
