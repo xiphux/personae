@@ -1,0 +1,46 @@
+.threecolumnleft {
+	width: 32%;
+	float: left;
+	padding-right: 9px;
+}
+
+.threecolumnmiddle {
+	width: 32%;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.threecolumnright {
+	width: 32%;
+	float: left;
+	padding-left: 9px;
+}
+
+.twocolumnleft {
+  width: 48%;
+  float: left;
+}
+
+.twocolumnright {
+  width: 48%;
+  float: right;
+}
+
+.clear {
+	clear: both;
+	display: block;
+	height: 1px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+div#revisioneditfields div#revisionnamefield {
+  vertical-align: center;
+}
+
+div#revisionnav div#editaction a {
+  font-size: larger;
+}
+

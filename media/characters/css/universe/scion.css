@@ -10,117 +10,16 @@ div#body {
 	padding-right: 10px;
 }
 
-div#basicinfo {
-	width: 100%;
+div#basicinfo .basicinfolabel {
+  font-size: smaller;
 }
 
-div#basicinfo div#basicinfoleft {
-	width: 32%;
-	float: left;
-	padding-right: 9px;
-}
-
-div#basicinfo div#basicinfomiddle {
-	width: 32%;
-	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-div#basicinfo div#basicinforight {
-	width: 32%;
-	float: left;
-	padding-left: 9px;
-}
-
-div#attributes {
-	width: 100%;
-}
-
-div#attributes div#physicalattributes {
-	width: 32%;
-	float: left;
-	padding-right: 9px;
-}
-
-div#attributes div#socialattributes {
-	width: 32%;
-	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-div#attributes div#mentalattributes {
-	width: 32%;
-	float: left;
-	padding-left: 9px;
-}
-
-div#abilities {
-	width: 100%;
-}
-
-div#abilities td.abilityname {
-	border-width: 0px 0px 1px 0px;
-	border-style: solid;
-	border-color: #c8cace;
-}
-
-div#abilities div#abilitiesleft {
-	width: 32%;
-	float: left;
-	padding-right: 9px;
-}
-
-div#abilities div#abilitiesmiddle {
-	width: 32%;
-	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-div#abilities div#abilitiesright {
-	width: 32%;
-	float: left;
-	padding-left: 9px;
-}
-
-div#birthrights {
-  width: 48%;
-  float: left;
-}
-
-div#birthrights td.birthrightname {
-  border-width: 0px 0px 1px 0px;
-  border-style: solid;
-  border-color: #c8cace;
-}
-
-div#weapons {
-  width: 48%;
-  float: right;
+div#basicinfo .basicinfolowerrow {
+  padding-top: 1em;
 }
 
 div#weapons table#weapontable .weaponname {
   text-align: left;
-}
-
-div#weapons table#weapontable .weaponnameedit {
-  text-align: left;
-}
-
-div#weapons table#weapontable td.weaponname {
-  border-width: 0px 0px 1px 0px;
-  border-style: solid;
-  border-color: #c8cace;
-}
-
-div#weapons table#weapontable .weaponattribute {
-  text-align: center;
-}
-
-div#weapons table#weapontable .weaponattributeedit {
-  text-align: center;
 }
 
 div#weapons table#weapontable th.weaponattribute {
@@ -133,109 +32,10 @@ div#weapons table#weapontable th.weaponattributeedit {
 
 div#weapons table#weapontable td.weaponattribute {
   border-width: 0px 0px 1px 1px;
-  border-style: solid;
-  border-color: #c8cace;
-}
-
-div#revisioneditfields {
-  width: 100%;
-}
-
-div#revisioneditfields div#revisionnamefield {
-  width: 48%;
-  float: left;
-  vertical-align: center;
-}
-
-div#revisioneditfields div#revisionnotesfield {
-  width: 48%;
-  float: right;
-}
-
-div#revisionnav {
-  width: 100%;
-}
-
-div#revisionnav div#revisions {
-  width: 48%;
-  float: left;
-}
-
-div#revisionnav div#editaction {
-  width: 48%;
-  float: right;
-}
-
-div#revisionnav div#editaction a {
-  font-size: larger;
-}
-
-div#boons {
-	width: 32%;
-	float: left;
-	padding-right: 9px;
-}
-
-div#willpowercombat {
-	width: 32%;
-	float: left;
-	padding-left: 10px;
-	padding-right: 10px;
 }
 
 div#willpowercombat div#combat td {
   white-space: nowrap;
-}
-
-div#virtues {
-	width: 32%;
-	float: left;
-	padding-left: 9px;
-}
-
-div#virtues table#virtuetable .virtuename {
-  border-width: 0px 0px 1px 0px;
-  border-style: solid;
-  border-color: #c8cace;
-}
-
-div#movementexp {
-  width: 32%;
-  float: left;
-  padding-right: 9px;
-}
-
-div#movement .movementfield {
-  border-width: 0px 0px 1px 0px;
-  border-style: solid;
-  border-color: #c8cace;
-  text-align: center;
-}
-
-div#movement .movementlabel {
-  text-align: center;
-}
-
-div#soakarmor {
-  width: 32%;
-  float: left;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-div#legendhealth {
-  width: 32%;
-  float: left;
-  padding-left: 9px;
-}
-
-.clear {
-	clear: both;
-	display: block;
-	height: 1px;
-	overflow: hidden;
-	margin: 0;
-	padding: 0;
 }
 
 .tablecenter {
@@ -264,6 +64,11 @@ div#legendhealth {
 .emptymessage {
   color: #a8aaae;
   font-style: italic;
-  width: 100%;
   text-align: center;
+}
+
+.lightunderline {
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	border-color: #c8cace;
 }

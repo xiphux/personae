@@ -1,6 +1,7 @@
 {% extends "characters/base.html" %}
 
 {% block css %}
+<link rel="stylesheet" href="http://centraldogma:8000/characters_media/css/basesheet.css">
 {% block sheetcss %}
 {% endblock %}
 {% endblock %}
@@ -15,14 +16,14 @@
 
   <div id="revisioneditfields">
 
-    <div id="revisionnamefield">
+    <div id="revisionnamefield" class="twocolumnleft">
 
       <label for="revisionname">Revision name:</label>
       <input type="text" name="revisionname" class="fullwidth" />
 
     </div>
 
-    <div id="revisionnotesfield">
+    <div id="revisionnotesfield" class="twocolumnright">
 
       <label for="revisionnotes">Revision notes:</label>
       <textarea name="revisionnotes" rows=5 class="fullwidth" ></textarea>
@@ -37,7 +38,7 @@
 
   <div id="revisionnav">
 
-    <div id="revisions">
+    <div id="revisions" class="twocolumnleft">
 
       <div id="revisionlist">
 
@@ -74,7 +75,7 @@
 
     </div>
 
-    <div id="editaction">
+    <div id="editaction" class="twocolumnright">
 
       <a href="/characters/{{ character.id }}/edit/">Edit</a>
 

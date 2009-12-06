@@ -12,24 +12,24 @@
 {% block sheet %}
 <div id="basicinfo">
 
-  <div id="basicinfoleft">
+  <div id="basicinfoleft" class="threecolumnleft">
 
-    <table>
+    <table class="fullwidth">
     
       <tr>
-        <td>
-          <label>Name:</label>
-        </td>
-        <td>
+        <td class="lightunderline">
           {{ character.name }}
+        </td>
+      </tr>
+
+      <tr>
+        <td class="basicinfolabel">
+          <label>Name</label>
         </td>
       </tr>
       
       <tr>
-        <td>
-          <label for="player">{{ universe_attributes.player.name }}:</label>
-        </td>
-        <td>
+        <td class="lightunderline basicinfolowerrow">
           {% if editmode %}
             <input type="text" name="player" value="{{ attributes.player }}" />
           {% else %}
@@ -38,19 +38,22 @@
         </td>
       </tr>
 
+      <tr>
+        <td class="basicinfolabel">
+          <label for="player">{{ universe_attributes.player.name }}</label>
+        </td>
+      </tr>
+
     </table>
 
   </div>
 
-  <div id="basicinfomiddle">
+  <div id="basicinfomiddle" class="threecolumnmiddle">
 
-    <table>
+    <table class="fullwidth">
 
       <tr>
-        <td>
-          <label for="calling">{{ universe_attributes.calling.name }}:</label>
-        </td>
-        <td>
+        <td class="lightunderline">
           {% if editmode %}
             <input type="text" name="calling" value="{{ attributes.calling.value }}" />
           {% else %}
@@ -60,10 +63,13 @@
       </tr>
 
       <tr>
-        <td>
-          <label for="nature">{{ universe_attributes.nature.name }}:</label>
+        <td class="basicinfolabel">
+          <label for="calling">{{ universe_attributes.calling.name }}</label>
         </td>
-        <td>
+      </tr>
+
+      <tr>
+        <td class="lightunderline basicinfolowerrow">
           {% if editmode %}
             <select name="nature">
         <option value="0"></option>
@@ -77,19 +83,22 @@
         </td>
       </tr>
 
+      <tr>
+        <td class="basicinfolabel">
+          <label for="nature">{{ universe_attributes.nature.name }}</label>
+        </td>
+      </tr>
+
     </table>
 
   </div>
 
-  <div id="basicinforight">
+  <div id="basicinforight" class="threecolumnright">
 
-    <table>
+    <table class="fullwidth">
 
       <tr>
-        <td>
-          <label for="pantheon">{{ universe_attributes.pantheon.name }}:</label>
-        </td>
-        <td>
+        <td class="lightunderline">
           {% if editmode %}
             <select name="pantheon">
         <option value="0"></option>
@@ -104,15 +113,24 @@
       </tr>
 
       <tr>
-        <td>
-          <label for="god">{{ universe_attributes.god.name }}:</label>
+        <td class="basicinfolabel">
+          <label for="pantheon">{{ universe_attributes.pantheon.name }}</label>
         </td>
-        <td>
+      </tr>
+
+      <tr>
+        <td class="lightunderline basicinfolowerrow">
           {% if editmode %}
             <input type="text" name="god" value="{{ attributes.god }}" />
           {% else %}
             {{ attributes.god }}
           {% endif %}
+        </td>
+      </tr>
+
+      <tr>
+        <td class="basicinfolabel">
+          <label for="god">{{ universe_attributes.god.name }}</label>
         </td>
       </tr>
 
@@ -128,7 +146,7 @@
 
   <h2 class="sectionheader">Attributes</h2>
 
-  <div id="physicalattributes">
+  <div id="physicalattributes" class="threecolumnleft">
 
     <h3 class="textcenter">Physical</h3>
 
@@ -136,7 +154,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="strength">{{ universe_attributes.strength.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.strength.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -159,7 +177,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="dexterity">{{ universe_attributes.dexterity.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.dexterity.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -182,7 +200,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="stamina">{{ universe_attributes.stamina.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.stamina.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -207,7 +225,7 @@
 
   </div>
   
-  <div id="socialattributes">
+  <div id="socialattributes" class="threecolumnmiddle">
 
     <h3 class="textcenter">Social</h3>
 
@@ -215,7 +233,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="charisma">{{ universe_attributes.charisma.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.charisma.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -238,7 +256,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="manipulation">{{ universe_attributes.manipulation.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.manipulation.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -261,7 +279,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="appearance">{{ universe_attributes.appearance.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.appearance.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -286,7 +304,7 @@
 
   </div>
 
-  <div id="mentalattributes">
+  <div id="mentalattributes" class="threecolumnright">
 
     <h3 class="textcenter">Mental</h3>
 
@@ -294,7 +312,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="perception">{{ universe_attributes.perception.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.perception.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -317,7 +335,7 @@
       
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="intelligence">{{ universe_attributes.intelligence.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.intelligence.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -340,7 +358,7 @@
       
       <tr>
         <td rowspan="2" class="fullwidth">
-          <label for="wits">{{ universe_attributes.wits.name }}:</label>
+          <div class="attributelabel">{{ universe_attributes.wits.name }}</div>
         </td>
         <td>
           {% if editmode %}
@@ -373,13 +391,13 @@
 
   <h2 class="sectionheader">Abilities</h2>
 
-  <div id="abilitiesleft">
+  <div id="abilitiesleft" class="threecolumnleft">
 
     <table>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="academics">{{ universe_attributes.academics.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="academics">{{ universe_attributes.academics.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -391,8 +409,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="animalken">{{ universe_attributes.animalken.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="animalken">{{ universe_attributes.animalken.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -404,8 +422,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="art">{{ universe_attributes.art.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="art">{{ universe_attributes.art.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -417,8 +435,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="athletics">{{ universe_attributes.athletics.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="athletics">{{ universe_attributes.athletics.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -430,8 +448,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="awareness">{{ universe_attributes.awareness.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="awareness">{{ universe_attributes.awareness.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -443,8 +461,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="brawl">{{ universe_attributes.brawl.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="brawl">{{ universe_attributes.brawl.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -456,8 +474,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="command">{{ universe_attributes.command.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="command">{{ universe_attributes.command.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -469,8 +487,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="control">{{ universe_attributes.control.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="control">{{ universe_attributes.control.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -485,13 +503,13 @@
 
   </div>
 
-  <div id="abilitiesmiddle">
+  <div id="abilitiesmiddle" class="threecolumnmiddle">
 
     <table>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="craft">{{ universe_attributes.craft.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="craft">{{ universe_attributes.craft.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -503,8 +521,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="empathy">{{ universe_attributes.empathy.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="empathy">{{ universe_attributes.empathy.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -516,8 +534,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="fortitude">{{ universe_attributes.fortitude.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="fortitude">{{ universe_attributes.fortitude.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -529,8 +547,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="integrity">{{ universe_attributes.integrity.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="integrity">{{ universe_attributes.integrity.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -542,8 +560,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="investigation">{{ universe_attributes.investigation.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="investigation">{{ universe_attributes.investigation.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -555,8 +573,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="larceny">{{ universe_attributes.larceny.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="larceny">{{ universe_attributes.larceny.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -568,8 +586,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="marksmanship">{{ universe_attributes.marksmanship.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="marksmanship">{{ universe_attributes.marksmanship.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -581,8 +599,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="medicine">{{ universe_attributes.medicine.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="medicine">{{ universe_attributes.medicine.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -597,13 +615,13 @@
 
   </div>
 
-  <div id="abilitiesright">
+  <div id="abilitiesright" class="threecolumnright">
 
     <table>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="melee">{{ universe_attributes.melee.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="melee">{{ universe_attributes.melee.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -615,8 +633,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="occult">{{ universe_attributes.occult.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="occult">{{ universe_attributes.occult.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -628,8 +646,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="politics">{{ universe_attributes.politics.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="politics">{{ universe_attributes.politics.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -641,8 +659,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="presence">{{ universe_attributes.presence.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="presence">{{ universe_attributes.presence.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -654,8 +672,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="science">{{ universe_attributes.science.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="science">{{ universe_attributes.science.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -667,8 +685,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="stealth">{{ universe_attributes.stealth.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="stealth">{{ universe_attributes.stealth.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -680,8 +698,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="survival">{{ universe_attributes.survival.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="survival">{{ universe_attributes.survival.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -693,8 +711,8 @@
       </tr>
 
       <tr>
-        <td class="fullwidth abilityname">
-          <label for="thrown">{{ universe_attributes.thrown.name }}:</label>
+        <td class="fullwidth lightunderline">
+          <label for="thrown">{{ universe_attributes.thrown.name }}</label>
         </td>
         <td>
           {% if editmode %}
@@ -715,7 +733,7 @@
 
 <div>
 
-  <div id="birthrights">
+  <div id="birthrights" class="twocolumnleft">
 
     <h2 class="sectionheader">{{ universe_attributes.birthrights.name }}</h2>
 
@@ -809,14 +827,14 @@
         {% for num, birthright in attributes.birthrights.items %}
 
           <tr>
-            <td class="fullwidth birthrightname">{{ birthright.birthrightname }}</td>
+            <td class="fullwidth lightunderline">{{ birthright.birthrightname }}</td>
             <td>{{ birthright.birthrightlevel.value|dots:universe_attributes.birthrightlevel.max }}</td>
           </tr>
 
 	{% empty %}
 
 	  <tr>
-	    <td class="emptymessage">No birthrights</td>
+	    <td class="fullwidth emptymessage">No birthrights</td>
 	  </tr>
 
         {% endfor %}
@@ -827,7 +845,7 @@
 
   </div>
 
-  <div id="weapons">
+  <div id="weapons" class="twocolumnright">
 
     <h2 class="sectionheader">{{ universe_attributes.weapons.name }}</h2>
 
@@ -875,12 +893,12 @@
         <thead>
 
           <tr>
-            <th class="fullwidth weaponnameedit">{{ universe_attributes.weaponname.name }}</th>
-            <th class="weaponattributeedit">{{ universe_attributes.weaponspeed.name }}</th>
-            <th class="weaponattributeedit">{{ universe_attributes.weaponaccuracy.name }}</th>
-            <th class="weaponattributeedit">{{ universe_attributes.weapondamage.name }}</th>
-            <th class="weaponattributeedit">{{ universe_attributes.weapondefense.name }}</th>
-            <th class="weaponattributeedit">{{ universe_attributes.weaponrange.name }}</th>
+            <th class="fullwidth weaponname">{{ universe_attributes.weaponname.name }}</th>
+            <th class="textcenter weaponattributeedit">{{ universe_attributes.weaponspeed.name }}</th>
+            <th class="textcenter weaponattributeedit">{{ universe_attributes.weaponaccuracy.name }}</th>
+            <th class="textcenter weaponattributeedit">{{ universe_attributes.weapondamage.name }}</th>
+            <th class="textcenter weaponattributeedit">{{ universe_attributes.weapondefense.name }}</th>
+            <th class="textcenter weaponattributeedit">{{ universe_attributes.weaponrange.name }}</th>
             <th class="removerow"></th>
           </tr>
 
@@ -892,27 +910,27 @@
 
             <tr id="weapon{{ num }}">
 
-              <td class="fullwidth weaponnameedit">
+              <td class="fullwidth weaponname">
                 <input type="text" name="weaponname" value="{{ weapon.weaponname }}" class="fullwidth" />
               </td>
 
-              <td class="weaponattributeedit">
+              <td class="textcenter weaponattributeedit">
                 <input type="text" name="weaponspeed" value="{{ weapon.weaponspeed }}" class="statfield" />
               </td>
 
-              <td class="weaponattributeedit">
+              <td class="textcenter weaponattributeedit">
                 <input type="text" name="weaponaccuracy" value="{{ weapon.weaponaccuracy }}" class="statfield" />
               </td>
 
-              <td class="weaponattributeedit">
+              <td class="textcenter weaponattributeedit">
                 <input type="text" name="weapondamage" value="{{ weapon.weapondamage }}" class="statfield" />
               </td>
 
-              <td class="weaponattributeedit">
+              <td class="textcenter weaponattributeedit">
                 <input type="text" name="weapondefense" value="{{ weapon.weapondefense }}" class="statfield" />
               </td>
 
-              <td class="weaponattributeedit">
+              <td class="textcenter weaponattributeedit">
                 <input type="text" name="weaponrange" value="{{ weapon.weaponrange }}" class="statfield" />
               </td>
 
@@ -926,27 +944,27 @@
 
           <tr id="weapon0">
 
-            <td class="fullwidth weaponnameedit">
+            <td class="fullwidth weaponname">
               <input type="text" name="weaponname" class="fullwidth" />
             </td>
 
-            <td class="weaponattributeedit">
+            <td class="textcenter weaponattributeedit">
               <input type="text" name="weaponspeed" class="statfield" />
             </td>
 
-            <td class="weaponattributeedit">
+            <td class="textcenter weaponattributeedit">
               <input type="text" name="weaponaccuracy" class="statfield" />
             </td>
 
-            <td class="weaponattributeedit">
+            <td class="textcenter weaponattributeedit">
               <input type="text" name="weapondamage" class="statfield" />
             </td>
 
-            <td class="weaponattributeedit">
+            <td class="textcenter weaponattributeedit">
               <input type="text" name="weapondefense" class="statfield" />
             </td>
 
-            <td class="weaponattributeedit">
+            <td class="textcenter weaponattributeedit">
               <input type="text" name="weaponrange" class="statfield" />
             </td>
 
@@ -970,28 +988,28 @@
 
             <tr>
               <th class="fullwidth weaponname">{{ universe_attributes.weaponname.name }}</th>
-              <th class="weaponattribute">{{ universe_attributes.weaponspeed.name }}</th>
-              <th class="weaponattribute">{{ universe_attributes.weaponaccuracy.name }}</th>
-              <th class="weaponattribute">{{ universe_attributes.weapondamage.name }}</th>
-              <th class="weaponattribute">{{ universe_attributes.weapondefense.name }}</th>
-              <th class="weaponattribute">{{ universe_attributes.weaponrange.name }}</th>
+              <th class="textcenter weaponattribute">{{ universe_attributes.weaponspeed.name }}</th>
+              <th class="textcenter weaponattribute">{{ universe_attributes.weaponaccuracy.name }}</th>
+              <th class="textcenter weaponattribute">{{ universe_attributes.weapondamage.name }}</th>
+              <th class="textcenter weaponattribute">{{ universe_attributes.weapondefense.name }}</th>
+              <th class="textcenter weaponattribute">{{ universe_attributes.weaponrange.name }}</th>
             </tr>
 
           {% endif %}
 
           <tr>
-            <td class="fullwidth weaponname">{{ weapon.weaponname }}</td>
-            <td class="weaponattribute">{{ weapon.weaponspeed }}</td>
-            <td class="weaponattribute">{{ weapon.weaponaccuracy }}</td>
-            <td class="weaponattribute">{{ weapon.weapondamage }}</td>
-            <td class="weaponattribute">{{ weapon.weapondefense }}</td>
-            <td class="weaponattribute">{{ weapon.weaponrange }}</td>
+            <td class="fullwidth lightunderline">{{ weapon.weaponname }}</td>
+            <td class="lightunderline textcenter weaponattribute">{{ weapon.weaponspeed }}</td>
+            <td class="lightunderline textcenter weaponattribute">{{ weapon.weaponaccuracy }}</td>
+            <td class="lightunderline textcenter weaponattribute">{{ weapon.weapondamage }}</td>
+            <td class="lightunderline textcenter weaponattribute">{{ weapon.weapondefense }}</td>
+            <td class="lightunderline textcenter weaponattribute">{{ weapon.weaponrange }}</td>
           </tr>
 
         {% empty %}
 
           <tr>
-            <td class="emptymessage">No weapons</td>
+            <td class="fullwidth emptymessage">No weapons</td>
           </tr>
 
         {% endfor %}
@@ -1008,7 +1026,7 @@
 
 <div>
 
-  <div id="boons">
+  <div id="boons" class="threecolumnleft">
 
     <h2 class="sectionheader">{{ universe_attributes.boons.name }}</h2>
 
@@ -1100,7 +1118,7 @@
         {% empty %}
 
           <tr>
-            <td class="emptymessage">No boons</td>
+            <td class="fullwidth emptymessage">No boons</td>
           </tr>
 
         {% endfor %}
@@ -1111,7 +1129,7 @@
 
   </div>
 
-  <div id="willpowercombat">
+  <div id="willpowercombat" class="threecolumnmiddle">
 
     <div id="willpower">
 
@@ -1194,7 +1212,7 @@
   
   </div>
 
-  <div id="virtues">
+  <div id="virtues" class="threecolumnright">
 
     <h2 class="sectionheader">{{ universe_attributes.virtues.name }}</h2>
 
@@ -1246,7 +1264,7 @@
             <tr id="virtue{{ num }}">
 
               <td class="fullwidth">
-                <div class="virtuename">
+                <div class="lightunderline">
                   <select name="virtue">
                     <option value="0"></option>
                     {% for choice in universe_attributes.virtue.choices %}
@@ -1270,7 +1288,7 @@
           <tr id="virtue0">
             
             <td class="fullwidth">
-              <div class="virtuename">
+              <div class="lightunderline">
                 <select name="virtue">
                   <option value="0"></option>
                   {% for choice in universe_attributes.virtue.choices %}
@@ -1300,7 +1318,7 @@
         {% for num, virtue in attributes.virtues.items %}
 
           <tr>
-            <td class="fullwidth" rowspan="2"><div class="virtuename fullwidth">{{ virtue.virtue }}</div></td>
+            <td class="fullwidth" rowspan="2"><div class="lightunderline fullwidth">{{ virtue.virtue }}</div></td>
             <td>{{ virtue.virtuelevel|dots:universe_attributes.virtuelevel.max }}</td>
           </tr>
           <tr>
@@ -1310,7 +1328,7 @@
         {% empty %}
 
           <tr>
-            <td class="emptymessage">No virtues</td>
+            <td class="fullwidth emptymessage">No virtues</td>
           </tr>
 
         {% endfor %}
@@ -1327,7 +1345,7 @@
 
 <div>
 
-  <div id="movementexp">
+  <div id="movementexp" class="threecolumnleft">
 
     <div id="movement">
 
@@ -1337,7 +1355,7 @@
 
         <tr>
 
-          <td class="movementfield">
+          <td class="lightunderline textcenter">
             {% if editmode %}
               <input type="text" name="move" value="{{ attributes.move }}" class="statfield" />
             {% else %}
@@ -1345,7 +1363,7 @@
             {% endif %}
           </td>
 
-          <td class="movementfield">
+          <td class="lightunderline textcenter">
             {% if editmode %}
               <input type="text" name="dash" value="{{ attributes.dash }}" class="statfield" />
             {% else %}
@@ -1353,7 +1371,7 @@
             {% endif %}
           </td>
 
-          <td class="movementfield">
+          <td class="lightunderline textcenter">
             {% if editmode %}
               <input type="text" name="jump" value="{{ attributes.jump }}" class="statfield" />
             {% else %}
@@ -1365,15 +1383,15 @@
 
         <tr>
 
-          <td class="movementlabel">
+          <td class="textcenter">
             <label for="move">{{ universe_attributes.move.name }}</label>
           </td>
 
-          <td class="movementlabel">
+          <td class="textcenter">
             <label for="dash">{{ universe_attributes.dash.name }}</label>
           </td>
 
-          <td class="movementlabel">
+          <td class="textcenter">
             <label for="jump">{{ universe_attributes.jump.name }}</label>
           </td>
 
@@ -1391,7 +1409,7 @@
 
   </div>
 
-  <div id="soakarmor">
+  <div id="soakarmor" class="threecolumnmiddle">
 
     <div id="soak">
 
@@ -1407,7 +1425,7 @@
 
   </div>
 
-  <div id="legendhealth">
+  <div id="legendhealth" class="threecolumnright">
 
     <div id="legend">
 
