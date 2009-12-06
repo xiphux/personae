@@ -193,6 +193,12 @@ div#virtues {
 	padding-left: 9px;
 }
 
+div#virtues table#virtuetable .virtuename {
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: #c8cace;
+}
+
 .clear {
 	clear: both;
 	display: block;
@@ -222,4 +228,11 @@ div#virtues {
 
 .statfield {
   width: 30px;
+}
+
+.emptymessage {
+  color: #a8aaae;
+  font-style: italic;
+  width: 100%;
+  text-align: center;
 }

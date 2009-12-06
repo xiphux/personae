@@ -804,7 +804,7 @@
 
     {% else %}
 
-      <table>
+      <table class="fullwidth">
 
         {% for num, birthright in attributes.birthrights.items %}
 
@@ -812,6 +812,12 @@
             <td class="fullwidth birthrightname">{{ birthright.birthrightname }}</td>
             <td>{{ birthright.birthrightlevel.value|dots:universe_attributes.birthrightlevel.max }}</td>
           </tr>
+
+	{% empty %}
+
+	  <tr>
+	    <td class="emptymessage">No birthrights</td>
+	  </tr>
 
         {% endfor %}
 
@@ -956,18 +962,23 @@
 
     {% else %}
 
-      <table id="weapontable">
-
-        <tr>
-          <th class="fullwidth weaponname">{{ universe_attributes.weaponname.name }}</th>
-          <th class="weaponattribute">{{ universe_attributes.weaponspeed.name }}</th>
-          <th class="weaponattribute">{{ universe_attributes.weaponaccuracy.name }}</th>
-          <th class="weaponattribute">{{ universe_attributes.weapondamage.name }}</th>
-          <th class="weaponattribute">{{ universe_attributes.weapondefense.name }}</th>
-          <th class="weaponattribute">{{ universe_attributes.weaponrange.name }}</th>
-        </tr>
+      <table id="weapontable" class="fullwidth">
 
         {% for num, weapon in attributes.weapons.items %}
+
+          {% if forloop.first %}
+
+            <tr>
+              <th class="fullwidth weaponname">{{ universe_attributes.weaponname.name }}</th>
+              <th class="weaponattribute">{{ universe_attributes.weaponspeed.name }}</th>
+              <th class="weaponattribute">{{ universe_attributes.weaponaccuracy.name }}</th>
+              <th class="weaponattribute">{{ universe_attributes.weapondamage.name }}</th>
+              <th class="weaponattribute">{{ universe_attributes.weapondefense.name }}</th>
+              <th class="weaponattribute">{{ universe_attributes.weaponrange.name }}</th>
+            </tr>
+
+          {% endif %}
+
           <tr>
             <td class="fullwidth weaponname">{{ weapon.weaponname }}</td>
             <td class="weaponattribute">{{ weapon.weaponspeed }}</td>
@@ -976,6 +987,13 @@
             <td class="weaponattribute">{{ weapon.weapondefense }}</td>
             <td class="weaponattribute">{{ weapon.weaponrange }}</td>
           </tr>
+
+        {% empty %}
+
+          <tr>
+            <td class="emptymessage">No weapons</td>
+          </tr>
+
         {% endfor %}
 
       </table>
@@ -1071,12 +1089,18 @@
 
     {% else %}
 
-      <table>
+      <table class="fullwidth">
 
         {% for num, boon in attributes.boons.items %}
 
           <tr>
             <td class="fullwidth">{{ boon }}</td>
+          </tr>
+
+        {% empty %}
+
+          <tr>
+            <td class="emptymessage">No boons</td>
           </tr>
 
         {% endfor %}
@@ -1213,7 +1237,7 @@
 
       <a href="#" onclick="addVirtue(true); return false;">Add virtue</a>
 
-      <table>
+      <table id="virtuetable">
 
         <tbody id="virtuerows">
 
@@ -1222,12 +1246,14 @@
             <tr id="virtue{{ num }}">
 
               <td class="fullwidth">
-                <select name="virtue">
-                  <option value="0"></option>
-                  {% for choice in universe_attributes.virtue.choices %}
-                    <option value="{{ choice.id }}" {% ifequal choice virtue.virtue.choice %}selected{% endifequal %}>{{ choice.name }}</option>
-                  {% endfor %}
-                </select>
+                <div class="virtuename">
+                  <select name="virtue">
+                    <option value="0"></option>
+                    {% for choice in universe_attributes.virtue.choices %}
+                      <option value="{{ choice.id }}" {% ifequal choice virtue.virtue.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
               </td>
               <td>
                 <input type="text" name="virtuelevel" value="{{ virtue.virtuelevel|default:"0" }}" class="statfield" />
@@ -1244,12 +1270,14 @@
           <tr id="virtue0">
             
             <td class="fullwidth">
-              <select name="virtue">
-                <option value="0"></option>
-                {% for choice in universe_attributes.virtue.choices %}
-                  <option value="{{ choice.id }}" >{{ choice.name }}</option>
-                {% endfor %}
-              </select>
+              <div class="virtuename">
+                <select name="virtue">
+                  <option value="0"></option>
+                  {% for choice in universe_attributes.virtue.choices %}
+                    <option value="{{ choice.id }}" >{{ choice.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
             </td>
             <td>
               <input type="text" name="virtuelevel" value="0" class="statfield" />
@@ -1267,16 +1295,22 @@
 
     {% else %}
 
-      <table>
+      <table class="fullwidth" id="virtuetable">
 
         {% for num, virtue in attributes.virtues.items %}
 
           <tr>
-            <td class="fullwidth" rowspan="2">{{ virtue.virtue }}</td>
+            <td class="fullwidth" rowspan="2"><div class="virtuename fullwidth">{{ virtue.virtue }}</div></td>
             <td>{{ virtue.virtuelevel|dots:universe_attributes.virtuelevel.max }}</td>
           </tr>
           <tr>
             <td>{{ virtue.virtueboost|squares:universe_attributes.virtueboost.max }}</td>
+          </tr>
+
+        {% empty %}
+
+          <tr>
+            <td class="emptymessage">No virtues</td>
           </tr>
 
         {% endfor %}
