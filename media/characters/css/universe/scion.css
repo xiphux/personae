@@ -4,14 +4,14 @@ body {
 
 div#body {
 	background-color: white;
-	margin-left: 10px;
-	margin-right: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
+	width: 98%;
+	margin: 0 auto;
 }
 
 div#revisionnavfloating {
   background-color: white;
+  margin: 0 auto;
+  width: 98%;
 }
 
 div#basicinfo .basicinfolabel {
@@ -92,4 +92,3 @@ div#armor td.armorfield {
 	border-style: solid;
 	border-color: #c8cace;
 }
-

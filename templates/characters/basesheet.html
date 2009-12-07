@@ -1,8 +1,8 @@
 {% extends "characters/base.html" %}
 
-{% block css %}
-<link rel="stylesheet" href="http://centraldogma:8000/characters_media/css/basesheet.css">
 {% block sheetcss %}
+<link rel="stylesheet" href="http://centraldogma:8000/characters_media/css/basesheet.css">
+{% block universecss %}
 {% endblock %}
 {% endblock %}
 
@@ -18,14 +18,14 @@
 
     <div id="revisionnamefield" class="twocolumnleft">
 
-      <label for="revisionname">Revision name:</label>
+      <label for="revisionname" class="label">Revision name:</label>
       <input type="text" name="revisionname" class="fullwidth" />
 
     </div>
 
     <div id="revisionnotesfield" class="twocolumnright">
 
-      <label for="revisionnotes">Revision notes:</label>
+      <label for="revisionnotes" class="label">Revision notes:</label>
       <textarea name="revisionnotes" rows=5 class="fullwidth" ></textarea>
 
     </div>
@@ -43,8 +43,9 @@
       var p = $("#revisionnav").position();
       menuY = p.top;
       $("#revisionnavfloating").hide();
+      $("#revisionnavfloating").width($("#revisionnav").width());
       var menu = $("#revisionnav").clone();
-      menu.appendTo("#revisionnavfloating");
+      $("#revisionnavfloating").append(menu.html());
 
       $(window).scroll(function(){
         var windowY = $(document).scrollTop();
@@ -62,7 +63,25 @@
 
   <div id="revisionnav">
 
-    <div id="revisions" class="twocolumnleft">
+    <div id="charinfo">
+
+      <table>
+
+        <tr>
+          <td class="label">Character:</td>
+          <td>{{ character.name }}</td>
+        </tr>
+
+        <tr>
+          <td class="label">Universe:</td>
+          <td>{{ character.universe }}</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+    <div id="revisions">
 
       <div id="revisionlist">
 
@@ -75,7 +94,7 @@
 	  </script>
 
           <form action="/characters/{{ character.id }}/goto/" method="get">
-            <label for="revision">Revisions:</label>
+            <label for="revision" class="label">Revisions:</label>
             <select name="revision" onchange="form.submit()">
               {% for rev in revision_list %}
                 <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% if rev.name %} [{{rev.name}}]{% endif %}</option>
@@ -89,19 +108,19 @@
 
       </div>
 
-      <div id="revisionnotes">
+    </div>
 
-        {% if revision.notes %}
-          Notes: {{ revision.notes }}
-        {% endif %}
+    <div id="editaction">
 
-      </div>
+      <a href="/characters/{{ character.id }}/edit/">Edit</a>
 
     </div>
 
-    <div id="editaction" class="twocolumnright">
+    <div id="revisionnotes">
 
-      <a href="/characters/{{ character.id }}/edit/">Edit</a>
+      {% if revision.notes %}
+        <span class="label">Notes:</span> {{ revision.notes }}
+      {% endif %}
 
     </div>
 

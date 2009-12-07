@@ -36,12 +36,33 @@
 	padding: 0;
 }
 
-div#revisioneditfields div#revisionnamefield {
-  vertical-align: center;
+div#charinfo {
+	width: 27%;
+	float: left;
+	padding-right: 9px;
 }
 
-div#revisionnav div#editaction a {
-  font-size: larger;
+div#revisions {
+	width: 42%;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+div#revisionnotes {
+	float: left;
+	padding-left: 10px;
+	width: 69%;
+}
+
+div#editaction {
+	width: 27%;
+	float: left;
+	padding-left: 9px;
+}
+
+div#revisioneditfields div#revisionnamefield {
+  vertical-align: center;
 }
 
 div#revisionnavfloating {
@@ -50,3 +71,14 @@ div#revisionnavfloating {
   width: 100%;
 }
 
+div#editaction {
+  text-align: right;
+}
+
+div#editaction a {
+  font-size: larger;
+}
+
+.label {
+  color: Gray;
+}
