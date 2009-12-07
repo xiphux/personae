@@ -1405,6 +1405,54 @@
 
       <h2 class="sectionheader">Experience</h2>
 
+      <table class="fullwidth">
+
+        <tr>
+
+          <td class="lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="experiencetotal" value="{{ attributes.experiencetotal }}" class="statfield" />
+            {% else %}
+              {{ attributes.experiencetotal }}
+            {% endif %}
+          </td>
+
+          <td class="lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="experiencespent" value="{{ attributes.experiencespent }}" class="statfield" />
+            {% else %}
+              {{ attributes.experiencespent }}
+            {% endif %}
+          </td>
+
+          <td class="lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="experienceremaining" value="{{ attributes.experienceremaining }}" class="statfield" />
+            {% else %}
+              {{ attributes.experienceremaining }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td class="textcenter">
+            <label for="experiencetotal">{{ universe_attributes.experiencetotal.name }}<label>
+          </td>
+
+          <td class="textcenter">
+            <label for="experiencespent">{{ universe_attributes.experiencespent.name }}</label>
+          </td>
+
+          <td class="textcenter">
+            <label for="experienceremaining">{{ universe_attributes.experienceremaining.name }}</label>
+          </td>
+
+        </tr>
+
+      </table>
+
     </div>
 
   </div>
@@ -1415,11 +1463,93 @@
 
       <h2 class="sectionheader">Soak</h2>
 
+      <table class="fullwidth">
+
+        <tr>
+
+          <td>B</td>
+          <td class="soakfield lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="soakbashing" value="{{ attributes.soakbashing }}" class="statfield" />
+            {% else %}
+              {{ attributes.soakbashing }}
+            {% endif %}
+          </td>
+
+          <td>L</td>
+          <td class="soakfield lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="soaklethal" value="{{ attributes.soaklethal }}" class="statfield" />
+            {% else %}
+              {{ attributes.soaklethal }}
+            {% endif %}
+          </td>
+
+          <td>A</td>
+          <td class="soakfield lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="soakaggravated" value="{{ attributes.soakaggravated }}" class="statfield" />
+            {% else %}
+              {{ attributes.soakaggravated }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      </table>
+
     </div>
 
     <div id="armor">
 
       <h2 class="sectionheader">{{ universe_attributes.armor.name }}</h2>
+
+      <table class="fullwidth">
+
+        <tr>
+
+          <td class="lightunderline textcenter fullwidth" colspan="6">
+            {% if editmode %}
+              <input type="text" name="armor" value="{{ attributes.armor }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.armor }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td>B</td>
+          <td class="armorfield lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="armorbashing" value="{{ attributes.armorbashing }}" class="statfield" />
+            {% else %}
+              {{ attributes.armorbashing }}
+            {% endif %}
+          </td>
+          
+          <td>L</td>
+          <td class="armorfield lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="armorlethal" value="{{ attributes.armorlethal }}" class="statfield" />
+            {% else %}
+              {{ attributes.armorlethal }}
+            {% endif %}
+          </td>
+
+          <td>A</td>
+          <td class="armorfield lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="armoraggravated" value="{{ attributes.armoraggravated }}" class="statfield" />
+            {% else %}
+              {{ attributes.armoraggravated }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      </table>
 
     </div>
 

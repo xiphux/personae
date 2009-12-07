@@ -38,6 +38,22 @@ div#willpowercombat div#combat td {
   white-space: nowrap;
 }
 
+div#movement td {
+  width: 33%;
+}
+
+div#experience td {
+  width: 33%;
+}
+
+div#soak td.soakfield {
+  width: 33%;
+}
+
+div#armor td.armorfield {
+  width: 33%;
+}
+
 .tablecenter {
 	margin: 0 auto;
 }
@@ -72,3 +88,4 @@ div#willpowercombat div#combat td {
 	border-style: solid;
 	border-color: #c8cace;
 }
+
