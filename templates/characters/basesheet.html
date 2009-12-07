@@ -103,11 +103,17 @@
 
           <form action="/characters/{{ character.id }}/goto/" method="get">
             <label for="revision" class="label">Revisions:</label>
+	    {% if prevrevision %}
+	      <a href="/characters/{{ character.id }}/{{ prevrevision.revision }}/">&lt;</a>
+	    {% endif %}
             <select name="revision" onchange="form.submit()">
               {% for rev in revision_list %}
                 <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% if rev.name %} [{{rev.name}}]{% endif %}</option>
               {% endfor %}
             </select>
+	    {% if nextrevision %}
+	      <a href="/characters/{{ character.id }}/{{ nextrevision.revision }}/">&gt;</a>
+	    {% endif %}
             <input id="revisionnavsubmit" type="submit" value="View" />
           </form>
 

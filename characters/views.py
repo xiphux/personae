@@ -191,6 +191,18 @@ def viewrevision(request, character_id, revision_id):
 	except (Revision.DoesNotExist):
 		return HttpResponse("No such revision for character %s." % character.name)
 
+	prevrevision = None
+	nextrevision = None
+	try:
+		prevrevision = character.revision_set.get(revision=(int(revision_id)-1))
+	except (Revision.DoesNotExist):
+		pass
+
+	try:
+		nextrevision = character.revision_set.get(revision=(int(revision_id)+1))
+	except (Revision.DoesNotExist):
+		pass
+
 	try:
 		universe_attributes = character.universe.attribute_set.all()
 	except:
@@ -215,6 +227,8 @@ def viewrevision(request, character_id, revision_id):
 		'revision_list': revision_list,
 		'revision': revision,
 		'universe_attributes': universe_attribute_list,
+		'prevrevision': prevrevision,
+		'nextrevision': nextrevision,
 	})
 
 #
