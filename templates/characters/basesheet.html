@@ -36,6 +36,30 @@
 
 {% else %}
 
+  <script type="text/javascript">
+    var menuY = null;
+
+    $(document).ready(function(){
+      var p = $("#revisionnav").position();
+      menuY = p.top;
+      $("#revisionnavfloating").hide();
+      var menu = $("#revisionnav").clone();
+      menu.appendTo("#revisionnavfloating");
+
+      $(window).scroll(function(){
+        var windowY = $(document).scrollTop();
+        if (windowY > menuY) {
+          $("#revisionnavfloating").show();
+        } else {
+          $("#revisionnavfloating").hide();
+        }
+      });
+    });
+  </script>
+
+  <div id="revisionnavfloating">
+  </div>
+
   <div id="revisionnav">
 
     <div id="revisions" class="twocolumnleft">
@@ -50,9 +74,9 @@
 	    })
 	  </script>
 
-          <form name="revisionnavform" action="/characters/{{ character.id }}/goto/" method="get">
+          <form action="/characters/{{ character.id }}/goto/" method="get">
             <label for="revision">Revisions:</label>
-            <select name="revision" onchange="document.revisionnavform.submit()">
+            <select name="revision" onchange="form.submit()">
               {% for rev in revision_list %}
                 <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% if rev.name %} [{{rev.name}}]{% endif %}</option>
               {% endfor %}

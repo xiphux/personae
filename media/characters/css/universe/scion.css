@@ -10,6 +10,10 @@ div#body {
 	padding-right: 10px;
 }
 
+div#revisionnavfloating {
+  background-color: white;
+}
+
 div#basicinfo .basicinfolabel {
   font-size: smaller;
 }

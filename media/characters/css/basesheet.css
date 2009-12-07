@@ -44,3 +44,9 @@ div#revisionnav div#editaction a {
   font-size: larger;
 }
 
+div#revisionnavfloating {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
