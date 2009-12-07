@@ -40,19 +40,27 @@
     var menuY = null;
 
     $(document).ready(function(){
-      var p = $("#revisionnav").position();
-      menuY = p.top;
-      $("#revisionnavfloating").hide();
-      $("#revisionnavfloating").width($("#revisionnav").width());
-      var menu = $("#revisionnav").clone();
-      $("#revisionnavfloating").append(menu.html());
+      var nav = $("#revisionnav");
+      var floatingnav = $("#revisionnavfloating");
+
+      menuY = nav.position().top;
+
+      floatingnav.hide();
+      floatingnav.append(nav.clone().html());
 
       $(window).scroll(function(){
         var windowY = $(document).scrollTop();
+	var floatingnav = $("#revisionnavfloating");
         if (windowY > menuY) {
-          $("#revisionnavfloating").show();
+	  var nav = $("#revisionnav");
+	  var navwidth = nav.width();
+	  var floatingwidth = floatingnav.width();
+          floatingnav.show();
+	  if (navwidth != floatingwidth) {
+	    floatingnav.width(navwidth);
+	  }
         } else {
-          $("#revisionnavfloating").hide();
+          floatingnav.hide();
         }
       });
     });
