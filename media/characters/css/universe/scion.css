@@ -58,6 +58,10 @@ div#armor td.armorfield {
   width: 33%;
 }
 
+div#legend td.legendpointsfield {
+  width: 25%;
+}
+
 .tablecenter {
 	margin: 0 auto;
 }

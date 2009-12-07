@@ -1559,7 +1559,50 @@
 
     <div id="legend">
 
-      <h2 class="sectionheader">Legend</h2>
+      <h2 class="sectionheader">{{ universe_attributes.legend.name }}</h2>
+
+      <table class="tablecenter">
+
+      	<tr>
+          <td colspan="4" class="textcenter">
+            {% if editmode %}
+              <input type="text" name="legend" value="{{ attributes.legend|default:"0" }}" class="statfield" />
+            {% else %}
+              {{ attributes.legend.value|dots:universe_attributes.legend.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="4" class="textcenter">
+            {% if editmode %}
+              <input type="text" name="legendcurrent" value="{{ attributes.legendcurrent|default:"0" }}" class="statfield" />
+            {% else %}
+              {{ attributes.legendcurrent.value|squares:universe_attributes.legendcurrent.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr>
+          <td>{{ universe_attributes.legendpoints.name }}</td>
+          <td class="legendpointsfield lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="legendpoints" value="{{ attributes.legendpoints|default:"0" }}" class="statfield" />
+            {% else %}
+              {{ attributes.legendpoints }}
+            {% endif %}
+          </td>
+          <td>|</td>
+          <td class="legendpointsfield lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="legendpointsmax" value="{{ attributes.legendpointsmax|default:"0" }}" class="statfield" />
+            {% else %}
+              {{ attributes.legendpointsmax }}
+            {% endif %}
+          </td>
+        </tr>
+
+      </table>
 
     </div>
 
