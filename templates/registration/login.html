@@ -1,13 +1,22 @@
+<h2>Personae</h2>
+
 {% if form.errors %}
   <p>Invalid username or password</p>
 {% endif %}
 
 <form action="." method="post">
-  <label for="username">Username:</label>
-  <input type="text" name="username" value="" id="username">
-  <label for="password">Password:</label>
-  <input type="password" name="password" value="" id="password">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" value="" id="username">
+  </div>
 
-  <input type="submit" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" value="" id="password">
+  </div>
+
+  <div>
+    <input type="submit" value="Login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </div>
 </form>
