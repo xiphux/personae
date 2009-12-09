@@ -1839,4 +1839,193 @@
 
 </div>
 
+<div id="relics">
+
+  <h2 class="sectionheader">{{ universe_attributes.relics.name }}</h2>
+
+  {% if editmode %}
+
+    <script type="text/javascript">
+
+      function addRelic(animate) {
+        var id = document.getElementById("relicid").value;
+        id = (id * 1) + 1;
+        var field = $('#relic0').clone();
+        field.attr('id','relic' + id);
+        field.show();
+        field.appendTo('#relicrows');
+        if (animate) {
+          $("#relic" + id).highlightFade({
+            speed:1000
+          })
+        }
+        document.getElementById("relicid").value = id.toString();
+      }
+
+      $(document).ready(function(){
+        $('#relic0').hide();
+        if (document.getElementById("relicid").value == 0) {
+          addRelic(false);
+          //$("#relic1 > .removerow").hide();
+        }
+      });
+
+    </script>
+
+    {% for num, relic in attributes.relics.items %}
+      {% if forloop.last %}
+        <input type="hidden" id="relicid" value="{{ num }}" />
+      {% endif %}
+    {% empty %}
+      <input type="hidden" id="relicid" value="0" />
+    {% endfor %}
+
+    <a class="nounderline" href="#" onclick="addRelic(true); return false;">Add relic</a>
+
+    <table id="relictable" class="fullwidth">
+
+      <thead>
+
+        <tr>
+          <th class="relicheader">Name</th>
+          <th>Rank</th>
+          <th class="relicheader">Purviews</th>
+          <th class="relicheader">Effect</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="relicrows">
+
+        {% for num, relic in attributes.relics.items %}
+
+          <tr id="relic{{ num }}">
+
+            <td>
+              <div class="lightunderline">
+                <input type="text" name="relicname" value="{{ relic.relicname }}" class="fullwidth" />
+              </div>
+            </td>
+
+            <td>
+              <div class="lightunderline textcenter">
+                <input type="text" name="relicrank" value="{{ relic.relicrank }}" class="statfield" />
+              </div>
+            </td>
+
+            <td>
+              <div class="lightunderline">
+                <input type="text" name="relicpurviews" value="{{ relic.relicpurviews }}" class="fullwidth" />
+              </div>
+            </td>
+
+            <td>
+              <div class="lightunderline">
+                <input type="text" name="reliceffect" value="{{ relic.reliceffect }}" class="fullwidth" />
+              </div>
+            </td>
+
+            <td class="removerow">
+              <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+            </td>
+
+          </tr>
+
+        {% endfor %}
+
+        <tr id="relic0">
+
+          <td>
+            <div class="lightunderline">
+              <input type="text" name="relicname" class="fullwidth" />
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline textcenter">
+              <input type="text" name="relicrank" value="{{ relic.relicrank }}" class="statfield" />
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline">
+              <input type="text" name="relicpurviews" class="fullwidth" />
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline">
+              <input type="text" name="reliceffect" class="fullwidth" />
+            </div>
+          </td>
+
+          <td class="removerow">
+            <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  {% else %}
+
+    <table id="relictable" class="fullwidth">
+
+      {% for num, relic in attributes.relics.items %}
+
+        {% if forloop.first %}
+          
+          <tr>
+            <th class="relicheader">Name</th>
+            <th>Rank</th>
+            <th class="relicheader">Purviews</th>
+            <th class="relicheader">Effect</th>
+          </tr>
+
+        {% endif %}
+
+        <tr>
+
+          <td>
+            <div class="lightunderline">
+              {{ relic.relicname }}
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline textcenter">
+              {{ relic.relicrank }}
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline">
+              {{ relic.relicpurviews }}
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline">
+              {{ relic.reliceffect }}
+            </div>
+          </td>
+
+        </tr>
+
+      {% empty %}
+
+        <tr>
+          <td class="fullwidth emptymessage" colspan="4">No relics</td>
+        </tr>
+
+      {% endfor %}
+
+    </table>
+
+  {% endif %}
+
+</div>
+
 {% endblock %}
