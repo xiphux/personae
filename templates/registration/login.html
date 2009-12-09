@@ -17,6 +17,6 @@
 
   <div>
     <input type="submit" value="Login" />
-    <input type="hidden" name="next" value="{{ next }}" />
+    <input type="hidden" name="next" value="{{ next|default:"/characters/" }}" />
   </div>
 </form>
