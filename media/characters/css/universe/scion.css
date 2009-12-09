@@ -38,7 +38,7 @@ div#weapons table#weapontable td.weaponattribute {
   border-width: 0px 0px 1px 1px;
 }
 
-div#willpowercombat div#combat td {
+div#combat td {
   white-space: nowrap;
 }
 
@@ -60,6 +60,20 @@ div#armor td.armorfield {
 
 div#legend td.legendpointsfield {
   width: 25%;
+}
+
+table#boontable td {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+table#boontable .boonname {
+  text-align: left;
+  white-space: nowrap;
+}
+
+table#boontable .booneffect {
+  text-align: left;
 }
 
 .tablecenter {
@@ -96,3 +110,5 @@ div#legend td.legendpointsfield {
 	border-style: solid;
 	border-color: #c8cace;
 }
+
+

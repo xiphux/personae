@@ -1026,110 +1026,7 @@
 
 <div>
 
-  <div id="boons" class="threecolumnleft">
-
-    <h2 class="sectionheader">{{ universe_attributes.boons.name }}</h2>
-
-    {% if editmode %}
-
-      <script type="text/javascript">
-
-        function addBoon(animate) {
-          var id = document.getElementById("boonid").value;
-          id = (id * 1) + 1;
-          var field = $('#boon0').clone();
-          field.attr('id','boon' + id);
-          field.show();
-          field.appendTo('#boonsrows');
-          if (animate) {
-            $("#boon" + id).highlightFade({
-              speed:1000
-            });
-          }
-          document.getElementById("boonid").value = id.toString();
-        }
-
-        $(document).ready(function(){
-          $('#boon0').hide();
-          if (document.getElementById("boonid").value == 0) {
-            addBoon(false);
-            //$("#boon1 > .removerow").hide();
-          }
-        });
-
-      </script>
-
-      {% for num, boon in attributes.boons.items %}
-        {% if forloop.last %}
-          <input type="hidden" id="boonid" value="{{ num }}" />
-        {% endif %}
-      {% empty %}
-        <input type="hidden" id="boonid" value="0" />
-      {% endfor %}
-
-      <a class="nounderline" href="#" onclick="addBoon(true); return false;">Add boon</a>
-
-      <table>
-
-        <tbody id="boonsrows">
-
-          {% for num, boon in attributes.boons.items %}
-
-            <tr id="boon{{ num }}">
-
-              <td class="fullwidth">
-                <input type="text" name="boons" value="{{ boon }}" class="fullwidth" />
-              </td>
-
-              <td class="removerow">
-                <a class="nounderline" href="#" onclick="$(this).parent().parent().remove(); return false;">X</a>
-              </td>
-
-            </tr>
-
-          {% endfor %}
-
-          <tr id="boon0">
-
-            <td class="fullwidth">
-              <input type="text" name="boons" class="fullwidth" />
-            </td>
-
-            <td class="removerow">
-              <a class="nounderline" href="#" onclick="$(this).parent().parent().remove(); return false;">X</a>
-            </td>
-
-          </tr>
-          
-        </tbody>
-
-      </table>
-
-    {% else %}
-
-      <table class="fullwidth">
-
-        {% for num, boon in attributes.boons.items %}
-
-          <tr>
-            <td class="fullwidth">{{ boon }}</td>
-          </tr>
-
-        {% empty %}
-
-          <tr>
-            <td class="fullwidth emptymessage">No boons</td>
-          </tr>
-
-        {% endfor %}
-
-      </table>
-
-    {% endif %}
-
-  </div>
-
-  <div id="willpowercombat" class="threecolumnmiddle">
+  <div id="willpowercombat" class="twocolumnleft">
 
     <div id="willpower">
 
@@ -1212,7 +1109,7 @@
   
   </div>
 
-  <div id="virtues" class="threecolumnright">
+  <div id="virtues" class="twocolumnright">
 
     <h2 class="sectionheader">{{ universe_attributes.virtues.name }}</h2>
 
@@ -1345,7 +1242,7 @@
 
 <div>
 
-  <div id="movementexp" class="threecolumnleft">
+  <div class="threecolumnleft">
 
     <div id="movement">
 
@@ -1400,64 +1297,6 @@
       </table>
 
     </div>
-
-    <div id="experience">
-
-      <h2 class="sectionheader">Experience</h2>
-
-      <table class="fullwidth">
-
-        <tr>
-
-          <td class="lightunderline textcenter">
-            {% if editmode %}
-              <input type="text" name="experiencetotal" value="{{ attributes.experiencetotal }}" class="statfield" />
-            {% else %}
-              {{ attributes.experiencetotal }}
-            {% endif %}
-          </td>
-
-          <td class="lightunderline textcenter">
-            {% if editmode %}
-              <input type="text" name="experiencespent" value="{{ attributes.experiencespent }}" class="statfield" />
-            {% else %}
-              {{ attributes.experiencespent }}
-            {% endif %}
-          </td>
-
-          <td class="lightunderline textcenter">
-            {% if editmode %}
-              <input type="text" name="experienceremaining" value="{{ attributes.experienceremaining }}" class="statfield" />
-            {% else %}
-              {{ attributes.experienceremaining }}
-            {% endif %}
-          </td>
-
-        </tr>
-
-        <tr>
-
-          <td class="textcenter">
-            <label for="experiencetotal">{{ universe_attributes.experiencetotal.name }}<label>
-          </td>
-
-          <td class="textcenter">
-            <label for="experiencespent">{{ universe_attributes.experiencespent.name }}</label>
-          </td>
-
-          <td class="textcenter">
-            <label for="experienceremaining">{{ universe_attributes.experienceremaining.name }}</label>
-          </td>
-
-        </tr>
-
-      </table>
-
-    </div>
-
-  </div>
-
-  <div id="soakarmor" class="threecolumnmiddle">
 
     <div id="soak">
 
@@ -1555,7 +1394,7 @@
 
   </div>
 
-  <div id="legendhealth" class="threecolumnright">
+  <div class="threecolumnmiddle">
 
     <div id="legend">
 
@@ -1606,15 +1445,397 @@
 
     </div>
 
+    <div id="experience">
+
+      <h2 class="sectionheader">Experience</h2>
+
+      <table class="fullwidth">
+
+        <tr>
+
+          <td class="lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="experiencetotal" value="{{ attributes.experiencetotal }}" class="statfield" />
+            {% else %}
+              {{ attributes.experiencetotal }}
+            {% endif %}
+          </td>
+
+          <td class="lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="experiencespent" value="{{ attributes.experiencespent }}" class="statfield" />
+            {% else %}
+              {{ attributes.experiencespent }}
+            {% endif %}
+          </td>
+
+          <td class="lightunderline textcenter">
+            {% if editmode %}
+              <input type="text" name="experienceremaining" value="{{ attributes.experienceremaining }}" class="statfield" />
+            {% else %}
+              {{ attributes.experienceremaining }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td class="textcenter">
+            <label for="experiencetotal">{{ universe_attributes.experiencetotal.name }}<label>
+          </td>
+
+          <td class="textcenter">
+            <label for="experiencespent">{{ universe_attributes.experiencespent.name }}</label>
+          </td>
+
+          <td class="textcenter">
+            <label for="experienceremaining">{{ universe_attributes.experienceremaining.name }}</label>
+          </td>
+
+        </tr>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  <div class="threecolumnright">
+
     <div id="health">
 
       <h2 class="sectionheader">Health</h2>
+
+      <table class="tablecenter">
+
+      	<tr>
+          <td>0</td>
+
+          <td>
+            {% if editmode %}
+              <input type="text" name="health1" value="{{ attributes.health1 }}" class="statfield" />
+            {% else %}
+              {{ attributes.health1|squares:universe_attributes.health1.max }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      	<tr>
+          <td>-1</td>
+
+          <td>
+            {% if editmode %}
+              <input type="text" name="health2" value="{{ attributes.health2 }}" class="statfield" />
+            {% else %}
+              {{ attributes.health2|squares:universe_attributes.health2.max }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      	<tr>
+          <td>-1</td>
+
+          <td>
+            {% if editmode %}
+              <input type="text" name="health3" value="{{ attributes.health3 }}" class="statfield" />
+            {% else %}
+              {{ attributes.health3|squares:universe_attributes.health3.max }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      	<tr>
+          <td>-2</td>
+
+          <td>
+            {% if editmode %}
+              <input type="text" name="health4" value="{{ attributes.health4 }}" class="statfield" />
+            {% else %}
+              {{ attributes.health4|squares:universe_attributes.health4.max }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      	<tr>
+          <td>-2</td>
+
+          <td>
+            {% if editmode %}
+              <input type="text" name="health5" value="{{ attributes.health5 }}" class="statfield" />
+            {% else %}
+              {{ attributes.health5|squares:universe_attributes.health5.max }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      	<tr>
+          <td>-4</td>
+
+          <td>
+            {% if editmode %}
+              <input type="text" name="health6" value="{{ attributes.health6 }}" class="statfield" />
+            {% else %}
+              {{ attributes.health6|squares:universe_attributes.health6.max }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      	<tr>
+          <td>I</td>
+
+          <td>
+            {% if editmode %}
+              <input type="text" name="health7" value="{{ attributes.health7 }}" class="statfield" />
+            {% else %}
+              {{ attributes.health7|squares:universe_attributes.health7.max }}
+            {% endif %}
+          </td>
+
+        </tr>
+
+      </table>
 
     </div>
 
   </div>
 
   <div class="clear">&nbsp;</div>
+
+</div>
+
+<div id="boons">
+
+  <h2 class="sectionheader">{{ universe_attributes.boons.name }}</h2>
+
+  {% if editmode %}
+
+    <script type="text/javascript">
+
+      function addBoon(animate) {
+        var id = document.getElementById("boonid").value;
+        id = (id * 1) + 1;
+        var field = $('#boon0').clone();
+        field.attr('id','boon' + id);
+        field.show();
+        field.appendTo('#boonrows');
+        if (animate) {
+          $("#boon" + id).highlightFade({
+            speed:1000
+          })
+        }
+        document.getElementById("boonid").value = id.toString();
+      }
+      
+      $(document).ready(function(){
+        $('#boon0').hide();
+        if (document.getElementById("boonid").value == 0) {
+          addBoon(false);
+          //$("#boon1 > .removerow").hide();
+        }
+      });
+
+    </script>
+
+    {% for num, boon in attributes.boons.items %}
+      {% if forloop.last %}
+        <input type="hidden" id="boonid" value="{{ num }}" />
+      {% endif %}
+    {% empty %}
+      <input type="hidden" id="boonid" value="0" />
+    {% endfor %}
+
+    <a class="nounderline" href="#" onclick="addBoon(true); return false;">Add boon</a>
+
+    <table id="boontable">
+
+      <thead>
+
+        <tr>
+          <th class="boonname">Name</th>
+          <th class="textcenter">Purview</th>
+          <th class="textcenter">Rank</th>
+          <th class="booneffect">Effect</th>
+          <th class="textcenter">Dice Pool</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="boonrows">
+
+        {% for num, boon in attributes.boons.items %}
+
+          <tr id="boon{{ num }}">
+
+            <td>
+              <div class="lightunderline">
+                <select name="boonname">
+                  <option value="0"></option>
+                  {% for choice in universe_attributes.boonname.choices %}
+                    <option value="{{ choice.id }}" {% ifequal choice boon.boonname.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="lightunderline">
+                <select name="boonpurview">
+                  <option value="0"></option>
+                  {% for choice in universe_attributes.boonpurview.choices %}
+                    <option value="{{ choice.id }}" {% ifequal choice boon.boonpurview.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div class="lightunderline">
+                <input type="text" name="boonrank" value="{{ boon.boonrank }}" class="statfield" />
+              </div>
+            </td>
+
+            <td class="fullwidth">
+              <div class="lightunderline">
+                <input type="text" name="booneffect" value="{{ boon.booneffect }}" class="fullwidth" />
+              </div>
+            </td>
+
+            <td>
+              <div class="lightunderline">
+                <input type="text" name="boondicepool" value="{{ boon.boondicepool }}" class="statfield" />
+              </div>
+            </td>
+
+            <td class="removerow">
+              <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+            </td>
+
+          </tr>
+
+        {% endfor %}
+
+        <tr id="boon0">
+
+          <td>
+            <div class="lightunderline">
+              <select name="boonname">
+                <option value="0"></option>
+                {% for choice in universe_attributes.boonname.choices %}
+                  <option value="{{ choice.id }}">{{ choice.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline">
+              <select name="boonpurview">
+                <option value="0"></option>
+                {% for choice in universe_attributes.boonpurview.choices %}
+                  <option value="{{ choice.id }}">{{ choice.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline">
+              <input type="text" name="boonrank" class="statfield" />
+            </div>
+          </td>
+
+          <td class="fullwidth">
+            <div class="lightunderline">
+              <input type="text" name="booneffect" class="fullwidth" />
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline">
+              <input type="text" name="boondicepool" class="statfield" />
+            </div>
+          </td>
+
+          <td class="removerow">
+            <a class="nounderline" href="#" onclick="$(this).parent().parent().remove(); return false;">X</a>
+          </td>
+
+        </tr>
+
+      </tbody>
+    
+    </table>
+
+  {% else %}
+
+    <table id="boontable" class="fullwidth">
+
+      {% for num, boon in attributes.boons.items %}
+
+        {% if forloop.first %}
+
+          <tr>
+            <th class="boonname">Name</th>
+            <th class="textcenter">Purview</th>
+            <th class="textcenter">Rank</th>
+            <th class="booneffect">Effect</th>
+            <th class="textcenter">Dice Pool</th>
+          </tr>
+
+        {% endif %}
+
+        <tr>
+
+          <td class="boonname">
+            <div class="lightunderline">
+              {{ boon.boonname }}
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline">
+              {{ boon.boonpurview }}
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline textcenter">
+              {{ boon.boonrank }}
+            </div>
+          </td>
+
+          <td class="fullwidth">
+            <div class="lightunderline">
+              {{ boon.booneffect }}
+            </div>
+          </td>
+
+          <td>
+            <div class="lightunderline textcenter">
+              {{ boon.boondicepool }}
+            </div>
+          </td>
+
+        </tr>
+
+      {% empty %}
+
+        <tr>
+          <td class="fullwidth emptymessage" colspan="6">No boons</td>
+        </tr>
+
+      {% endfor %}
+
+    </table>
+
+  {% endif %}
 
 </div>
 
