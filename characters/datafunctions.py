@@ -170,7 +170,7 @@ def savesingleattribute(attr, line, data, newrevision, oldrevision):
 
 	val = data
 
-	if len(val) == 0:
+	if len(str(val)) == 0:
 		return
 
 	if attr.type == 1 or attr.type == 4:
