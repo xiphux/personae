@@ -11,7 +11,7 @@ from django.shortcuts import render_to_response
 #
 def index(request):
 	characters = Character.objects.all().order_by('name')
-	return render_to_response('characters/index.html', {'characters': characters})
+	return render_to_response('characters/index.html', {'characters': characters}, context_instance=RequestContext(request))
 
 #
 # Create new character form
@@ -63,7 +63,7 @@ def detail(request, character_id):
 	try:
 		revision = Revision.objects.filter(character=character_id).order_by('-rev_date')[0]
 	except (Revision.DoesNotExist, IndexError):
-		return render_to_response('characters/norevisions.html', {'character': character})
+		return render_to_response('characters/norevisions.html', {'character': character}, context_instance=RequestContext(request))
 
 	return HttpResponseRedirect(reverse('personae.characters.views.viewrevision', args=(character_id, revision.id)))
 	
@@ -99,7 +99,7 @@ def edit(request, character_id):
 			'character': character,
 			'editmode': True,
 			'universe_attributes': universe_attribute_list,
-		})
+		}, context_instance=RequestContext(request))
 
 	attribute_list = buildattributelist(universe_attributes, revision)
 
@@ -229,7 +229,7 @@ def viewrevision(request, character_id, revision_id):
 		'universe_attributes': universe_attribute_list,
 		'prevrevision': prevrevision,
 		'nextrevision': nextrevision,
-	})
+	}, context_instance=RequestContext(request))
 
 #
 # Build attribute list
