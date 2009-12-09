@@ -76,6 +76,11 @@ table#boontable .booneffect {
   text-align: left;
 }
 
+table#relictable td {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 table#relictable th.relicheader {
   text-align: left;
 }
