@@ -1,22 +1,26 @@
 import datetime
-from personae.characters.models import Universe, Character, Revision, Attribute, AttributeChoice, AttributeIntegerValue, AttributeStringValue, AttributeTextValue, AttributeChoiceValue
+from personae.characters.models import Universe, Character, Revision
+from personae.characters.datafunctions import buildattributelist, saveattributeset, saveattribute
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.contrib.auth.decorators import login_required
 
 #
 # Front index page
 # request: django request object
 #
+@login_required
 def index(request):
-	characters = Character.objects.all().order_by('name')
+	characters = Character.objects.filter(user=request.user).order_by('name')
 	return render_to_response('characters/index.html', {'characters': characters}, context_instance=RequestContext(request))
 
 #
 # Create new character form
 # request: django request object
 #
+@login_required
 def newcharacter(request):
 	universe_list = Universe.objects.all().order_by('name')
 	return render_to_response('characters/newcharacter.html', {'universe_list': universe_list}, context_instance=RequestContext(request))
@@ -25,6 +29,7 @@ def newcharacter(request):
 # Create new character form POST action
 # request: django request object
 #
+@login_required
 def createcharacter(request):
 	try:
 		char_name = request.POST['name']
@@ -46,7 +51,7 @@ def createcharacter(request):
 			'error_message': "You didn't choose a universe.",
 		}, context_instance=RequestContext(request))
 
-	char = universe.character_set.create(name=char_name)
+	char = universe.character_set.create(name=char_name, user=request.user)
 	return HttpResponseRedirect(reverse('personae.characters.views.detail', args=(char.id,)))
 		
 #
@@ -54,11 +59,15 @@ def createcharacter(request):
 # request: django request object
 # character_id: character id
 #
+@login_required
 def detail(request, character_id):
 	try:
 		character = Character.objects.get(pk=character_id)
 	except (Character.DoesNotExist):
 		return HttpResponse("No such character.")
+
+	if character.user != request.user:
+		return HttpResponse("You do not have access to view this character.")
 
 	try:
 		revision = Revision.objects.filter(character=character_id).order_by('-rev_date')[0]
@@ -72,11 +81,15 @@ def detail(request, character_id):
 # request: django request object
 # character_id: character id
 #
+@login_required
 def edit(request, character_id):
 	try:
 		character = Character.objects.get(pk=character_id)
 	except (Character.DoesNotExist):
 		return HttpResponse("No such character.")
+
+	if character.user != request.user:
+		return HttpResponse("You do not have access to edit this character.")
 
 	if len(character.universe.descriptor) == 0:
 		return HttpResponse("Invalid universe descriptor.")
@@ -115,11 +128,15 @@ def edit(request, character_id):
 # request: django request object
 # character_id: character id
 #
+@login_required
 def saverevision(request, character_id):
 	try:
 		character = Character.objects.get(pk=character_id)
 	except (Character.DoesNotExist):
 		return HttpResponse("No such character.")
+
+	if character.user != request.user:
+		return HttpResponse("You do not have access to edit this character.")
 
 	try:
 		universe_attributes = character.universe.attribute_set.filter(parentattribute__isnull=True)
@@ -164,6 +181,7 @@ def saverevision(request, character_id):
 # request: django request object
 # character_id: character id
 #
+@login_required
 def gotorevision(request, character_id):
 	try:
 		revision_id = request.GET['revision']
@@ -180,11 +198,15 @@ def gotorevision(request, character_id):
 # character_id: character id
 # revision_id: revision id
 #
+@login_required
 def viewrevision(request, character_id, revision_id):
 	try:
 		character = Character.objects.get(pk=character_id)
 	except (Character.DoesNotExist):
 		return HttpResponse("No such character.")
+
+	if character.user != request.user:
+		return HttpResponse("You do not have access to view this character.")
 
 	try:
 		revision = character.revision_set.get(revision=revision_id)
@@ -230,231 +252,4 @@ def viewrevision(request, character_id, revision_id):
 		'prevrevision': prevrevision,
 		'nextrevision': nextrevision,
 	}, context_instance=RequestContext(request))
-
-#
-# Build attribute list
-# universe_attributes: list of universe attributes to build data for
-# revision: revision with data
-#
-def buildattributelist(universe_attributes, revision):
-	attribute_list = {}
-
-	univ_attributes_readlist = universe_attributes.filter(parentattribute__isnull=True)
-
-	for attr in univ_attributes_readlist:
-		val = readattribute(attr, revision)
-		if val is not None:
-			attribute_list[attr.descriptor] = val
-	
-	return attribute_list
-
-#
-# read attribute
-# attr: attribute to read data for
-# revision: revision with data
-#
-def readattribute(attr, revision):
-	if attr.type == 1:
-		attrvaluelist = revision.attributeintegervalue_set.all()
-	elif attr.type == 2:
-		attrvaluelist = revision.attributestringvalue_set.all()
-	elif attr.type == 3:
-		attrvaluelist = revision.attributetextvalue_set.all()
-	elif attr.type == 4:
-		attrvaluelist = revision.attributechoicevalue_set.all()
-	elif attr.type == 5:
-		attrvaluelist = revision.attributesetvalue_set.all()
-	else:
-		return
-
-	if attr.type == 5:
-		if attr.multiple:
-			vallist = attrvaluelist.filter(attribute=attr.id).order_by('line')
-			val = {}
-			data_lists = {}
-			for subattr in attr.attribute_set.all():
-				data_lists[subattr.descriptor] = readattribute(subattr, revision)
-			for valitem in vallist:
-				val[valitem.line] = {}
-				for subattr in attr.attribute_set.all():
-					try:
-						tmp = data_lists[subattr.descriptor][valitem.line]
-						val[valitem.line][subattr.descriptor] = tmp
-					except (IndexError, KeyError):
-						pass
-			return val
-		else:
-			subattr_values = {}
-			for subattr in attr.attribute_set.all():
-				val = readattribute(subattr, revision)
-				if val is not None:
-					subattr_values[subattr.descriptor] = val
-			if len(subattr_values) > 0:
-				return subattr_values
-	else:
-		try:
-			if attr.multiple:
-				vallist = attrvaluelist.filter(attribute=attr.id).order_by('line')
-				val = {}
-				for valitem in vallist:
-					val[valitem.line] = valitem
-			else:
-				val = attrvaluelist.get(attribute=attr.id)
-			return val
-		except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist, AttributeChoiceValue.DoesNotExist):
-			pass
-
-#
-# save attribute set
-# attr: attribute of type set
-# postdata: POST data dictionary
-# newrevision: new revision to save to
-# oldrevision: old revision to copy forward from
-#
-def saveattributeset(attr, postdata, newrevision, oldrevision):
-	vallist = {}
-	maxlines = 0
-	for subattr in attr.attribute_set.all():
-		data = postdata.getlist(subattr.descriptor)
-		if len(data) > maxlines:
-			maxlines = len(data)
-		vallist[subattr.descriptor] = data
-	
-	for i in range(maxlines):
-		newvallist = []
-		for subattr in attr.attribute_set.all():
-			try:
-				val = savesingleattribute(subattr, i+1, vallist[subattr.descriptor][i], newrevision, oldrevision)
-				if val is not None:
-					newvallist.append(val)
-			except (IndexError, KeyError):
-				pass
-		if len(newvallist) > 0:
-			needsnew = False
-			if oldrevision is None:
-				needsnew = True
-			else:
-				for item in newvallist:
-					if item.attributesetvalue.count() == 0:
-						needsnew = True
-			if needsnew == True:
-				setattr = newrevision.attributesetvalue_set.create(attribute=attr, line=i+1)
-				for item in newvallist:
-					item.attributesetvalue.add(setattr)
-					item.save()
-			else:
-				setattr = oldrevision.attributesetvalue_set.get(attribute=attr, line=i+1)
-				setattr.revisions.add(newrevision)
-				setattr.save()
-
-#
-# save attribute
-# attr: attribute to save
-# postdata: POST data dictionary
-# newrevision: new revision to save to
-# oldrevision: old revision to copy forward from
-#
-def saveattribute(attr, postdata, newrevision, oldrevision):
-	if attr.multiple == True:
-		try:
-			vallist = postdata.getlist(attr.descriptor)
-		except (KeyError):
-			return
-
-		if len(vallist) == 0:
-			return
-		
-		count = 0
-		for ln in vallist:
-			val = ln
-			if len(val) == 0:
-				continue
-
-			if attr.type == 1 or attr.type == 4:
-				val = int(val)
-				if val < 1:
-					continue
-
-			count += 1
-			savesingleattribute(attr, count, val, newrevision, oldrevision)
-
-				
-	else:
-		try:
-			val = postdata[attr.descriptor]
-		except (KeyError):
-			return
-
-		savesingleattribute(attr, 0, val, newrevision, oldrevision)
-
-#
-# save single line of attribute
-# attr: attribute to save
-# line: line of data to save
-# data: data to save
-# newrevision: new revision to save to
-# oldrevision: old revision to copy forward from
-#
-def savesingleattribute(attr, line, data, newrevision, oldrevision):
-	if line < 0:
-		return
-
-	val = data
-
-	if len(val) == 0:
-		return
-
-	if attr.type == 1 or attr.type == 4:
-		val = int(val)
-		if val < 1:
-			return
-
-	if attr.type == 1:
-		if oldrevision is not None:
-			oldattrset = oldrevision.attributeintegervalue_set
-		else:
-			oldattrset = None
-		newattrset = newrevision.attributeintegervalue_set
-	elif attr.type == 2:
-		if oldrevision is not None:
-			oldattrset = oldrevision.attributestringvalue_set
-		else:
-			oldattrset = None
-		newattrset = newrevision.attributestringvalue_set
-	elif attr.type == 3:
-		if oldrevision is not None:
-			oldattrset = oldrevision.attributetextvalue_set
-		else:
-			oldattrset = None
-		newattrset = newrevision.attributetextvalue_set
-	elif attr.type == 4:
-		if oldrevision is not None:
-			oldattrset = oldrevision.attributechoicevalue_set
-		else:
-			oldattrset = None
-		newattrset = newrevision.attributechoicevalue_set
-	else:
-		return
-
-	if oldrevision is not None:
-		try:
-			oldval = oldattrset.get(attribute=attr, line=line)
-			if attr.type == 4:
-				if oldval.choice.id == val:
-					oldval.revisions.add(newrevision)
-					oldval.save()
-					return oldval
-			else:
-				if oldval.value == val:
-					oldval.revisions.add(newrevision)
-					oldval.save()
-					return oldval
-		except (AttributeIntegerValue.DoesNotExist, AttributeStringValue.DoesNotExist, AttributeTextValue.DoesNotExist, AttributeChoiceValue.DoesNotExist):
-			pass
-	if attr.type == 4:
-		ch = AttributeChoice.objects.get(pk=val)
-		return newattrset.create(attribute=attr, choice=ch, line=line)
-	else:
-		return newattrset.create(attribute=attr, value=val, line=line)
-
 

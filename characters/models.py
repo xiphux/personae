@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Universe(models.Model):
 	name = models.CharField(max_length=200)
@@ -39,6 +40,7 @@ class AttributeChoice(models.Model):
 class Character(models.Model):
 	universe = models.ForeignKey(Universe)
 	name = models.CharField(max_length=200)
+	user = models.ForeignKey(User)
 
 	def __unicode__(self):
 		return self.name
