@@ -79,6 +79,10 @@ div#actions div#logoutaction {
   text-align: right;
 }
 
+div#saveaction {
+  text-align: center;
+}
+
 .label {
   color: Gray;
 }

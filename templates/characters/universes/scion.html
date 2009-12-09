@@ -2028,4 +2028,112 @@
 
 </div>
 
+<div id="knacks">
+
+  <h2 class="sectionheader">{{ universe_attributes.knacks.name }}</h2>
+
+  {% if editmode %}
+    
+    <script type="text/javascript">
+
+      function addKnack(animate) {
+        var id = document.getElementById("knackid").value;
+        id = (id * 1) + 1;
+        var field = $('#knack0').clone();
+        field.attr('id','knack' + id);
+        field.show();
+        var knackclear = $('#knackclear').clone();
+        $('#knackclear').remove();
+        field.appendTo('#knackrows');
+        knackclear.appendTo('#knackrows');
+        if (animate) {
+          $("#knack" + id).highlightFade({
+            speed:1000
+          })
+        }
+        document.getElementById("knackid").value = id.toString();
+      }
+
+      $(document).ready(function(){
+        $('#knack0').hide();
+        if (document.getElementById("knackid").value == 0) {
+          addKnack(false);
+          //$("#knack1 > .removerow").hide();
+        }
+      });
+
+    </script>
+
+    {% for num, knack in attributes.knacks.items %}
+      {% if forloop.last %}
+        <input type="hidden" id="knackid" value="{{ num }}" />
+      {% endif %}
+    {% empty %}
+      <input type="hidden" id="knackid" value="0" />
+    {% endfor %}
+
+    <a class="nounderline" href="#" onclick="addKnack(true); return false;">Add knack</a>
+
+    <div id="knackrows">
+
+      {% for num, knack in attributes.knacks.items %}
+        <div class="knackitem" id="knack{{ num }}">
+          <div class="lightunderline knackline">
+            <select name="knacks">
+              <option value="0"></option>
+              {% for choice in universe_attributes.knacks.choices %}
+                <option value="{{ choice.id }}" {% ifequal choice knack.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="removerow">
+            <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+          </div>
+        </div>
+      {% endfor %}
+
+      <div class="knackitem" id="knack0">
+        <div class="lightunderline knackline">
+          <select name="knacks">
+            <option value="0"></option>
+            {% for choice in universe_attributes.knacks.choices %}
+              <option value="{{ choice.id }}">{{ choice.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="removerow">
+          <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+        </div>
+      </div>
+
+      <div id="knackclear" class="clear">&nbsp;</div>
+
+    </div>
+
+  {% else %}
+
+    <div id="knackrows">
+
+      {% for num, knack in attributes.knacks.items %}
+
+        <div class="knackitem">
+          <div class="lightunderline">
+            {{ knack.choice.name }}
+          </div>
+        </div>
+
+      {% empty %}
+
+        <div class="emptymessage">No knacks</div>
+
+      {% endfor %}
+
+      <div class="clear">&nbsp;</div>
+
+    </div>
+
+  {% endif %}
+
+</div>
+
 {% endblock %}
