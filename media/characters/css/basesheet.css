@@ -55,7 +55,7 @@ div#revisionnotes {
 	width: 69%;
 }
 
-div#editaction {
+div#actions {
 	width: 27%;
 	float: left;
 	padding-left: 9px;
@@ -71,12 +71,12 @@ div#revisionnavfloating {
   width: 100%;
 }
 
-div#editaction {
-  text-align: right;
+div#actions a {
+  font-size: larger;
 }
 
-div#editaction a {
-  font-size: larger;
+div#actions div#logoutaction {
+  text-align: right;
 }
 
 .label {

@@ -124,9 +124,14 @@
 
     </div>
 
-    <div id="editaction">
+    <div id="actions">
 
-      <a href="/characters/{{ character.id }}/edit/" class="nounderline">Edit</a>
+      <div id="editaction" class="twocolumnleft">
+        <a href="/characters/{{ character.id }}/edit/" class="nounderline">Edit</a>
+      </div>
+      <div id="logoutaction" class="twocolumnright">
+        <a href="/accounts/logout/" class="nounderline">Logout</a>
+      </div>
 
     </div>
 
