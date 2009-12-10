@@ -104,7 +104,7 @@
           <form action="/characters/{{ character.id }}/goto/" method="get">
             <label for="revision" class="label">Revisions:</label>
 	    {% if prevrevision %}
-	      <a class="nounderline" href="/characters/{{ character.id }}/{{ prevrevision.revision }}/">&lt;</a>
+	      <a class="nounderline" href="/characters/{{ character.id }}/{{ prevrevision.revision }}/">&larr;</a>
 	    {% endif %}
             <select name="revision" onchange="form.submit()">
               {% for rev in revision_list %}
@@ -112,7 +112,7 @@
               {% endfor %}
             </select>
 	    {% if nextrevision %}
-	      <a class="nounderline" href="/characters/{{ character.id }}/{{ nextrevision.revision }}/">&gt;</a>
+	      <a class="nounderline" href="/characters/{{ character.id }}/{{ nextrevision.revision }}/">&rarr;</a>
 	    {% endif %}
             <input id="revisionnavsubmit" type="submit" value="View" />
 	    {% if prevrevision %}
