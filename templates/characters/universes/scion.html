@@ -2150,13 +2150,25 @@
 
 <div id="guide">
 
-  <h2 class="sectionheader">Guide</h2>
+  <h2 class="sectionheader">{{ universe_attributes.guide.name }}</h2>
+
+  {% if editmode %}
+    <textarea name="guide" rows="6" class="fullwidth">{{ attributes.guide }}</textarea>
+  {% else %}
+    {{ attributes.guide }}
+  {% endif %}
 
 </div>
 
 <div id="history">
 
-  <h2 class="sectionheader">History</h2>
+  <h2 class="sectionheader">{{ universe_attributes.history.name }}</h2>
+
+  {% if editmode %}
+    <textarea name="history" rows="18" class="fullwidth">{{ attributes.history }}</textarea>
+  {% else %}
+    {{ attributes.history }}
+  {% endif %}
 
 </div>
 
