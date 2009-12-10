@@ -2155,7 +2155,11 @@
   {% if editmode %}
     <textarea name="guide" rows="6" class="fullwidth">{{ attributes.guide }}</textarea>
   {% else %}
-    {{ attributes.guide }}
+		{% if attributes.guide %}
+			{{ attributes.guide }}
+		{% else %}
+			<div class="emptymessage">No guide info</div>
+		{% endif %}
   {% endif %}
 
 </div>
@@ -2167,7 +2171,11 @@
   {% if editmode %}
     <textarea name="history" rows="18" class="fullwidth">{{ attributes.history }}</textarea>
   {% else %}
-    {{ attributes.history }}
+  	{% if attributes.history %}
+    	{{ attributes.history }}
+		{% else %}
+			<div class="emptymessage">No history info</div>
+		{% endif %}
   {% endif %}
 
 </div>
