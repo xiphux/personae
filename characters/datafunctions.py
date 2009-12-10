@@ -88,12 +88,12 @@ def saveattributeset(attr, postdata, newrevision, oldrevision):
 		if len(data) > maxlines:
 			maxlines = len(data)
 		vallist[subattr.descriptor] = data
-	
-	for i in range(maxlines):
+
+	for i in range(1, maxlines+1):
 		newvallist = []
 		for subattr in attr.attribute_set.all():
 			try:
-				val = savesingleattribute(subattr, i+1, vallist[subattr.descriptor][i], newrevision, oldrevision)
+				val = savesingleattribute(subattr, i, vallist[subattr.descriptor][i-1], newrevision, oldrevision)
 				if val is not None:
 					newvallist.append(val)
 			except (IndexError, KeyError):
@@ -107,12 +107,12 @@ def saveattributeset(attr, postdata, newrevision, oldrevision):
 					if item.attributesetvalue.count() == 0:
 						needsnew = True
 			if needsnew == True:
-				setattr = newrevision.attributesetvalue_set.create(attribute=attr, line=i+1)
+				setattr = newrevision.attributesetvalue_set.create(attribute=attr, line=i)
 				for item in newvallist:
 					item.attributesetvalue.add(setattr)
 					item.save()
 			else:
-				setattr = oldrevision.attributesetvalue_set.get(attribute=attr, line=i+1)
+				setattr = oldrevision.attributesetvalue_set.get(attribute=attr, line=i)
 				setattr.revisions.add(newrevision)
 				setattr.save()
 
@@ -226,4 +226,88 @@ def savesingleattribute(attr, line, data, newrevision, oldrevision):
 	else:
 		return newattrset.create(attribute=attr, value=val, line=line)
 
+#
+# diff two revisions
+# leftrev: left revision
+# rightrev: right revision
+#
+def diffrevisions(leftrev, rightrev):
+	if (leftrev is None) or (rightrev is None):
+		return
+
+	if leftrev.character.universe != rightrev.character.universe:
+		return
+
+	try:
+		universe_attributes = leftrev.character.universe.attribute_set.all()
+	except:
+		return
+
+	difflist = []
+	for attr in universe_attributes:
+		if attr.type != 5:
+			leftattr = readattribute(attr, leftrev)
+			rightattr = readattribute(attr, rightrev)
+			diff = diffattribute(attr, leftattr, rightattr)
+			if diff is not None:
+				difflist.append(diff)
+
+	return difflist
+
+#
+# diff attribute
+# attr: attribute to diff
+# leftvalue: left item or list of items
+# rightvalue = right item or list of items
+#
+def diffattribute(attr, leftvalue, rightvalue):
+	if (leftvalue is None) and (rightvalue is None):
+		return
+
+	if attr.multiple:
+		listlen = len(leftvalue)
+		values = {}
+		if len(rightvalue) > listlen:
+			listlen = len(rightvalue)
+		for i in range(1, listlen+1):
+			leftline = None
+			rightline = None
+			try:
+				leftline = leftvalue[i]
+			except (KeyError):
+				pass
+			try:
+				rightline = rightvalue[i]
+			except (KeyError):
+				pass
+
+			if (leftline is None) and (rightline is None):
+				continue
+
+			if attr.type == 4:
+				if (leftline is None) or (rightline is None):
+					values[i] = (leftline, rightline)
+				elif leftline.choice != rightline.choice:
+					values[i] = (leftline, rightline)
+			elif (attr.type == 1) or (attr.type == 2) or (attr.type == 3):
+				if (leftline is None) or (rightline is None):
+					values[i] = (leftline, rightline)
+				elif leftline.value != rightline.value:
+					values[i] = (leftline, rightline)
+
+
+		if len(values) > 0:
+			return (attr, values)
+	else:
+		if attr.type == 4:
+			if (leftvalue is None) or (rightvalue is None):
+				return (attr, leftvalue, rightvalue)
+			elif leftvalue.choice != rightvalue.choice:
+				return (attr, leftvalue, rightvalue)
+		elif (attr.type == 1) or (attr.type == 2) or (attr.type == 3):
+			if (leftvalue is None) or (rightvalue is None):
+				return (attr, leftvalue, rightvalue)
+			elif leftvalue.value != rightvalue.value:
+				return (attr, leftvalue, rightvalue)
+		
 

@@ -125,16 +125,14 @@ div#knackrows .knackitem .removerow {
   width: 30px;
 }
 
-.emptymessage {
-  color: #a8aaae;
-  font-style: italic;
-  text-align: center;
-}
-
 .lightunderline {
 	border-width: 0px 0px 1px 0px;
 	border-style: solid;
 	border-color: #c8cace;
+}
+
+.emptymessage {
+  text-align: center;
 }
 
 

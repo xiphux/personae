@@ -1,6 +1,6 @@
 import datetime
 from personae.characters.models import Universe, Character, Revision
-from personae.characters.datafunctions import buildattributelist, saveattributeset, saveattribute
+from personae.characters.datafunctions import buildattributelist, saveattributeset, saveattribute, diffrevisions
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -251,5 +251,36 @@ def viewrevision(request, character_id, revision_id):
 		'universe_attributes': universe_attribute_list,
 		'prevrevision': prevrevision,
 		'nextrevision': nextrevision,
+	}, context_instance=RequestContext(request))
+
+@login_required
+def diffrevision(request, character_id, revision_id):
+	try:
+		character = Character.objects.get(pk=character_id)
+	except (Character.DoesNotExist):
+		return HttpResponse("No such character.")
+
+	if character.user != request.user:
+		return HttpResponse("You do not have access to view this character.")
+
+	try:
+		revision = character.revision_set.get(revision=revision_id)
+	except (Revision.DoesNotExist):
+		return HttpResponse("No such revision for character %s." % character.name)
+
+	try:
+		prevrevision = character.revision_set.get(revision=(int(revision_id)-1))
+	except (Revision.DoesNotExist):
+		return HttpResponse("No previous revision.")
+
+	difflist = diffrevisions(prevrevision, revision)
+
+	#raise Exception(difflist)
+
+	return render_to_response('characters/diff.html', {
+		'character': character,
+		'leftrev': prevrevision,
+		'rightrev': revision,
+		'difflist': difflist,
 	}, context_instance=RequestContext(request))
 

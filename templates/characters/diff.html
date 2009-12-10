@@ -1,0 +1,137 @@
+{% extends "characters/base.html" %}
+
+{% block subcss %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}characters/css/diff.css">
+{% endblock %}
+
+{% block body %}
+
+<div id="diffinfo">
+
+  <table>
+
+    <tr>
+      <td class="label">Character:</td>
+      <td>{{ character.name }}</td>
+    </tr>
+
+    <tr>
+      <td class="label">Old revision:</td>
+      <td>{{ leftrev }}{% if leftrev.name %} [{{ leftrev.name }}]{% endif %}
+    </tr>
+
+    {% if leftrev.notes %}
+      <tr>
+        <td class="label">Old revision notes:</td>
+        <td>{{ leftrev.notes }}</td>
+      </tr>
+    {% endif %}
+
+    <tr>
+      <td class="label">New revision:</td>
+      <td>{{ rightrev }}{% if rightrev.name %} [{{ rightrev.name }}]{% endif %}
+    </tr>
+
+    {% if rightrev.notes %}
+      <tr>
+        <td class="label">New revision notes:</td>
+        <td>{{ rightrev.notes }}</td>
+      </tr>
+    {% endif %}
+
+  </table>
+
+</div>
+
+<div id="diffdata">
+
+  <table id="difflist">
+    {% for attr, left, right in difflist %}
+
+      {% if forloop.first %}
+        <tr>
+          <th class="diffattrname">Attribute</th>
+          <th class="diffline">Line</th>
+          <th class="diffvalue">Old value</th>
+          <th>&rarr;</th>
+          <th class="diffvalue">New value</th>
+        </tr>
+      {% endif %}
+
+      {% if attr.multiple %}
+
+        {% for key, values in left.items %}
+
+          <tr>
+            <td class="diffattrname">{{ attr.name }}</td>
+            <td class="diffline">{{ key }}</td>
+
+            {% if values.0 %}
+              <td class="diffvalue">{{ values.0 }}</td>
+            {% else %}
+              {% ifequal attr.type 1 %}
+                <td class="diffvalue">0</td>
+              {% else %}
+                <td class="diffvalue"></td>
+              {% endifequal %}
+            {% endif %}
+              
+            <td></td>
+            
+            {% if values.1 %}
+              <td class="diffvalue">{{ values.1 }}</td>
+            {% else %}
+              {% ifequal attr.type 1 %}
+                <td class="diffvalue">0</td>
+              {% else %}
+                <td class="diffvalue"></td>
+              {% endifequal %}
+            {% endif %}
+
+          </tr>
+
+        {% endfor %}
+
+      {% else %}
+
+        <tr>
+          <td class="diffattrname">{{ attr.name }}</td>
+          <td class="diffline"></td>
+
+          {% if left %}
+            <td class="diffvalue">{{ left }}</td>
+          {% else %}
+            {% ifequal attr.type 1 %}
+              <td class="diffvalue">0</td>
+            {% else %}
+              <td class="diffvalue"></td>
+            {% endifequal %}
+          {% endif %}
+
+          <td></td>
+            
+          {% if right %}
+            <td class="diffvalue">{{ right }}</td>
+          {% else %}
+            {% ifequal attr.type 1 %}
+              <td class="diffvalue">0</td>
+            {% else %}
+              <td class="diffvalue"></td>
+            {% endifequal %}
+          {% endif %}
+
+        </tr>
+
+      {% endif %}
+
+    {% empty %}
+
+      <tr>
+        <td class="emptymessage" colspan="5">No differences</td>
+      </tr>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

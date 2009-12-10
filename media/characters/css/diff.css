@@ -1,0 +1,11 @@
+table#difflist {
+  width: 100%;
+}
+
+table#difflist td.diffline, td.diffvalue {
+  text-align: center;
+}
+
+table#difflist th.diffattrname {
+  text-align: left;
+}

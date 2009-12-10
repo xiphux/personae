@@ -43,7 +43,7 @@ div#charinfo {
 }
 
 div#revisions {
-	width: 42%;
+	width: 52%;
 	float: left;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -56,13 +56,17 @@ div#revisionnotes {
 }
 
 div#actions {
-	width: 27%;
+	width: 17%;
 	float: left;
 	padding-left: 9px;
 }
 
 div#revisioneditfields div#revisionnamefield {
   vertical-align: center;
+}
+
+div#revisionlist a {
+  font-size: larger;
 }
 
 div#revisionnavfloating {
@@ -83,6 +87,3 @@ div#saveaction {
   text-align: center;
 }
 
-.label {
-  color: Gray;
-}

@@ -1,6 +1,6 @@
 {% extends "characters/base.html" %}
 
-{% block sheetcss %}
+{% block subcss %}
 <link rel="stylesheet" href="{{ MEDIA_URL }}characters/css/basesheet.css">
 {% block universecss %}
 {% endblock %}
@@ -115,6 +115,10 @@
 	      <a class="nounderline" href="/characters/{{ character.id }}/{{ nextrevision.revision }}/">&gt;</a>
 	    {% endif %}
             <input id="revisionnavsubmit" type="submit" value="View" />
+	    {% if prevrevision %}
+        <a class="nounderline" href="/characters/{{ character.id }}/{{ revision.revision }}/diff/">Diff</a>
+      {% endif %}
+	    
           </form>
 
         {% endif %}
