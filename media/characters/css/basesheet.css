@@ -83,7 +83,17 @@ div#actions div#logoutaction {
   text-align: right;
 }
 
+div#revisioneditactions {
+  width: 100px;
+}
+
+div#revisioneditactionsfloating {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
 div#saveaction {
-  text-align: center;
+  float: right;
 }
 

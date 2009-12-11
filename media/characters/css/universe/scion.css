@@ -14,6 +14,17 @@ div#revisionnavfloating {
   width: 98%;
 }
 
+div#revisioneditactionsfloating {
+  width: 98%;
+}
+
+div#saveaction {
+  background-color: white;
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  border-color: black;
+}
+
 div#basicinfo .basicinfolabel {
   font-size: smaller;
 }

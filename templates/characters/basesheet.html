@@ -12,27 +12,71 @@
 {% endblock %}
 
 {% if editmode %}
+
+  <script type="text/javascript">
+    var menuY = null;
+
+    $(document).ready(function(){
+      var nav = $("#revisioneditactions");
+      var floatingnav = $("#revisioneditactionsfloating");
+
+      menuY = nav.position().top;
+
+      floatingnav.hide();
+      floatingnav.append(nav.clone().html());
+
+      $(window).scroll(function(){
+        var windowY = $(document).scrollTop();
+	var floatingnav = $("#revisioneditactionsfloating");
+        if (windowY > menuY) {
+	  var nav = $("#revisioneditbar");
+	  var navwidth = nav.width();
+	  var floatingwidth = floatingnav.width();
+          floatingnav.show();
+	  if (navwidth != floatingwidth) {
+	    floatingnav.width(navwidth);
+	  }
+        } else {
+          floatingnav.hide();
+        }
+      });
+    });
+  </script>
+
 <form action="/characters/{{ character.id }}/save/" method="post">
 
-  <div id="revisioneditfields">
+<div id="revisioneditactionsfloating">
+</div>
 
-    <div id="revisionnamefield" class="twocolumnleft">
+<div id="revisioneditbar">
+
+  <div id="revisioneditfields" class="twocolumnleft">
+
+    <div id="revisionnamefield">
 
       <label for="revisionname" class="label">Revision name:</label>
       <input type="text" name="revisionname" class="fullwidth" />
 
     </div>
 
-    <div id="revisionnotesfield" class="twocolumnright">
+    <div id="revisionnotesfield">
 
       <label for="revisionnotes" class="label">Revision notes:</label>
       <textarea name="revisionnotes" rows=5 class="fullwidth" ></textarea>
 
     </div>
 
-    <div class="clear sectionheader">&nbsp;</div>
-  
   </div>
+
+  <div id="revisioneditactions" class="twocolumnright">
+    <div id="saveaction">
+      <input type="submit" value="Save" />
+    </div>
+  </div>
+
+  <div class="clear sectionheader">&nbsp;</div>
+  
+</div>
 
 {% else %}
 
@@ -159,11 +203,6 @@
 {% endblock %}
 
 {% if editmode %}
-<div id="saveaction">
-  <div class="clear sectionheader">&nbsp;</div>
-  
-  <input type="submit" value="Save" />
-</div>
 </form> 
 {% endif %}
 
