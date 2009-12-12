@@ -42,9 +42,21 @@ def squares(value, max):
 
 @register.filter
 def diff(a, b):
-	if a > b:
-		return "+" + str(a - b)
-	elif a < b:
-		return str(a - b)
+	try:
+		aint = int(a)
+	except ValueError:
+		aint = 0
+	try:
+		bint = int(b)
+	except ValueError:
+		bint = 0
+	if aint > bint:
+		return "+" + str(aint - bint)
+	elif aint < bint:
+		return str(aint - bint)
 	else:
 		return "0"
+
+@register.filter
+def get_range(value):
+	return range(value + 1)
