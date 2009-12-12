@@ -76,7 +76,7 @@ function setupDotWidgets(type) {
       var fullclass = 'dotfull';
       var emptycontent = '&#9678;';
       var fullcontent = '&#9673;';
-      if ($(e).hasClass('squarewidget')) {
+      if ($(e.currentTarget).parent().hasClass('squarewidget')) {
         emptyclass = 'squareempty';
         fullclass = 'squarefull';
         emptycontent = '&#9634;';
@@ -94,7 +94,7 @@ function setupDotWidgets(type) {
       var fullclass = 'dotfull';
       var emptycontent = '&#9678;';
       var fullcontent = '&#9673;';
-      if ($(e).hasClass('squarewidget')) {
+      if ($(e.currentTarget).hasClass('squarewidget')) {
         emptyclass = 'squareempty';
         fullclass = 'squarefull';
         emptycontent = '&#9634;';

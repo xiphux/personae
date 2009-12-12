@@ -1363,7 +1363,11 @@
         <tr>
           <td colspan="4" class="textcenter">
             {% if editmode %}
-              <input type="text" name="legendcurrent" value="{{ attributes.legendcurrent|default:"0" }}" class="statfield" />
+              <select name="legendcurrent" class="squarewidget">
+                {% for i in universe_attributes.legendcurrent.max|get_range %}
+                  <option value="{{ i }}" {% ifequal attributes.legendcurrent.value i %}selected{% endifequal %}>{{ i }}</option>
+                {% endfor %}
+              </select>
             {% else %}
               {{ attributes.legendcurrent.value|squares:universe_attributes.legendcurrent.max }}
             {% endif %}
