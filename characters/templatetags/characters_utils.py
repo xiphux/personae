@@ -39,3 +39,12 @@ def squares(value, max):
 		return mark_safe(ret)
 	else:
 		return mark_safe(''.join(['&#9635;' for num in xrange(value)]))
+
+@register.filter
+def diff(a, b):
+	if a > b:
+		return "+" + str(a - b)
+	elif a < b:
+		return str(a - b)
+	else:
+		return "0"
