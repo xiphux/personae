@@ -43,12 +43,12 @@ def squares(value, max):
 @register.filter
 def diff(a, b):
 	try:
-		aint = int(a)
-	except ValueError:
+		aint = int(a.value)
+	except:
 		aint = 0
 	try:
-		bint = int(b)
-	except ValueError:
+		bint = int(b.value)
+	except:
 		bint = 0
 	if aint > bint:
 		return "+" + str(aint - bint)

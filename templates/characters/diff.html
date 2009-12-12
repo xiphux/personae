@@ -115,7 +115,7 @@
 
           <td class="diffvalue">
 	    {% ifequal attr.type 1 %}
-	    {{ right.value|diff:left.value }}
+	    {{ right|diff:left }}
 	    {% endifequal %}
 	  </td>
             
