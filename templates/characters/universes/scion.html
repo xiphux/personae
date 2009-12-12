@@ -1349,7 +1349,11 @@
       	<tr>
           <td colspan="4" class="textcenter">
             {% if editmode %}
-              <input type="text" name="legend" value="{{ attributes.legend|default:"0" }}" class="statfield" />
+	            <select name="legend" class="dotwidget">
+                {% for i in universe_attributes.legend.max|get_range %}
+                  <option value="{{ i }}" {% ifequal attributes.legend.value i %}selected{% endifequal %}>{{ i }}</option>
+                {% endfor %}
+              </select>
             {% else %}
               {{ attributes.legend.value|dots:universe_attributes.legend.max }}
             {% endif %}
