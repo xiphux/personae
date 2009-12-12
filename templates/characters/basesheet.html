@@ -6,6 +6,12 @@
 {% endblock %}
 {% endblock %}
 
+{% block js %}
+<script type="text/javascript" src="{{ MEDIA_URL }}characters/js/basesheet.js"></script>
+{% block universejs %}
+{% endblock %}
+{% endblock %}
+
 {% block body %}
 
 {% block header %}
@@ -14,33 +20,9 @@
 {% if editmode %}
 
   <script type="text/javascript">
-    var menuY = null;
-
     $(document).ready(function(){
-      var nav = $("#revisioneditactions");
-      var floatingnav = $("#revisioneditactionsfloating");
-
-      menuY = nav.position().top;
-
-      floatingnav.hide();
-      floatingnav.append(nav.clone().html());
-
-      $(window).scroll(function(){
-        var windowY = $(document).scrollTop();
-	var floatingnav = $("#revisioneditactionsfloating");
-        if (windowY > menuY) {
-	  var nav = $("#revisioneditbar");
-	  var navwidth = nav.width();
-	  var floatingwidth = floatingnav.width();
-          floatingnav.show();
-	  if (navwidth != floatingwidth) {
-	    floatingnav.width(navwidth);
-	  }
-        } else {
-          floatingnav.hide();
-        }
-      });
-    });
+			setupFloatingNav('#revisioneditactions','#revisioneditactionsfloating','#revisioneditbar');
+		});
   </script>
 
 <form action="/characters/{{ character.id }}/save/" method="post">
@@ -81,32 +63,8 @@
 {% else %}
 
   <script type="text/javascript">
-    var menuY = null;
-
     $(document).ready(function(){
-      var nav = $("#revisionnav");
-      var floatingnav = $("#revisionnavfloating");
-
-      menuY = nav.position().top;
-
-      floatingnav.hide();
-      floatingnav.append(nav.clone().html());
-
-      $(window).scroll(function(){
-        var windowY = $(document).scrollTop();
-	var floatingnav = $("#revisionnavfloating");
-        if (windowY > menuY) {
-	  var nav = $("#revisionnav");
-	  var navwidth = nav.width();
-	  var floatingwidth = floatingnav.width();
-          floatingnav.show();
-	  if (navwidth != floatingwidth) {
-	    floatingnav.width(navwidth);
-	  }
-        } else {
-          floatingnav.hide();
-        }
-      });
+			setupFloatingNav('#revisionnav','#revisionnavfloating','#revisionnav');
     });
   </script>
 
