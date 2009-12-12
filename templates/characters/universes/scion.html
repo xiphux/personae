@@ -30,10 +30,10 @@
       
       <tr>
         <td class="lightunderline basicinfolowerrow">
-          {% if editmode %}
-            <input type="text" name="player" value="{{ attributes.player }}" />
+          {% if character.user.first_name or character.user.last_name %}
+	    {{ character.user.first_name }} {{ character.user.last_name }}
           {% else %}
-            {{ attributes.player }}
+            {{ character.user.username }}
           {% endif %}
         </td>
       </tr>
