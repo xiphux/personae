@@ -58,4 +58,9 @@ function setupDynamicTables() {
     addFieldRow('#control0','#controlrows',false);
   }
 
+  $('#craft0').hide();
+  if ($('#craftrows > tr').size() == 0) {
+    addFieldRow('#craft0','#craftrows',false);
+  }
+
 }

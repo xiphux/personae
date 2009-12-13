@@ -768,22 +768,118 @@
 
     <table>
 
-      <tbody>
+      {% if editmode %}
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <a class="nounderline" href="#" onclick="addFieldRow('#craft0','#craftrows',true); return false;">Add craft specialty</a>
+            </td>
+          </tr>
+        </tbody>
+      {% endif %}
 
-        <tr>
-          <td class="lightunderline">
-            <label for="craft">{{ universe_attributes.craft.name }}</label>
-          </td>
-          <td class="fullwidth lightunderline">
-          </td>
-          <td>
+      <tbody id="craftrows">
+
+        {% for num, craft in attributes.craft.items %}
+
+          <tr>
+
+            <td class="lightunderline">
+              {{ universe_attributes.craft.name }}
+            </td>
+
+            <td class="fullwidth lightunderline">
+
+              {% if editmode %}
+                
+                <select name="craftspecialty">
+                  <option value="0"></option>
+                  {% for choice in universe_attributes.craftspecialty.choices %}
+                    <option value="{{ choice.id }}" {% ifequal choice craft.craftspecialty.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+                  {% endfor %}
+                </select>
+
+              {% else %}
+
+                {{ craft.craftspecialty }}
+
+              {% endif %}
+
+            </td>
+
+            <td>
+              {% if editmode %}
+                {% dotselect "craftlevel" "dot" craft %}
+              {% else %}
+                {{ craft.craftlevel|dots:universe_attributes.craftlevel.max }}
+              {% endif %}
+            </td>
+
             {% if editmode %}
-              {% dotselect "craft" %}
-            {% else %}
-              {{ attributes.craft.value|dots:universe_attributes.craft.max }}
+              <td class="removerow">
+                <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+              </td>
             {% endif %}
-          </td>
-        </tr>
+
+          </tr>
+
+        {% empty %}
+
+          {% if not editmode %}
+            <tr>
+
+              <td class="lightunderline">
+                {{ universe_attributes.craft.name }}
+              </td>
+
+              <td class="fullwidth lightunderline">
+              </td>
+
+              <td>
+                {{ 0|dots:universe_attributes.craftlevel.max }}
+              </td>
+
+            </tr>
+          {% endif %}
+
+        {% endfor %}
+
+      </tbody>
+
+      {% if editmode %}
+
+        <tbody>
+
+          <tr id="craft0">
+
+            <td class="lightunderline">
+              {{ universe_attributes.craft.name }}
+            </td>
+
+            <td class="fullwidth lightunderline">
+              <select name="craftspecialty">
+                <option value="0"></option>
+                {% for choice in universe_attributes.craftspecialty.choices %}
+                  <option value="{{ choice.id }}">{{ choice.name }}</option>
+                {% endfor %}
+              </select>
+            </td>
+
+            <td>
+              {% dotselect "craftlevel" %}
+            </td>
+
+            <td class="removerow">
+              <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      {% endif %}
+
+      <tbody>
 
         <tr>
           <td class="lightunderline">
