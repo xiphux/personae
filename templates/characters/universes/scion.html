@@ -1111,8 +1111,8 @@
                 </div>
               </td>
               <td>
-                <input type="text" name="virtuelevel" value="{{ virtue.virtuelevel|default:"0" }}" class="statfield" />
-                <input type="text" name="virtueboost" value="{{ virtue.virtueboost|default:"0" }}" class="statfield" />
+	      	{% dotselect "virtuelevel" "dot" virtue %}
+		{% dotselect "virtueboost" "square" virtue %}
               </td>
               <td class="removerow">
                 <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
@@ -1139,8 +1139,8 @@
               </div>
             </td>
             <td>
-              <input type="text" name="virtuelevel" value="0" class="statfield" />
-              <input type="text" name="virtueboost" value="0" class="statfield" />
+	      {% dotselect "virtuelevel" %}
+	      {% dotselect "virtueboost" "square" %}
             </td>
             <td class="removerow">
               <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
