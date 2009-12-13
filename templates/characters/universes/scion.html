@@ -410,6 +410,16 @@
 
       <tbody>
 
+      	{% if editmode %}
+          <tr>
+            <td colspan="3">
+              Add specialty: 
+              <a class="nounderline" href="#" onclick="addFieldRow('#art0','#artrows',true); return false;">{{ universe_attributes.art.name }}</a>
+               | <a class="nounderline" href="#" onclick="addFieldRow('#control0','#controlrows',true); return false;">{{ universe_attributes.control.name }}</a>
+            </td>
+          </tr>
+        {% endif %}
+
         <tr>
           <td class="lightunderline">
             <label for="academics">{{ universe_attributes.academics.name }}</label>
@@ -451,16 +461,6 @@
         </tr>
 
       </tbody>
-
-      {% if editmode %}
-        <tbody>
-          <tr>
-            <td colspan="2">
-              <a class="nounderline" href="#" onclick="addFieldRow('#art0','#artrows',true); return false;">Add art specialty</a>
-            </td>
-          </tr>
-        </tbody>
-      {% endif %}
 
       <tbody id="artrows">
 
@@ -647,18 +647,6 @@
 
       </tbody>
 
-      {% if editmode %}
-
-        <tbody>
-          <tr>
-            <td colspan="2">
-              <a class="nounderline" href="#" onclick="addFieldRow('#control0','#controlrows',true); return false;">Add control specialty</a>
-            </td>
-          </tr>
-        </tbody>
-
-      {% endif %}
-
       <tbody id="controlrows">
 
         {% for num, control in attributes.control.items %}
@@ -771,8 +759,9 @@
       {% if editmode %}
         <tbody>
           <tr>
-            <td colspan="2">
-              <a class="nounderline" href="#" onclick="addFieldRow('#craft0','#craftrows',true); return false;">Add craft specialty</a>
+            <td colspan="3">
+              Add specialty:
+              <a class="nounderline" href="#" onclick="addFieldRow('#craft0','#craftrows',true); return false;">{{ universe_attributes.craft.name }}</a>
             </td>
           </tr>
         </tbody>
