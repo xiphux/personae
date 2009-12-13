@@ -113,6 +113,10 @@ div#knackrows .knackitem .removerow {
   width: 2%;
 }
 
+div#abilities td.abilityname {
+  white-space: nowrap;
+}
+
 .tablecenter {
 	margin: 0 auto;
 }
