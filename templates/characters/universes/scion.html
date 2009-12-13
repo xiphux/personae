@@ -408,155 +408,159 @@
 
     <table>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="academics">{{ universe_attributes.academics.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="academicsspecialty" value="{{ attributes.academicsspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.academicsspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "academics" %}
-          {% else %}
-            {{ attributes.academics.value|dots:universe_attributes.academics.max }}
-          {% endif %}
-        </td>
-      </tr>
+      <tbody>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="animalken">{{ universe_attributes.animalken.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="animalkenspecialty" value="{{ attributes.animalkenspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.animalkenspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "animalken" %}
-          {% else %}
-            {{ attributes.animalken.value|dots:universe_attributes.animalken.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="academics">{{ universe_attributes.academics.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="academicsspecialty" value="{{ attributes.academicsspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.academicsspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "academics" %}
+            {% else %}
+              {{ attributes.academics.value|dots:universe_attributes.academics.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="art">{{ universe_attributes.art.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "art" %}
-          {% else %}
-            {{ attributes.art.value|dots:universe_attributes.art.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="animalken">{{ universe_attributes.animalken.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="animalkenspecialty" value="{{ attributes.animalkenspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.animalkenspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "animalken" %}
+            {% else %}
+              {{ attributes.animalken.value|dots:universe_attributes.animalken.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="athletics">{{ universe_attributes.athletics.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="athleticsspecialty" value="{{ attributes.athleticsspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.athleticsspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "athletics" %}
-          {% else %}
-            {{ attributes.athletics.value|dots:universe_attributes.athletics.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="art">{{ universe_attributes.art.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "art" %}
+            {% else %}
+              {{ attributes.art.value|dots:universe_attributes.art.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="awareness">{{ universe_attributes.awareness.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="awarenessspecialty" value="{{ attributes.awarenessspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.awarenessspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "awareness" %}
-          {% else %}
-            {{ attributes.awareness.value|dots:universe_attributes.awareness.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="athletics">{{ universe_attributes.athletics.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="athleticsspecialty" value="{{ attributes.athleticsspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.athleticsspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "athletics" %}
+            {% else %}
+              {{ attributes.athletics.value|dots:universe_attributes.athletics.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="brawl">{{ universe_attributes.brawl.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="brawlspecialty" value="{{ attributes.brawlspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.brawlspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "brawl" %}
-          {% else %}
-            {{ attributes.brawl.value|dots:universe_attributes.brawl.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="awareness">{{ universe_attributes.awareness.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="awarenessspecialty" value="{{ attributes.awarenessspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.awarenessspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "awareness" %}
+            {% else %}
+              {{ attributes.awareness.value|dots:universe_attributes.awareness.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="command">{{ universe_attributes.command.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="commandspecialty" value="{{ attributes.commandspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.commandspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "command" %}
-          {% else %}
-            {{ attributes.command.value|dots:universe_attributes.command.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="brawl">{{ universe_attributes.brawl.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="brawlspecialty" value="{{ attributes.brawlspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.brawlspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "brawl" %}
+            {% else %}
+              {{ attributes.brawl.value|dots:universe_attributes.brawl.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="control">{{ universe_attributes.control.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "control" %}
-          {% else %}
-            {{ attributes.control.value|dots:universe_attributes.control.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="command">{{ universe_attributes.command.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="commandspecialty" value="{{ attributes.commandspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.commandspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "command" %}
+            {% else %}
+              {{ attributes.command.value|dots:universe_attributes.command.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="lightunderline">
+            <label for="control">{{ universe_attributes.control.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "control" %}
+            {% else %}
+              {{ attributes.control.value|dots:universe_attributes.control.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+      </tbody>
 
     </table>
 
@@ -566,160 +570,164 @@
 
     <table>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="craft">{{ universe_attributes.craft.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "craft" %}
-          {% else %}
-            {{ attributes.craft.value|dots:universe_attributes.craft.max }}
-          {% endif %}
-        </td>
-      </tr>
+      <tbody>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="empathy">{{ universe_attributes.empathy.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="empathyspecialty" value="{{ attributes.empathyspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.empathyspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "empathy" %}
-          {% else %}
-            {{ attributes.empathy.value|dots:universe_attributes.empathy.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="craft">{{ universe_attributes.craft.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "craft" %}
+            {% else %}
+              {{ attributes.craft.value|dots:universe_attributes.craft.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="fortitude">{{ universe_attributes.fortitude.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="fortitudespecialty" value="{{ attributes.fortitudespecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.fortitudespecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "fortitude" %}
-          {% else %}
-            {{ attributes.fortitude.value|dots:universe_attributes.fortitude.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="empathy">{{ universe_attributes.empathy.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="empathyspecialty" value="{{ attributes.empathyspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.empathyspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "empathy" %}
+            {% else %}
+              {{ attributes.empathy.value|dots:universe_attributes.empathy.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="integrity">{{ universe_attributes.integrity.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="integrityspecialty" value="{{ attributes.integrityspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.integrityspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "integrity" %}
-          {% else %}
-            {{ attributes.integrity.value|dots:universe_attributes.integrity.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="fortitude">{{ universe_attributes.fortitude.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="fortitudespecialty" value="{{ attributes.fortitudespecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.fortitudespecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "fortitude" %}
+            {% else %}
+              {{ attributes.fortitude.value|dots:universe_attributes.fortitude.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="investigation">{{ universe_attributes.investigation.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="investigationspecialty" value="{{ attributes.investigationspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.investigationspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "investigation" %}
-          {% else %}
-            {{ attributes.investigation.value|dots:universe_attributes.investigation.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="integrity">{{ universe_attributes.integrity.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="integrityspecialty" value="{{ attributes.integrityspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.integrityspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "integrity" %}
+            {% else %}
+              {{ attributes.integrity.value|dots:universe_attributes.integrity.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="larceny">{{ universe_attributes.larceny.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="larcenyspecialty" value="{{ attributes.larcenyspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.larcenyspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "larceny" %}
-          {% else %}
-            {{ attributes.larceny.value|dots:universe_attributes.larceny.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="investigation">{{ universe_attributes.investigation.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="investigationspecialty" value="{{ attributes.investigationspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.investigationspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "investigation" %}
+            {% else %}
+              {{ attributes.investigation.value|dots:universe_attributes.investigation.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="marksmanship">{{ universe_attributes.marksmanship.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="marksmanshipspecialty" value="{{ attributes.marksmanshipspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.marksmanshipspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "marksmanship" %}
-          {% else %}
-            {{ attributes.marksmanship.value|dots:universe_attributes.marksmanship.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="larceny">{{ universe_attributes.larceny.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="larcenyspecialty" value="{{ attributes.larcenyspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.larcenyspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "larceny" %}
+            {% else %}
+              {{ attributes.larceny.value|dots:universe_attributes.larceny.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="medicine">{{ universe_attributes.medicine.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="medicinespecialty" value="{{ attributes.medicinespecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.medicinespecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "medicine" %}
-          {% else %}
-            {{ attributes.medicine.value|dots:universe_attributes.medicine.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="marksmanship">{{ universe_attributes.marksmanship.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="marksmanshipspecialty" value="{{ attributes.marksmanshipspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.marksmanshipspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "marksmanship" %}
+            {% else %}
+              {{ attributes.marksmanship.value|dots:universe_attributes.marksmanship.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="lightunderline">
+            <label for="medicine">{{ universe_attributes.medicine.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="medicinespecialty" value="{{ attributes.medicinespecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.medicinespecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "medicine" %}
+            {% else %}
+              {{ attributes.medicine.value|dots:universe_attributes.medicine.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+      </tbody>
 
     </table>
 
@@ -729,160 +737,164 @@
 
     <table>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="melee">{{ universe_attributes.melee.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="meleespecialty" value="{{ attributes.meleespecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.meleespecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "melee" %}
-          {% else %}
-            {{ attributes.melee.value|dots:universe_attributes.melee.max }}
-          {% endif %}
-        </td>
-      </tr>
+      <tbody>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="occult">{{ universe_attributes.occult.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="occultspecialty" value="{{ attributes.occultspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.occultspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "occult" %}
-          {% else %}
-            {{ attributes.occult.value|dots:universe_attributes.occult.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="melee">{{ universe_attributes.melee.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="meleespecialty" value="{{ attributes.meleespecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.meleespecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "melee" %}
+            {% else %}
+              {{ attributes.melee.value|dots:universe_attributes.melee.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="politics">{{ universe_attributes.politics.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="politicsspecialty" value="{{ attributes.politicsspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.politicsspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "politics" %}
-          {% else %}
-            {{ attributes.politics.value|dots:universe_attributes.politics.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="occult">{{ universe_attributes.occult.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="occultspecialty" value="{{ attributes.occultspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.occultspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "occult" %}
+            {% else %}
+              {{ attributes.occult.value|dots:universe_attributes.occult.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="presence">{{ universe_attributes.presence.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="presencespecialty" value="{{ attributes.presencespecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.presencespecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "presence" %}
-          {% else %}
-            {{ attributes.presence.value|dots:universe_attributes.presence.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="politics">{{ universe_attributes.politics.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="politicsspecialty" value="{{ attributes.politicsspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.politicsspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "politics" %}
+            {% else %}
+              {{ attributes.politics.value|dots:universe_attributes.politics.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="science">{{ universe_attributes.science.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "science" %}
-          {% else %}
-            {{ attributes.science.value|dots:universe_attributes.science.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="presence">{{ universe_attributes.presence.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="presencespecialty" value="{{ attributes.presencespecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.presencespecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "presence" %}
+            {% else %}
+              {{ attributes.presence.value|dots:universe_attributes.presence.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="stealth">{{ universe_attributes.stealth.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="stealthspecialty" value="{{ attributes.stealthspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.stealthspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "stealth" %}
-          {% else %}
-            {{ attributes.stealth.value|dots:universe_attributes.stealth.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="science">{{ universe_attributes.science.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "science" %}
+            {% else %}
+              {{ attributes.science.value|dots:universe_attributes.science.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="survival">{{ universe_attributes.survival.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="survivalspecialty" value="{{ attributes.survivalspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.survivalspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "survival" %}
-          {% else %}
-            {{ attributes.survival.value|dots:universe_attributes.survival.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="stealth">{{ universe_attributes.stealth.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="stealthspecialty" value="{{ attributes.stealthspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.stealthspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "stealth" %}
+            {% else %}
+              {{ attributes.stealth.value|dots:universe_attributes.stealth.max }}
+            {% endif %}
+          </td>
+        </tr>
 
-      <tr>
-        <td class="lightunderline">
-          <label for="thrown">{{ universe_attributes.thrown.name }}</label>
-        </td>
-        <td class="fullwidth lightunderline">
-          {% if editmode %}
-            <input type="text" name="thrownspecialty" value="{{ attributes.thrownspecialty }}" class="fullwidth" />
-          {% else %}
-            {{ attributes.thrownspecialty }}
-          {% endif %}
-        </td>
-        <td>
-          {% if editmode %}
-            {% dotselect "thrown" %}
-          {% else %}
-            {{ attributes.thrown.value|dots:universe_attributes.thrown.max }}
-          {% endif %}
-        </td>
-      </tr>
+        <tr>
+          <td class="lightunderline">
+            <label for="survival">{{ universe_attributes.survival.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="survivalspecialty" value="{{ attributes.survivalspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.survivalspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "survival" %}
+            {% else %}
+              {{ attributes.survival.value|dots:universe_attributes.survival.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="lightunderline">
+            <label for="thrown">{{ universe_attributes.thrown.name }}</label>
+          </td>
+          <td class="fullwidth lightunderline">
+            {% if editmode %}
+              <input type="text" name="thrownspecialty" value="{{ attributes.thrownspecialty }}" class="fullwidth" />
+            {% else %}
+              {{ attributes.thrownspecialty }}
+            {% endif %}
+          </td>
+          <td>
+            {% if editmode %}
+              {% dotselect "thrown" %}
+            {% else %}
+              {{ attributes.thrown.value|dots:universe_attributes.thrown.max }}
+            {% endif %}
+          </td>
+        </tr>
+
+      </tbody>
 
     </table>
 
