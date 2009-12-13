@@ -70,64 +70,76 @@ function setupDotWidgets(type) {
     span.append(spanstr).addClass(widgetclass);
     $(this).replaceWith(span.context.outerHTML);
   });
-  $("span." + widgetclass).each(function() {
-    $(this).children('span').mouseover(function(e) {
-      var emptyclass = 'dotempty';
-      var fullclass = 'dotfull';
-      var emptycontent = '&#9678;';
-      var fullcontent = '&#9673;';
-      if ($(e.currentTarget).parent().hasClass('squarewidget')) {
-        emptyclass = 'squareempty';
-        fullclass = 'squarefull';
-        emptycontent = '&#9634;';
-        fullcontent = '&#9635;';
-      }
-      var dot = $(e.currentTarget);
-      if (dot.hasClass(emptyclass)) {
-        dot.html(fullcontent).removeClass(emptyclass).addClass(fullclass);
-      }
-      $(e.currentTarget).prevAll('span.' + emptyclass).html(fullcontent).removeClass(emptyclass).addClass(fullclass);
-      $(e.currentTarget).nextAll('span.' + fullclass).html(emptycontent).removeClass(fullclass).addClass(emptyclass);
-    });
-    $(this).mouseout(function(e) {
-      var emptyclass = 'dotempty';
-      var fullclass = 'dotfull';
-      var emptycontent = '&#9678;';
-      var fullcontent = '&#9673;';
-      if ($(e.currentTarget).hasClass('squarewidget')) {
-        emptyclass = 'squareempty';
-        fullclass = 'squarefull';
-        emptycontent = '&#9634;';
-        fullcontent = '&#9635;';
-      }
-      var dots = $(e.currentTarget).children('span');
-      var count = dots.size();
-      var val = ($(e.currentTarget).children('input').val() * 1);
-      for (var idx = 0; idx < count; idx++) {
-        var curdot = dots.eq(idx);
-        if (idx < val) {
-          if (curdot.hasClass(emptyclass)) {
-            curdot.html(fullcontent).removeClass(emptyclass).addClass(fullclass);
-          }
-        } else {
-          if (curdot.hasClass(fullclass)) {
-            curdot.html(emptycontent).removeClass(fullclass).addClass(emptyclass);
-          }
+}
+
+function setupDotWidgetEvents(type) {
+  var widgetclass = ''
+  if (type == "dot") {
+    widgetclass = 'dotwidget';
+  } else if (type == "square") {
+    widgetclass = 'squarewidget';
+  } else {
+    return false;
+  }
+  var dotwidgets = $("span." + widgetclass)
+  dotwidgets.live("mouseout", function(e) {
+    var emptyclass = 'dotempty';
+    var fullclass = 'dotfull';
+    var emptycontent = '&#9678;';
+    var fullcontent = '&#9673;';
+    var dotgroup = $(e.target).parent();
+    if (dotgroup.hasClass('squarewidget')) {
+      emptyclass = 'squareempty';
+      fullclass = 'squarefull';
+      emptycontent = '&#9634;';
+      fullcontent = '&#9635;';
+    }
+    var dots = dotgroup.children('span');
+    var count = dots.size();
+    var val = (dotgroup.children('input').val() * 1);
+    for (var idx = 0; idx < count; idx++) {
+      var curdot = dots.eq(idx);
+      if (idx < val) {
+        if (curdot.hasClass(emptyclass)) {
+          curdot.html(fullcontent).removeClass(emptyclass).addClass(fullclass);
+        }
+      } else {
+        if (curdot.hasClass(fullclass)) {
+          curdot.html(emptycontent).removeClass(fullclass).addClass(emptyclass);
         }
       }
+    }
+  });
+  dotwidgets.live("click", function(e) {
+    var dotgroup = $(e.target).parent()
+    var valelem = dotgroup.children('input');
+    var newval = $(e.target).prevAll('span').size() + 1;
+    var currentval = (valelem.val() * 1);
+    if ((newval == 1) && (currentval == 1)) {
+      valelem.val(0);
+    } else {
+      valelem.val(newval);
+    }
+    dotgroup.highlightFade({
+      speed:200
     });
-    $(this).click(function(e) {
-      var valelem = $(e.currentTarget).children('input');
-      var newval = $(e.target).prevAll('span').size() + 1;
-      var currentval = (valelem.val() * 1);
-      if ((newval == 1) && (currentval == 1)) {
-        valelem.val(0);
-      } else {
-        valelem.val(newval);
-      }
-      $(e.currentTarget).highlightFade({
-        speed:200
-      });
-    });
+  });
+  $("span." + widgetclass + " > span").live("mouseover", function(e) {
+    var emptyclass = 'dotempty';
+    var fullclass = 'dotfull';
+    var emptycontent = '&#9678;';
+    var fullcontent = '&#9673;';
+    var dot = $(e.target);
+    if (dot.parent().hasClass('squarewidget')) {
+      emptyclass = 'squareempty';
+      fullclass = 'squarefull';
+      emptycontent = '&#9634;';
+      fullcontent = '&#9635;';
+    }
+    if (dot.hasClass(emptyclass)) {
+      dot.html(fullcontent).removeClass(emptyclass).addClass(fullclass);
+    }
+    dot.prevAll('span.' + emptyclass).html(fullcontent).removeClass(emptyclass).addClass(fullclass);
+    dot.nextAll('span.' + fullclass).html(emptycontent).removeClass(fullclass).addClass(emptyclass);
   });
 }
