@@ -63,4 +63,9 @@ function setupDynamicTables() {
     addFieldRow('#craft0','#craftrows',false);
   }
 
+  $('#science0').hide();
+  if ($('#sciencerows > tr').size() == 0) {
+    addFieldRow('#science0','#sciencerows',false);
+  }
+
 }

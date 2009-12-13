@@ -1022,6 +1022,15 @@
 
       <tbody>
 
+      	{% if editmode %}
+          <tr>
+            <td colspan="3">
+              Add specialty: 
+              <a class="nounderline" href="#" onclick="addFieldRow('#science0','#sciencerows',true); return false;">{{ universe_attributes.science.name }}</a>
+            </td>
+          </tr>
+        {% endif %}
+
         <tr>
           <td class="lightunderline">
             <label for="melee">{{ universe_attributes.melee.name }}</label>
@@ -1102,20 +1111,110 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="lightunderline">
-            <label for="science">{{ universe_attributes.science.name }}</label>
-          </td>
-          <td class="fullwidth lightunderline">
-          </td>
-          <td>
+      </tbody>
+
+      <tbody id="sciencerows">
+
+        {% for num, science in attributes.science.items %}
+
+          <tr>
+
+            <td class="lightunderline">
+              {{ universe_attributes.science.name }}
+            </td>
+
+            <td class="fullwidth lightunderline">
+
+              {% if editmode %}
+
+                <select name="sciencespecialty">
+                  <option value="0"></option>
+                  {% for choice in universe_attributes.sciencespecialty.choices %}
+                    <option value="{{ choice.id }}" {% ifequal choice science.sciencespecialty.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+                  {% endfor %}
+                </select>
+
+              {% else %}
+
+                {{ science.sciencespecialty }}
+
+              {% endif %}
+
+            </td>
+
+            <td>
+              {% if editmode %}
+                {% dotselect "sciencelevel" "dot" science %}
+              {% else %}
+                {{ science.sciencelevel|dots:universe_attributes.sciencelevel.max }}
+              {% endif %}
+            </td>
+
             {% if editmode %}
-              {% dotselect "science" %}
-            {% else %}
-              {{ attributes.science.value|dots:universe_attributes.science.max }}
+              <td class="removerow">
+                <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+              </td>
             {% endif %}
-          </td>
-        </tr>
+
+          </tr>
+
+        {% empty %}
+
+          {% if not editmode %}
+            <tr>
+
+              <td class="lightunderline">
+                {{ universe_attributes.science.name }}
+              </td>
+
+              <td class="fullwidth lightunderline">
+              </td>
+
+              <td>
+                {{ 0|dots:universe_attributes.sciencelevel.max }}
+              </td>
+
+            </tr>
+          {% endif %}
+
+        {% endfor %}
+
+      </tbody>
+
+      {% if editmode %}
+
+        <tbody>
+
+          <tr id="science0">
+
+            <td class="lightunderline">
+              {{ universe_attributes.science.name }}
+            </td>
+
+            <td class="fullwidth lightunderline">
+              <select name="sciencespecialty">
+                <option value="0"></option>
+                {% for choice in universe_attributes.sciencespecialty.choices %}
+                  <option value="{{ choice.id }}">{{ choice.name }}</option>
+                {% endfor %}
+              </select>
+            </td>
+
+            <td>
+              {% dotselect "sciencelevel" %}
+            </td>
+
+            <td class="removerow">
+              <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+            </td>
+
+          </tr>
+
+        </tbody>
+      
+      {% endif %}
+
+      <tbody>
 
         <tr>
           <td class="lightunderline">
