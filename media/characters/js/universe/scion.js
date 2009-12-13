@@ -53,4 +53,9 @@ function setupDynamicTables() {
     addFieldRow('#art0','#artrows',false);
   }
 
+  $('#control0').hide();
+  if ($('#controlrows > tr').size() == 0) {
+    addFieldRow('#control0','#controlrows',false);
+  }
+
 }

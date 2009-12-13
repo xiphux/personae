@@ -645,22 +645,120 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="lightunderline">
-            <label for="control">{{ universe_attributes.control.name }}</label>
-          </td>
-          <td class="fullwidth lightunderline">
-          </td>
-          <td>
+      </tbody>
+
+      {% if editmode %}
+
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <a class="nounderline" href="#" onclick="addFieldRow('#control0','#controlrows',true); return false;">Add control specialty</a>
+            </td>
+          </tr>
+        </tbody>
+
+      {% endif %}
+
+      <tbody id="controlrows">
+
+        {% for num, control in attributes.control.items %}
+
+          <tr>
+
+            <td class="lightunderline">
+              {{ universe_attributes.control.name }}
+            </td>
+
+            <td class="fullwidth lightunderline">
+
+              {% if editmode %}
+
+                <select name="controlspecialty">
+                  <option value="0"></option>
+                  {% for choice in universe_attributes.controlspecialty.choices %}
+                    <option value="{{ choice.id }}" {% ifequal choice control.controlspecialty.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+                  {% endfor %}
+                </select>
+
+              {% else %}
+               
+                {{ control.controlspecialty }}
+
+              {% endif %}
+
+            </td>
+
+            <td>
+              {% if editmode %}
+                {% dotselect "controllevel" "dot" control %}
+              {% else %}
+                {{ control.controllevel|dots:universe_attributes.controllevel.max }}
+              {% endif %}
+            </td>
+
             {% if editmode %}
-              {% dotselect "control" %}
-            {% else %}
-              {{ attributes.control.value|dots:universe_attributes.control.max }}
+              <td class="removerow">
+                <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+              </td>
             {% endif %}
-          </td>
-        </tr>
+          
+          </tr>
+
+        {% empty %}
+
+          {% if not editmode %}
+            <tr>
+
+              <td class="lightunderline">
+                {{ universe_attributes.control.name }}
+              </td>
+
+              <td class="fullwidth lightunderline">
+              </td>
+
+              <td>
+                {{ 0|dots:universe_attributes.controllevel.max }}
+              </td>
+
+            </tr>
+          {% endif %}
+        
+        {% endfor %}
 
       </tbody>
+
+      {% if editmode %}
+
+        <tbody>
+
+          <tr id="control0">
+
+            <td class="lightunderline">
+              {{ universe_attributes.control.name }}
+            </td>
+
+            <td class="fullwidth lightunderline">
+              <select name="controlspecialty">
+                <option value="0"></option>
+                {% for choice in universe_attributes.controlspecialty.choices %}
+                  <option value="{{ choice.id }}">{{ choice.name }}</option>
+                {% endfor %}
+              </select>
+            </td>
+
+            <td>
+              {% dotselect "controllevel" %}
+            </td>
+
+            <td class="removerow">
+              <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      {% endif %}
 
     </table>
 
