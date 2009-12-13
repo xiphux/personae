@@ -450,19 +450,120 @@
           </td>
         </tr>
 
-        <tr>
-          <td class="lightunderline">
-            <label for="art">{{ universe_attributes.art.name }}</label>
-          </td>
-          <td class="fullwidth lightunderline">
-          </td>
-          <td>
+      </tbody>
+
+      {% if editmode %}
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <a class="nounderline" href="#" onclick="addFieldRow('#art0','#artrows',true); return false;">Add art specialty</a>
+            </td>
+          </tr>
+        </tbody>
+      {% endif %}
+
+      <tbody id="artrows">
+
+        {% for num, art in attributes.art.items %}
+
+          <tr>
+
+            <td class="lightunderline">
+              {{ universe_attributes.art.name }}
+            </td>
+
+            <td class="fullwidth lightunderline">
+
+              {% if editmode %}
+
+                <select name="artspecialty">
+                  <option value="0"></option>
+                  {% for choice in universe_attributes.artspecialty.choices %}
+                    <option value="{{ choice.id }}" {% ifequal choice art.artspecialty.choice %}selected{% endifequal %}>{{ choice.name }}</option>
+                  {% endfor %}
+                </select>
+
+              {% else %}
+
+                {{ art.artspecialty }}
+
+              {% endif %}
+
+            </td>
+
+            <td>
+              {% if editmode %}
+                {% dotselect "artlevel" "dot" art %}
+              {% else %}
+                {{ art.artlevel|dots:universe_attributes.artlevel.max }}
+              {% endif %}
+            </td>
+            
             {% if editmode %}
-            {% else %}
-              {{ attributes.art.value|dots:universe_attributes.art.max }}
+              <td class="removerow">
+                <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+              </td>
             {% endif %}
-          </td>
-        </tr>
+
+          </tr>
+
+        {% empty %}
+
+          {% if not editmode %}          
+            <tr>
+
+              <td class="lightunderline">
+                {{ universe_attributes.art.name }}
+              </td>
+
+              <td class="fullwidth lightunderline">
+              </td>
+
+              <td>
+                {{ 0|dots:universe_attributes.artlevel.max }}
+              </td>
+              
+            </tr>
+          {% endif %}
+
+        {% endfor %}
+
+      </tbody>
+
+      {% if editmode %}
+
+        <tbody>
+
+          <tr id="art0">
+
+            <td class="lightunderline">
+              {{ universe_attributes.art.name }}
+            </td>
+
+            <td class="fullwidth lightunderline">
+              <select name="artspecialty">
+                <option value="0"></option>
+                {% for choice in universe_attributes.artspecialty.choices %}
+                  <option value="{{ choice.id }}">{{ choice.name }}</option>
+                {% endfor %}
+              </select>
+            </td>
+
+            <td>
+              {% dotselect "artlevel" %}
+            </td>
+
+            <td class="removerow">
+              <a class="nounderline" href="#" onclick="$(this).parent().parent().fadeOut(500,function(){$(this).remove()}); return false;">X</a>
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      {% endif %}
+
+      <tbody>
 
         <tr>
           <td class="lightunderline">

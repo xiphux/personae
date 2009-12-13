@@ -48,4 +48,9 @@ function setupDynamicTables() {
     moveKnackClear();
   }
 
+  $('#art0').hide();
+  if ($('#artrows > tr').size() == 0) {
+    addFieldRow('#art0','#artrows',false);
+  }
+
 }
