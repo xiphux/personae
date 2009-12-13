@@ -171,7 +171,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="strength" value="{{ attributes.strength|default:"0" }}" class="statfield" />
+            {% dotselect "strength" %}
           {% else %}
             {{ attributes.strength.value|dots:universe_attributes.strength.max }}
           {% endif %}
@@ -181,7 +181,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicstrength" value="{{ attributes.epicstrength|default:"0" }}" class="statfield" />
+            {% dotselect "epicstrength" "square" %}
           {% else %}
             {{ attributes.epicstrength|squares:universe_attributes.epicstrength.max }}
           {% endif %}
@@ -194,7 +194,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="dexterity" value="{{ attributes.dexterity|default:"0" }}" class="statfield" />
+            {% dotselect "dexterity" %}
           {% else %}
             {{ attributes.dexterity.value|dots:universe_attributes.dexterity.max }}
           {% endif %}
@@ -204,7 +204,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicdexterity" value="{{ attributes.epicdexterity|default:"0" }}" class="statfield" />
+            {% dotselect "epicdexterity" "square" %}
           {% else %}
             {{ attributes.epicdexterity|squares:universe_attributes.epicdexterity.max }}
           {% endif %}
@@ -217,7 +217,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="stamina" value="{{ attributes.stamina|default:"0" }}" class="statfield" />
+            {% dotselect "stamina" %}
           {% else %}
             {{ attributes.stamina.value|dots:universe_attributes.stamina.max }}
           {% endif %}
@@ -227,7 +227,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicstamina" value="{{ attributes.epicstamina|default:"0" }}" class="statfield" />
+            {% dotselect "epicstamina" "square" %}
           {% else %}
             {{ attributes.epicstamina|squares:universe_attributes.epicstamina.max }}
           {% endif %}
@@ -250,7 +250,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="charisma" value="{{ attributes.charisma|default:"0" }}" class="statfield" />
+            {% dotselect "charisma" %}
           {% else %}
             {{ attributes.charisma.value|dots:universe_attributes.charisma.max }}
           {% endif %}
@@ -260,7 +260,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epiccharisma" value="{{ attributes.epiccharisma|default:"0" }}" class="statfield" />
+            {% dotselect "epiccharisma" "square" %}
           {% else %}
             {{ attributes.epiccharisma|squares:universe_attributes.epiccharisma.max }}
           {% endif %}
@@ -273,7 +273,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="manipulation" value="{{ attributes.manipulation|default:"0" }}" class="statfield" />
+	          {% dotselect "manipulation" %}
           {% else %}
             {{ attributes.manipulation.value|dots:universe_attributes.manipulation.max }}
           {% endif %}
@@ -283,7 +283,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicmanipulation" value="{{ attributes.epicmanipulation|default:"0" }}" class="statfield" />
+            {% dotselect "epicmanipulation" "square" %}
           {% else %}
             {{ attributes.epicmanipulation|squares:universe_attributes.epicmanipulation.max }}
           {% endif %}
@@ -296,7 +296,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="appearance" value="{{ attributes.appearance|default:"0" }}" class="statfield" />
+            {% dotselect "appearance" %}
           {% else %}
             {{ attributes.appearance.value|dots:universe_attributes.appearance.max }}
           {% endif %}
@@ -306,7 +306,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicappearance" value="{{ attributes.epicappearance|default:"0" }}" class="statfield" />
+            {% dotselect "epicappearance" "square" %}
           {% else %}
             {{ attributes.epicappearance|squares:universe_attributes.epicappearance.max }}
           {% endif %}
@@ -329,7 +329,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="perception" value="{{ attributes.perception|default:"0" }}" class="statfield" />
+            {% dotselect "perception" %}
           {% else %}
             {{ attributes.perception.value|dots:universe_attributes.perception.max }}
           {% endif %}
@@ -339,7 +339,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicperception" value="{{ attributes.epicperception|default:"0" }}" class="statfield" />
+            {% dotselect "epicperception" "square" %}
           {% else %}
             {{ attributes.epicperception|squares:universe_attributes.epicperception.max }}
           {% endif %}
@@ -352,7 +352,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="intelligence" value="{{ attributes.intelligence|default:"0" }}" class="statfield" />
+            {% dotselect "intelligence" %}
           {% else %}
             {{ attributes.intelligence.value|dots:universe_attributes.intelligence.max }}
           {% endif %}
@@ -362,7 +362,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicintelligence" value="{{ attributes.epicintelligence|default:"0" }}" class="statfield" />
+            {% dotselect "epicintelligence" "square" %}
           {% else %}
             {{ attributes.epicintelligence|squares:universe_attributes.epicintelligence.max }}
           {% endif %}
@@ -375,7 +375,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="wits" value="{{ attributes.wits|default:"0" }}" class="statfield" />
+            {% dotselect "wits" %}
           {% else %}
             {{ attributes.wits.value|dots:universe_attributes.wits.max }}
           {% endif %}
@@ -385,7 +385,7 @@
       <tr>
         <td>
           {% if editmode %}
-            <input type="text" name="epicwits" value="{{ attributes.epicwits|default:"0" }}" class="statfield" />
+            {% dotselect "epicwits" "square" %}
           {% else %}
             {{ attributes.epicwits|squares:universe_attributes.epicwits.max }}
           {% endif %}
@@ -414,7 +414,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="academics" value="{{ attributes.academics|default:"0" }}" class="statfield" />
+            {% dotselect "academics" %}
           {% else %}
             {{ attributes.academics.value|dots:universe_attributes.academics.max }}
           {% endif %}
@@ -427,7 +427,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="animalken" value="{{ attributes.animalken|default:"0" }}" class="statfield" />
+            {% dotselect "animalken" %}
           {% else %}
             {{ attributes.animalken.value|dots:universe_attributes.animalken.max }}
           {% endif %}
@@ -440,7 +440,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="art" value="{{ attributes.art|default:"0" }}" class="statfield" />
+            {% dotselect "art" %}
           {% else %}
             {{ attributes.art.value|dots:universe_attributes.art.max }}
           {% endif %}
@@ -453,7 +453,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="athletics" value="{{ attributes.athletics|default:"0" }}" class="statfield" />
+            {% dotselect "athletics" %}
           {% else %}
             {{ attributes.athletics.value|dots:universe_attributes.athletics.max }}
           {% endif %}
@@ -466,7 +466,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="awareness" value="{{ attributes.awareness|default:"0" }}" class="statfield" />
+            {% dotselect "awareness" %}
           {% else %}
             {{ attributes.awareness.value|dots:universe_attributes.awareness.max }}
           {% endif %}
@@ -479,7 +479,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="brawl" value="{{ attributes.brawl|default:"0" }}" class="statfield" />
+            {% dotselect "brawl" %}
           {% else %}
             {{ attributes.brawl.value|dots:universe_attributes.brawl.max }}
           {% endif %}
@@ -492,7 +492,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="command" value="{{ attributes.command|default:"0" }}" class="statfield" />
+            {% dotselect "command" %}
           {% else %}
             {{ attributes.command.value|dots:universe_attributes.command.max }}
           {% endif %}
@@ -505,7 +505,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="control" value="{{ attributes.control|default:"0" }}" class="statfield" />
+            {% dotselect "control" %}
           {% else %}
             {{ attributes.control.value|dots:universe_attributes.control.max }}
           {% endif %}
@@ -526,7 +526,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="craft" value="{{ attributes.craft|default:"0" }}" class="statfield" />
+            {% dotselect "craft" %}
           {% else %}
             {{ attributes.craft.value|dots:universe_attributes.craft.max }}
           {% endif %}
@@ -539,7 +539,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="empathy" value="{{ attributes.empathy|default:"0" }}" class="statfield" />
+            {% dotselect "empathy" %}
           {% else %}
             {{ attributes.empathy.value|dots:universe_attributes.empathy.max }}
           {% endif %}
@@ -552,7 +552,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="fortitude" value="{{ attributes.fortitude|default:"0" }}" class="statfield" />
+            {% dotselect "fortitude" %}
           {% else %}
             {{ attributes.fortitude.value|dots:universe_attributes.fortitude.max }}
           {% endif %}
@@ -565,7 +565,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="integrity" value="{{ attributes.integrity|default:"0" }}" class="statfield" />
+            {% dotselect "integrity" %}
           {% else %}
             {{ attributes.integrity.value|dots:universe_attributes.integrity.max }}
           {% endif %}
@@ -578,7 +578,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="investigation" value="{{ attributes.investigation|default:"0" }}" class="statfield" />
+            {% dotselect "investigation" %}
           {% else %}
             {{ attributes.investigation.value|dots:universe_attributes.investigation.max }}
           {% endif %}
@@ -591,7 +591,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="larceny" value="{{ attributes.larceny|default:"0" }}" class="statfield" />
+            {% dotselect "larceny" %}
           {% else %}
             {{ attributes.larceny.value|dots:universe_attributes.larceny.max }}
           {% endif %}
@@ -604,7 +604,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="marksmanship" value="{{ attributes.marksmanship|default:"0" }}" class="statfield" />
+            {% dotselect "marksmanship" %}
           {% else %}
             {{ attributes.marksmanship.value|dots:universe_attributes.marksmanship.max }}
           {% endif %}
@@ -617,7 +617,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="medicine" value="{{ attributes.medicine|default:"0" }}" class="statfield" />
+            {% dotselect "medicine" %}
           {% else %}
             {{ attributes.medicine.value|dots:universe_attributes.medicine.max }}
           {% endif %}
@@ -638,7 +638,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="melee" value="{{ attributes.melee|default:"0" }}" class="statfield" />
+            {% dotselect "melee" %}
           {% else %}
             {{ attributes.melee.value|dots:universe_attributes.melee.max }}
           {% endif %}
@@ -651,7 +651,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="occult" value="{{ attributes.occult|default:"0" }}" class="statfield" />
+            {% dotselect "occult" %}
           {% else %}
             {{ attributes.occult.value|dots:universe_attributes.occult.max }}
           {% endif %}
@@ -664,7 +664,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="politics" value="{{ attributes.politics|default:"0" }}" class="statfield" />
+            {% dotselect "politics" %}
           {% else %}
             {{ attributes.politics.value|dots:universe_attributes.politics.max }}
           {% endif %}
@@ -677,7 +677,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="presence" value="{{ attributes.presence|default:"0" }}" class="statfield" />
+            {% dotselect "presence" %}
           {% else %}
             {{ attributes.presence.value|dots:universe_attributes.presence.max }}
           {% endif %}
@@ -690,7 +690,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="science" value="{{ attributes.science|default:"0" }}" class="statfield" />
+            {% dotselect "science" %}
           {% else %}
             {{ attributes.science.value|dots:universe_attributes.science.max }}
           {% endif %}
@@ -703,7 +703,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="stealth" value="{{ attributes.stealth|default:"0" }}" class="statfield" />
+            {% dotselect "stealth" %}
           {% else %}
             {{ attributes.stealth.value|dots:universe_attributes.stealth.max }}
           {% endif %}
@@ -716,7 +716,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="survival" value="{{ attributes.survival|default:"0" }}" class="statfield" />
+            {% dotselect "survival" %}
           {% else %}
             {{ attributes.survival.value|dots:universe_attributes.survival.max }}
           {% endif %}
@@ -729,7 +729,7 @@
         </td>
         <td>
           {% if editmode %}
-            <input type="text" name="thrown" value="{{ attributes.thrown|default:"0" }}" class="statfield" />
+            {% dotselect "thrown" %}
           {% else %}
             {{ attributes.thrown.value|dots:universe_attributes.thrown.max }}
           {% endif %}
@@ -1004,7 +1004,7 @@
         <tr>
           <td>
             {% if editmode %}
-              <input type="text" name="willpowermax" value="{{ attributes.willpowermax|default:"0" }}" class="fullwidth" />
+              {% dotselect "willpowermax" %}
             {% else %}
               {{ attributes.willpowermax|dots:universe_attributes.willpowermax.max }}
             {% endif %}
@@ -1014,7 +1014,7 @@
         <tr>
           <td>
             {% if editmode %}
-              <input type="text" name="willpowercurrent" value="{{ attributes.willpowercurrent|default:"0" }}" class="fullwidth" />
+              {% dotselect "willpowercurrent" "square" %}
             {% else %}
               {{ attributes.willpowercurrent|squares:universe_attributes.willpowercurrent.max }}
             {% endif %}
@@ -1349,11 +1349,7 @@
       	<tr>
           <td colspan="4" class="textcenter">
             {% if editmode %}
-	            <select name="legend" class="dotwidget">
-                {% for i in universe_attributes.legend.max|get_range %}
-                  <option value="{{ i }}" {% ifequal attributes.legend.value i %}selected{% endifequal %}>{{ i }}</option>
-                {% endfor %}
-              </select>
+              {% dotselect "legend" %}
             {% else %}
               {{ attributes.legend.value|dots:universe_attributes.legend.max }}
             {% endif %}
@@ -1363,11 +1359,7 @@
         <tr>
           <td colspan="4" class="textcenter">
             {% if editmode %}
-              <select name="legendcurrent" class="squarewidget">
-                {% for i in universe_attributes.legendcurrent.max|get_range %}
-                  <option value="{{ i }}" {% ifequal attributes.legendcurrent.value i %}selected{% endifequal %}>{{ i }}</option>
-                {% endfor %}
-              </select>
+              {% dotselect "legendcurrent" "square" %}
             {% else %}
               {{ attributes.legendcurrent.value|squares:universe_attributes.legendcurrent.max }}
             {% endif %}
@@ -1466,7 +1458,7 @@
 
           <td>
             {% if editmode %}
-              <input type="text" name="health1" value="{{ attributes.health1 }}" class="statfield" />
+              {% dotselect "health1" "square" %}
             {% else %}
               {{ attributes.health1|squares:universe_attributes.health1.max }}
             {% endif %}
@@ -1479,7 +1471,7 @@
 
           <td>
             {% if editmode %}
-              <input type="text" name="health2" value="{{ attributes.health2 }}" class="statfield" />
+              {% dotselect "health2" "square" %}
             {% else %}
               {{ attributes.health2|squares:universe_attributes.health2.max }}
             {% endif %}
@@ -1492,7 +1484,7 @@
 
           <td>
             {% if editmode %}
-              <input type="text" name="health3" value="{{ attributes.health3 }}" class="statfield" />
+              {% dotselect "health3" "square" %}
             {% else %}
               {{ attributes.health3|squares:universe_attributes.health3.max }}
             {% endif %}
@@ -1505,7 +1497,7 @@
 
           <td>
             {% if editmode %}
-              <input type="text" name="health4" value="{{ attributes.health4 }}" class="statfield" />
+              {% dotselect "health4" "square" %}
             {% else %}
               {{ attributes.health4|squares:universe_attributes.health4.max }}
             {% endif %}
@@ -1518,7 +1510,7 @@
 
           <td>
             {% if editmode %}
-              <input type="text" name="health5" value="{{ attributes.health5 }}" class="statfield" />
+              {% dotselect "health5" "square" %}
             {% else %}
               {{ attributes.health5|squares:universe_attributes.health5.max }}
             {% endif %}
@@ -1531,7 +1523,7 @@
 
           <td>
             {% if editmode %}
-              <input type="text" name="health6" value="{{ attributes.health6 }}" class="statfield" />
+              {% dotselect "health6" "square" %}
             {% else %}
               {{ attributes.health6|squares:universe_attributes.health6.max }}
             {% endif %}
@@ -1544,7 +1536,7 @@
 
           <td>
             {% if editmode %}
-              <input type="text" name="health7" value="{{ attributes.health7 }}" class="statfield" />
+              {% dotselect "health7" "square" %}
             {% else %}
               {{ attributes.health7|squares:universe_attributes.health7.max }}
             {% endif %}

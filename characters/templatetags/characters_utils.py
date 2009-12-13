@@ -60,3 +60,22 @@ def diff(a, b):
 @register.filter
 def get_range(value):
 	return range(value + 1)
+
+@register.inclusion_tag('characters/dotselect.html', takes_context=True)
+def dotselect(context, attrdesc, type='dot', valuelist=None):
+	classtype = ''
+	if type == 'dot':
+		classtype = 'dotwidget'
+	elif type == 'square':
+		classtype = 'squarewidget'
+	else:
+		raise ValueError("Unknown type")
+	attr = context['universe_attributes'][attrdesc]
+	attrlist = valuelist
+	if valuelist is None:
+		attrlist = context['attributes']
+	try:
+		val = attrlist[attrdesc].value
+	except (KeyError):
+		val = 0
+	return {'attribute': attr, 'value': val, 'classtype': classtype}

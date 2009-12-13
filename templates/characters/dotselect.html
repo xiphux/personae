@@ -1,0 +1,7 @@
+{% load characters_utils %}
+
+<select name="{{ attribute.descriptor }}" {% if classtype %}class="{{ classtype }}"{% endif %}>
+  {% for i in attribute.max|get_range %}
+    <option value="{{ i }}" {% ifequal value i %}selected{% endifequal %}>{{ i }}</option>
+  {% endfor %}
+</select>
