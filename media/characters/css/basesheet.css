@@ -97,3 +97,7 @@ div#saveaction {
   float: right;
 }
 
+span.dotpending, span.squarepending {
+  color: gray;
+}
+
