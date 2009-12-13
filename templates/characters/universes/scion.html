@@ -458,7 +458,6 @@
           </td>
           <td>
             {% if editmode %}
-              {% dotselect "art" %}
             {% else %}
               {{ attributes.art.value|dots:universe_attributes.art.max }}
             {% endif %}
@@ -912,15 +911,7 @@
 
     {% if editmode %}
 
-      {% for num, birthright in attributes.birthrights.items %}
-        {% if forloop.last %}
-          <input type="hidden" id="birthrightid" value="{{ num }}" />
-        {% endif %}
-      {% empty %}
-        <input type="hidden" id="birthrightid" value="0" />
-      {% endfor %}
-
-      <a class="nounderline" href="#" onclick="addBirthright(true); return false;">Add birthright</a>
+      <a class="nounderline" href="#" onclick="addFieldRow('#birthright0','#birthrightsrows',true); return false;">Add birthright</a>
 
       <table>
 
@@ -928,7 +919,7 @@
 
           {% for num, birthright in attributes.birthrights.items %}
 
-            <tr id="birthright{{ num }}">
+            <tr>
 
               <td class="fullwidth">
                 <input type="text" name="birthrightname" value="{{ birthright.birthrightname }}" class="fullwidth" />
@@ -1001,15 +992,7 @@
 
     {% if editmode %}
 
-      {% for num, weapon in attributes.weapons.items %}
-        {% if forloop.last %}
-          <input type="hidden" id="weaponid" value="{{ num }}" />
-        {% endif %}
-      {% empty %}
-        <input type="hidden" id="weaponid" value="0" />
-      {% endfor %}
-
-      <a class="nounderline" href="#" onclick="addWeapon(true); return false;">Add weapon</a>
+      <a class="nounderline" href="#" onclick="addFieldRow('#weapon0','#weapontablerows',true); return false;">Add weapon</a>
 
       <table id="weapontable">
 
@@ -1031,7 +1014,7 @@
 
           {% for num, weapon in attributes.weapons.items %}
 
-            <tr id="weapon{{ num }}">
+            <tr>
 
               <td class="fullwidth weaponname">
                 <input type="text" name="weaponname" value="{{ weapon.weaponname }}" class="fullwidth" />
@@ -1242,15 +1225,7 @@
 
     {% if editmode %}
 
-      {% for num, virtue in attributes.virtues.items %}
-        {% if forloop.last %}
-          <input type="hidden" id="virtueid" value="{{ num }}" />
-        {% endif %}
-      {% empty %}
-        <input type="hidden" id="virtueid" value="0" />
-      {% endfor %}
-
-      <a class="nounderline" href="#" onclick="addVirtue(true); return false;">Add virtue</a>
+      <a class="nounderline" href="#" onclick="addFieldRow('#virtue0','#virtuerows',true); return false;">Add virtue</a>
 
       <table id="virtuetable">
 
@@ -1258,7 +1233,7 @@
 
           {% for num, virtue in attributes.virtues.items %}
 
-            <tr id="virtue{{ num }}">
+            <tr>
 
               <td class="fullwidth">
                 <div class="lightunderline">
@@ -1720,15 +1695,7 @@
 
   {% if editmode %}
 
-    {% for num, boon in attributes.boons.items %}
-      {% if forloop.last %}
-        <input type="hidden" id="boonid" value="{{ num }}" />
-      {% endif %}
-    {% empty %}
-      <input type="hidden" id="boonid" value="0" />
-    {% endfor %}
-
-    <a class="nounderline" href="#" onclick="addBoon(true); return false;">Add boon</a>
+    <a class="nounderline" href="#" onclick="addFieldRow('#boon0','#boonrows',true); return false;">Add boon</a>
 
     <table id="boontable">
 
@@ -1748,7 +1715,7 @@
 
         {% for num, boon in attributes.boons.items %}
 
-          <tr id="boon{{ num }}">
+          <tr>
 
             <td>
               <div class="lightunderline">
@@ -1926,15 +1893,7 @@
 
   {% if editmode %}
 
-    {% for num, relic in attributes.relics.items %}
-      {% if forloop.last %}
-        <input type="hidden" id="relicid" value="{{ num }}" />
-      {% endif %}
-    {% empty %}
-      <input type="hidden" id="relicid" value="0" />
-    {% endfor %}
-
-    <a class="nounderline" href="#" onclick="addRelic(true); return false;">Add relic</a>
+    <a class="nounderline" href="#" onclick="addFieldRow('#relic0','#relicrows',true); return false;">Add relic</a>
 
     <table id="relictable" class="fullwidth">
 
@@ -1953,7 +1912,7 @@
 
         {% for num, relic in attributes.relics.items %}
 
-          <tr id="relic{{ num }}">
+          <tr>
 
             <td>
               <div class="lightunderline">
@@ -2092,20 +2051,12 @@
 
   {% if editmode %}
     
-    {% for num, knack in attributes.knacks.items %}
-      {% if forloop.last %}
-        <input type="hidden" id="knackid" value="{{ num }}" />
-      {% endif %}
-    {% empty %}
-      <input type="hidden" id="knackid" value="0" />
-    {% endfor %}
-
-    <a class="nounderline" href="#" onclick="addKnack(true); return false;">Add knack</a>
+    <a class="nounderline" href="#" onclick="addFieldRow('#knack0','#knackrows',true); moveKnackClear(); return false;">Add knack</a>
 
     <div id="knackrows">
 
       {% for num, knack in attributes.knacks.items %}
-        <div class="knackitem" id="knack{{ num }}">
+        <div class="knackitem">
           <div class="lightunderline knackline">
             <select name="knacks">
               <option value="0"></option>
