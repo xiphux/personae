@@ -775,7 +775,7 @@
               </td>
 
               <td>
-                <input type="text" name="birthrightlevel" value="{{ birthright.birthrightlevel|default:"0" }}" class="statfield" />
+	      	{% dotselect "birthrightlevel" "dot" birthright %}
               </td>
 
               <td class="removerow">
@@ -797,7 +797,7 @@
             </td>
 
             <td>
-              <input type="text" name="birthrightlevel" value="0" class="statfield" />
+	      {% dotselect "birthrightlevel" %}
             </td>
 
             <td class="removerow">

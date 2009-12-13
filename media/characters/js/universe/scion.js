@@ -11,6 +11,7 @@ function addBirthright(animate) {
     });
   }
   document.getElementById("birthrightid").value = id.toString();
+  setupDotWidgets("dot");
 }
 
 function addWeapon(animate) {
