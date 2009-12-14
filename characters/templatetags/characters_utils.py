@@ -73,9 +73,12 @@ def dotselect(context, attrdesc, type='dot', valuelist=None):
 	attr = context['universe_attributes'][attrdesc]
 	attrlist = valuelist
 	if valuelist is None:
-		attrlist = context['attributes']
+		try:
+			attrlist = context['attributes']
+		except (KeyError):
+			pass
 	try:
 		val = attrlist[attrdesc].value
-	except (KeyError):
+	except (KeyError, TypeError):
 		val = 0
 	return {'attribute': attr, 'value': val, 'classtype': classtype}
