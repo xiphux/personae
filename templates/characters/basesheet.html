@@ -148,7 +148,7 @@
     <div id="revisionnotes">
 
       {% if revision.notes %}
-        <span class="label">Notes:</span> {{ revision.notes }}
+        <span class="label">Notes:</span> {{ revision.notes|linebreaksbr }}
       {% endif %}
 
     </div>

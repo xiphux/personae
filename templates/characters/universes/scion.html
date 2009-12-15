@@ -2518,7 +2518,7 @@
     <textarea name="guide" rows="6" class="fullwidth">{{ attributes.guide }}</textarea>
   {% else %}
 		{% if attributes.guide %}
-			{{ attributes.guide }}
+			<p>{{ attributes.guide|linebreaks }}</p>
 		{% else %}
 			<div class="emptymessage">No guide info</div>
 		{% endif %}
@@ -2534,7 +2534,7 @@
     <textarea name="history" rows="18" class="fullwidth">{{ attributes.history }}</textarea>
   {% else %}
   	{% if attributes.history %}
-    	{{ attributes.history }}
+    	<p>{{ attributes.history|linebreaks }}</p>
 		{% else %}
 			<div class="emptymessage">No history info</div>
 		{% endif %}
