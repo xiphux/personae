@@ -23,7 +23,7 @@ class Attribute(models.Model):
 	max = models.PositiveIntegerField(default=0)
 	type = models.PositiveSmallIntegerField(choices=TYPE_CHOICES)
 	parentattribute = models.ForeignKey('self', null=True, blank=True)
-	description = models.TextField()
+	description = models.TextField(null=True, blank=True)
 
 	class Meta:
 		unique_together = (('universe','descriptor'),)
