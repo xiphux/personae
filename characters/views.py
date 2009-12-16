@@ -6,6 +6,7 @@ from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.cache import cache_page
 
 #
 # Front index page
@@ -199,6 +200,7 @@ def gotorevision(request, character_id):
 # revision_id: revision id
 #
 @login_required
+@cache_page
 def viewrevision(request, character_id, revision_id):
 	try:
 		character = Character.objects.get(pk=character_id)
@@ -254,6 +256,7 @@ def viewrevision(request, character_id, revision_id):
 	}, context_instance=RequestContext(request))
 
 @login_required
+@cache_page
 def diffrevision(request, character_id, revision_id):
 	try:
 		character = Character.objects.get(pk=character_id)

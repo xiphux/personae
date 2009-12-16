@@ -80,3 +80,5 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'personae.characters',
 )
+
+CACHE_BACKEND = 'file:///var/tmp/django'
