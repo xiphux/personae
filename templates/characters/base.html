@@ -10,6 +10,7 @@
 
   <script type="text/javascript" src="{{ MEDIA_URL }}characters/scripts/jquery-1.3.2.min.js"></script>
   <script type="text/javascript" src="{{ MEDIA_URL }}characters/scripts/jquery.highlightFade.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}characters/scripts/jquery.qtip-1.0.0-rc3.min.js"></script>
   {% block js %}
   {% endblock %}
 </head>
@@ -20,6 +21,29 @@
 
     {% block body %}
     {% endblock %}
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.tooltip[title]').qtip({
+          position: {
+            corner: {
+              target: 'topMiddle',
+              tooltip: 'bottomMiddle'
+            },
+            adjust: {
+              screen: true
+            }
+          },
+          style: {
+	          border: {
+              radius: 8
+            },
+            name: 'dark',
+            tip: true
+          }
+        });
+      });
+    </script>
 
   </div>
 

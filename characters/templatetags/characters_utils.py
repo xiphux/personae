@@ -61,7 +61,7 @@ def diff(a, b):
 def get_range(value):
 	return range(value + 1)
 
-@register.inclusion_tag('characters/dotselect.html', takes_context=True)
+@register.inclusion_tag('characters/fragments/dotselect.html', takes_context=True)
 def dotselect(context, attrdesc, type='dot', valuelist=None):
 	classtype = ''
 	if type == 'dot':
@@ -82,3 +82,14 @@ def dotselect(context, attrdesc, type='dot', valuelist=None):
 	except (KeyError, TypeError):
 		val = 0
 	return {'attribute': attr, 'value': val, 'classtype': classtype}
+
+@register.inclusion_tag('characters/fragments/attributelabel.html', takes_context=True)
+def attributelabel(context, attrname):
+	try:
+		attrlist = context['universe_attributes']
+	except (KeyError):
+		return
+
+	attribute = attrlist[attrname]
+
+	return {'attribute': attribute}

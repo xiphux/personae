@@ -37,7 +37,7 @@
 
       <tr>
         <td class="basicinfolabel">
-          <label>Name</label>
+          Name
         </td>
       </tr>
       
@@ -53,7 +53,7 @@
 
       <tr>
         <td class="basicinfolabel">
-          <label for="player">Player</label>
+          Player
         </td>
       </tr>
 
@@ -77,7 +77,7 @@
 
       <tr>
         <td class="basicinfolabel">
-          <label for="calling">{{ universe_attributes.calling.name }}</label>
+          {% attributelabel "calling" %}	
         </td>
       </tr>
 
@@ -98,7 +98,7 @@
 
       <tr>
         <td class="basicinfolabel">
-          <label for="nature">{{ universe_attributes.nature.name }}</label>
+          {% attributelabel "nature" %}	
         </td>
       </tr>
 
@@ -127,7 +127,7 @@
 
       <tr>
         <td class="basicinfolabel">
-          <label for="pantheon">{{ universe_attributes.pantheon.name }}</label>
+          {% attributelabel "pantheon" %}
         </td>
       </tr>
 
@@ -143,7 +143,7 @@
 
       <tr>
         <td class="basicinfolabel">
-          <label for="god">{{ universe_attributes.god.name }}</label>
+          {% attributelabel "god" %}
         </td>
       </tr>
 
@@ -157,17 +157,17 @@
 
 <div id="attributes">
 
-  <h2 class="sectionheader">Attributes</h2>
+  <h2 class="sectionheader"><span class="tooltip" title="Attributes define a Scion's innate capabilities and natural aptitudes.">Attributes</h2>
 
   <div id="physicalattributes" class="threecolumnleft">
 
-    <h3 class="textcenter">Physical</h3>
+    <h3 class="textcenter"><span class="tooltip" title="A character's Physical Attributes define how strong, swift and resilient she is.">Physical</span></h3>
 
     <table>
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.strength.name }}</div>
+          <div class="attributelabel">{% attributelabel "strength" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -190,7 +190,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.dexterity.name }}</div>
+          <div class="attributelabel">{% attributelabel "dexterity" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -213,7 +213,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.stamina.name }}</div>
+          <div class="attributelabel">{% attributelabel "stamina" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -240,13 +240,13 @@
   
   <div id="socialattributes" class="threecolumnmiddle">
 
-    <h3 class="textcenter">Social</h3>
+    <h3 class="textcenter"><span class="tooltip" title="A character's Social Attributes define her powers of charm, persuasion and sheer physical magnetism.">Social</span></h3>
 
     <table>
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.charisma.name }}</div>
+          <div class="attributelabel">{% attributelabel "charisma" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -269,7 +269,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.manipulation.name }}</div>
+          <div class="attributelabel">{% attributelabel "manipulation" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -292,7 +292,7 @@
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.appearance.name }}</div>
+          <div class="attributelabel">{% attributelabel "appearance" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -319,13 +319,13 @@
 
   <div id="mentalattributes" class="threecolumnright">
 
-    <h3 class="textcenter">Mental</h3>
+    <h3 class="textcenter"><span class="tooltip" title="A character's Mental Attributes define how observant and rational she is, as well as how quickly she thinks on her feet.">Mental</span></h3>
 
     <table>
 
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.perception.name }}</div>
+          <div class="attributelabel">{% attributelabel "perception" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -348,7 +348,7 @@
       
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.intelligence.name }}</div>
+          <div class="attributelabel">{% attributelabel "intelligence" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -371,7 +371,7 @@
       
       <tr>
         <td rowspan="2" class="fullwidth">
-          <div class="attributelabel">{{ universe_attributes.wits.name }}</div>
+          <div class="attributelabel">{% attributelabel "wits" %}</div>
         </td>
         <td>
           {% if editmode %}
@@ -402,7 +402,7 @@
 
 <div id="abilities">
 
-  <h2 class="sectionheader">Abilities</h2>
+  <h2 class="sectionheader"><span class="tooltip" title="Abilities are traits a Scion learns through hard work and study, unline the raw natural aptitudes of Attributes.">Abilities</span></h2>
 
   <div id="abilitiesleft" class="threecolumnleft">
 
@@ -413,7 +413,7 @@
       	{% if editmode %}
           <tr>
             <td colspan="3">
-              Add specialty: 
+              Add <span class="tooltip" title="A handful of Abilities are so broad that they require specialization to further define what portion of the broader Ability a character has mastered.">specialty</span>: 
               <a class="nounderline" href="#" onclick="addFieldRow('#art0','#artrows',true); return false;">{{ universe_attributes.art.name }}</a>
                | <a class="nounderline" href="#" onclick="addFieldRow('#control0','#controlrows',true); return false;">{{ universe_attributes.control.name }}</a>
             </td>
@@ -422,7 +422,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="academics">{{ universe_attributes.academics.name }}</label>
+            {% attributelabel "academics" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -442,7 +442,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="animalken">{{ universe_attributes.animalken.name }}</label>
+            {% attributelabel "animalken" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -469,7 +469,7 @@
           <tr>
 
             <td class="abilityname lightunderline">
-              {{ universe_attributes.art.name }}
+              {% attributelabel "art" %}
             </td>
 
             <td class="fullwidth lightunderline">
@@ -513,7 +513,7 @@
             <tr>
 
               <td class="abilityname lightunderline">
-                {{ universe_attributes.art.name }}
+                {% attributelabel "art" %}
               </td>
 
               <td class="fullwidth lightunderline">
@@ -537,7 +537,7 @@
           <tr id="art0">
 
             <td class="abilityname lightunderline">
-              {{ universe_attributes.art.name }}
+              {% attributelabel "art" %}
             </td>
 
             <td class="fullwidth lightunderline">
@@ -567,7 +567,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="athletics">{{ universe_attributes.athletics.name }}</label>
+            {% attributelabel "athletics" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -587,7 +587,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="awareness">{{ universe_attributes.awareness.name }}</label>
+            {% attributelabel "awareness" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -607,7 +607,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="brawl">{{ universe_attributes.brawl.name }}</label>
+            {% attributelabel "brawl" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -627,7 +627,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="command">{{ universe_attributes.command.name }}</label>
+            {% attributelabel "command" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -654,7 +654,7 @@
           <tr>
 
             <td class="abilityname lightunderline">
-              {{ universe_attributes.control.name }}
+              {% attributelabel "control" %}
             </td>
 
             <td class="fullwidth lightunderline">
@@ -698,7 +698,7 @@
             <tr>
 
               <td class="abilityname lightunderline">
-                {{ universe_attributes.control.name }}
+                {% attributelabel "control" %}
               </td>
 
               <td class="fullwidth lightunderline">
@@ -722,7 +722,7 @@
           <tr id="control0">
 
             <td class="abilityname lightunderline">
-              {{ universe_attributes.control.name }}
+              {% attributelabel "control" %}
             </td>
 
             <td class="fullwidth lightunderline">
@@ -760,8 +760,8 @@
         <tbody>
           <tr>
             <td colspan="3">
-              Add specialty:
-              <a class="nounderline" href="#" onclick="addFieldRow('#craft0','#craftrows',true); return false;">{{ universe_attributes.craft.name }}</a>
+              Add <span class="tooltip" title="A handful of Abilities are so broad that they require specialization to further define what portion of the broader Ability a character has mastered.">specialty</span>:
+              <a class="nounderline" href="#" onclick="addFieldRow('#craft0','#craftrows',true); return false;">{% attributelabel "craft" %}</a>
             </td>
           </tr>
         </tbody>
@@ -774,7 +774,7 @@
           <tr>
 
             <td class="abilityname lightunderline">
-              {{ universe_attributes.craft.name }}
+              {% attributelabel "craft" %}
             </td>
 
             <td class="fullwidth lightunderline">
@@ -818,7 +818,7 @@
             <tr>
 
               <td class="abilityname lightunderline">
-                {{ universe_attributes.craft.name }}
+                {% attributelabel "craft" %}
               </td>
 
               <td class="fullwidth lightunderline">
@@ -842,7 +842,7 @@
           <tr id="craft0">
 
             <td class="abilityname lightunderline">
-              {{ universe_attributes.craft.name }}
+              {% attributelabel "craft" %}
             </td>
 
             <td class="fullwidth lightunderline">
@@ -872,7 +872,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="empathy">{{ universe_attributes.empathy.name }}</label>
+            {% attributelabel "empathy" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -892,7 +892,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="fortitude">{{ universe_attributes.fortitude.name }}</label>
+            {% attributelabel "fortitude" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -912,7 +912,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="integrity">{{ universe_attributes.integrity.name }}</label>
+            {% attributelabel "integrity" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -932,7 +932,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="investigation">{{ universe_attributes.investigation.name }}</label>
+            {% attributelabel "investigation" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -952,7 +952,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="larceny">{{ universe_attributes.larceny.name }}</label>
+            {% attributelabel "larceny" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -972,7 +972,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="marksmanship">{{ universe_attributes.marksmanship.name }}</label>
+            {% attributelabel "marksmanship" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -992,7 +992,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="medicine">{{ universe_attributes.medicine.name }}</label>
+            {% attributelabel "medicine" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -1025,15 +1025,15 @@
       	{% if editmode %}
           <tr>
             <td colspan="3">
-              Add specialty: 
-              <a class="nounderline" href="#" onclick="addFieldRow('#science0','#sciencerows',true); return false;">{{ universe_attributes.science.name }}</a>
+              Add <span class="tooltip" title="A handful of Abilities are so broad that they require specialization to further define what portion of the broader Ability a character has mastered.">specialty</span>: 
+              <a class="nounderline" href="#" onclick="addFieldRow('#science0','#sciencerows',true); return false;">{% attributelabel "science" %}</a>
             </td>
           </tr>
         {% endif %}
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="melee">{{ universe_attributes.melee.name }}</label>
+            {% attributelabel "melee" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -1053,7 +1053,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="occult">{{ universe_attributes.occult.name }}</label>
+            {% attributelabel "occult" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -1073,7 +1073,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="politics">{{ universe_attributes.politics.name }}</label>
+            {% attributelabel "politics" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -1093,7 +1093,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="presence">{{ universe_attributes.presence.name }}</label>
+            {% attributelabel "presence" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -1120,7 +1120,7 @@
           <tr>
 
             <td class="abilityname lightunderline">
-              {{ universe_attributes.science.name }}
+              {% attributelabel "science" %}
             </td>
 
             <td class="fullwidth lightunderline">
@@ -1164,7 +1164,7 @@
             <tr>
 
               <td class="abilityname lightunderline">
-                {{ universe_attributes.science.name }}
+                {% attributelabel "science" %}
               </td>
 
               <td class="fullwidth lightunderline">
@@ -1188,7 +1188,7 @@
           <tr id="science0">
 
             <td class="abilityname lightunderline">
-              {{ universe_attributes.science.name }}
+              {% attributelabel "science" %}
             </td>
 
             <td class="fullwidth lightunderline">
@@ -1218,7 +1218,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="stealth">{{ universe_attributes.stealth.name }}</label>
+            {% attributelabel "stealth" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -1238,7 +1238,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="survival">{{ universe_attributes.survival.name }}</label>
+            {% attributelabel "survival" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -1258,7 +1258,7 @@
 
         <tr>
           <td class="abilityname lightunderline">
-            <label for="thrown">{{ universe_attributes.thrown.name }}</label>
+            {% attributelabel "thrown" %}
           </td>
           <td class="fullwidth lightunderline">
             {% if editmode %}
@@ -1290,7 +1290,7 @@
 
   <div id="birthrights" class="twocolumnleft">
 
-    <h2 class="sectionheader">{{ universe_attributes.birthrights.name }}</h2>
+    <h2 class="sectionheader">{% attributelabel "birthrights" %}</h2>
 
     {% if editmode %}
 
@@ -1523,7 +1523,7 @@
 
     <div id="willpower">
 
-      <h2 class="sectionheader">Willpower</h2>
+      <h2 class="sectionheader"><span class="tooltip" title="Willpower measures a character's determination, self-assurance and emotional resilience. A character with a high Willpower is focused and highly disciplined, able to exert tremendous self-control in order to achieve her goals. She can resist outside influences and temptations, and she can push her mind and body to accomplish extraordinary things.">Willpower</span></h2>
 
       <table class="tablecenter">
 
@@ -1559,7 +1559,7 @@
 
         <tr>
           <td>
-            <label for="dodgedv">{{ universe_attributes.dodgedv.name }}:<label>
+            {{ universe_attributes.dodgedv.name }}:
           </td>
           <td>
             {% if editmode %}
@@ -1572,7 +1572,7 @@
 
         <tr>
           <td>
-            <label for="parrydv">{{ universe_attributes.parrydv.name }}:</label>
+            {{ universe_attributes.parrydv.name }}:
           </td>
           <td>
             {% if editmode %}
@@ -1585,7 +1585,7 @@
 
         <tr>
           <td>
-            <label for="joinbattle">{{ universe_attributes.joinbattle.name }}:</label>
+            {{ universe_attributes.joinbattle.name }}:
           </td>
           <td>
             {% if editmode %}
@@ -1604,7 +1604,7 @@
 
   <div id="virtues" class="twocolumnright">
 
-    <h2 class="sectionheader">{{ universe_attributes.virtues.name }}</h2>
+    <h2 class="sectionheader">{% attributelabel "virtues" %}</h2>
 
     {% if editmode %}
 
@@ -1743,15 +1743,15 @@
         <tr>
 
           <td class="textcenter">
-            <label for="move">{{ universe_attributes.move.name }}</label>
+            {{ universe_attributes.move.name }}
           </td>
 
           <td class="textcenter">
-            <label for="dash">{{ universe_attributes.dash.name }}</label>
+            {{ universe_attributes.dash.name }}
           </td>
 
           <td class="textcenter">
-            <label for="jump">{{ universe_attributes.jump.name }}</label>
+            {{ universe_attributes.jump.name }}
           </td>
 
         </tr>
@@ -1860,7 +1860,7 @@
 
     <div id="legend">
 
-      <h2 class="sectionheader">{{ universe_attributes.legend.name }}</h2>
+      <h2 class="sectionheader">{% attributelabel "legend" %}</h2>
 
       <table class="tablecenter">
 
@@ -1885,7 +1885,7 @@
         </tr>
 
         <tr>
-          <td>{{ universe_attributes.legendpoints.name }}</td>
+          <td>{% attributelabel "legendpoints" %}</td>
           <td class="legendpointsfield lightunderline textcenter">
             {% if editmode %}
               <input type="text" name="legendpoints" value="{{ attributes.legendpoints|default:"0" }}" class="statfield" />
@@ -1944,15 +1944,15 @@
         <tr>
 
           <td class="textcenter">
-            <label for="experiencetotal">{{ universe_attributes.experiencetotal.name }}<label>
+            {{ universe_attributes.experiencetotal.name }}
           </td>
 
           <td class="textcenter">
-            <label for="experiencespent">{{ universe_attributes.experiencespent.name }}</label>
+            {{ universe_attributes.experiencespent.name }}
           </td>
 
           <td class="textcenter">
-            <label for="experienceremaining">{{ universe_attributes.experienceremaining.name }}</label>
+            {{ universe_attributes.experienceremaining.name }}
           </td>
 
         </tr>
@@ -2074,7 +2074,7 @@
 
 <div id="boons">
 
-  <h2 class="sectionheader">{{ universe_attributes.boons.name }}</h2>
+  <h2 class="sectionheader">{% attributelabel "boons" %}</h2>
 
   {% if editmode %}
 
@@ -2272,7 +2272,7 @@
 
 <div id="relics">
 
-  <h2 class="sectionheader">{{ universe_attributes.relics.name }}</h2>
+  <h2 class="sectionheader">{% attributelabel "relics" %}</h2>
 
   {% if editmode %}
 
@@ -2430,7 +2430,7 @@
 
 <div id="knacks">
 
-  <h2 class="sectionheader">{{ universe_attributes.knacks.name }}</h2>
+  <h2 class="sectionheader">{% attributelabel "knacks" %}</h2>
 
   {% if editmode %}
     
@@ -2500,19 +2500,19 @@
 
 <div id="creature">
 
-  <h2 class="sectionheader">Creature</h2>
+  <h2 class="sectionheader"><span class="tooltip" title="An animal companion.">Creature</span></h2>
 
 </div>
 
 <div id="follower">
 
-  <h2 class="sectionheader">Follower</h2>
+  <h2 class="sectionheader"><span class="tooltip" title="An ally who looks to you for leadership.">Follower</span></h2>
 
 </div>
 
 <div id="guide">
 
-  <h2 class="sectionheader">{{ universe_attributes.guide.name }}</h2>
+  <h2 class="sectionheader">{% attributelabel "guide" %}</h2>
 
   {% if editmode %}
     <textarea name="guide" rows="6" class="fullwidth">{{ attributes.guide }}</textarea>
