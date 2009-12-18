@@ -81,4 +81,4 @@ INSTALLED_APPS = (
     'personae.characters',
 )
 
-CACHE_BACKEND = 'file:///var/tmp/django'
+CACHE_BACKEND = 'file:///tmp/django'
