@@ -79,19 +79,7 @@
 
     <div id="charinfo">
 
-      <table>
-
-        <tr>
-          <td class="label">Character:</td>
-          <td>{{ character.name }}</td>
-        </tr>
-
-        <tr>
-          <td class="label">Universe:</td>
-          <td>{{ character.universe }}</td>
-        </tr>
-
-      </table>
+      Character: {{ character.name }}
 
     </div>
 
@@ -114,7 +102,7 @@
 	    {% endif %}
             <select name="revision" onchange="form.submit()">
               {% for rev in revision_list %}
-                <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% if rev.name %} [{{rev.name}}]{% endif %}</option>
+                <option value="{{ rev.revision }}" {% ifequal rev revision %}selected{% endifequal %}>{{ rev }}{% ifnotequal rev revision %}{% if rev.name %} [{{rev.name}}]{% endif %}{% endifnotequal %}</option>
               {% endfor %}
             </select>
 	    {% if nextrevision %}
@@ -145,16 +133,18 @@
 
     </div>
 
-    <div id="revisionnotes">
-
-      {% if revision.notes %}
-        <span class="label">Notes:</span> {{ revision.notes|linebreaksbr }}
-      {% endif %}
-
-    </div>
-
     <div class="clear sectionheader">&nbsp;</div>
 
+  </div>
+
+  <div id="revisioninfo">
+    <div>
+      Revision name: {% if revision.name %}{{ revision.name }}{% else %}None{% endif %}
+    </div>
+    <div>
+      Revision notes: {% if revision.notes %}{{ revision.notes|linebreaksbr }}{% else %}None{% endif %}
+    </div>
+    <div class="sectionheader">&nbsp;</div>
   </div>
 
 
