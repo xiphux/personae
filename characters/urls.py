@@ -15,7 +15,8 @@ urlpatterns = patterns('personae.characters.views',
     (r'^(?P<character_id>\d+)/save/$', 'saverevision'),
     (r'^(?P<character_id>\d+)/goto/$', 'gotorevision'),
     (r'^(?P<character_id>\d+)/(?P<revision_id>\d+)/$', 'viewrevision'),
-    (r'^(?P<character_id>\d+)/(?P<revision_id>\d+)/diff/', 'diffrevision'),
+    (r'^(?P<character_id>\d+)/(?P<revision_id>\d+)/diff/$', 'diffrevision'),
+    (r'^(?P<character_id>\d+)/(?P<revision_id>\d+)/edit/$', 'editrevision'),
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
 )

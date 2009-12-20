@@ -287,3 +287,38 @@ def diffrevision(request, character_id, revision_id):
 		'difflist': difflist,
 	}, context_instance=RequestContext(request))
 
+@login_required
+def editrevision(request, character_id, revision_id):
+	try:
+		character = Character.objects.get(pk=character_id)
+	except (Character.DoesNotExist):
+		return HttpResponse("No such character.")
+	
+	if character.user != request.user:
+		return HttpResponse("You do not have access to view this character.")
+
+	try:
+		revision = character.revision_set.get(revision=revision_id)
+	except (Revision.DoesNotExist):
+		return HttpResponse("No such revision for character %s." % character.name)
+
+	modified = False
+	try:
+		revname = request.POST['revisionname']
+		revision.name = revname
+		modified = True
+	except (KeyError):
+		pass
+
+	try:
+		revnotes = request.POST['revisionnotes']
+		revision.notes = revnotes
+		modified = True
+	except (KeyError):
+		pass
+
+	if modified:
+		revision.save()
+
+	if request.is_ajax():
+		return HttpResponse("OK")

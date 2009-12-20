@@ -95,3 +95,14 @@ span.dotpending, span.squarepending {
   color: gray;
 }
 
+span#revisionnoteslabel {
+  vertical-align: top;
+}
+
+div#revisionname {
+  height: 20px;
+}
+
+span#revnameinplace:hover, span#revnotesinplace:hover {
+  background-color: #dbddde;
+}

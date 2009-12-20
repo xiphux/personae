@@ -48,7 +48,7 @@
     <div id="revisionnotesfield">
 
       <label for="revisionnotes" class="label">Revision notes:</label>
-      <textarea name="revisionnotes" rows=5 class="fullwidth" ></textarea>
+      <textarea name="revisionnotes" rows="5" class="fullwidth" ></textarea>
 
     </div>
 
@@ -137,12 +137,89 @@
 
   </div>
 
+  <script type="text/javascript">
+    var revnameinplaceclick = function() {
+      var text = $(this).text();
+      var spanelement = document.createElement('span');
+      var span = jQuery(spanelement);
+      span.attr('id','revnameinplace');
+      var inputelement = document.createElement('input');
+      var input = jQuery(inputelement);
+      input.attr('name','revnameinplace');
+      input.width('50%');
+      if (text != "None") {
+        input.val(text);
+      }
+      input.blur(revnameinplaceblur);
+      input.keyup(function(e) {
+        if (e.keyCode == 13) {
+          $(this).blur();
+        }
+      });
+      input.appendTo(span);
+      $(this).replaceWith(span);
+      input.focus();
+    }
+    var revnameinplaceblur = function() {
+      var value = $(this).val();
+      var spanelement = document.createElement('span');
+      var span = jQuery(spanelement);
+      span.attr('id','revnameinplace');
+      var display = value;
+      if (display == '') {
+        span.addClass('emptymessage');
+        display = "None";
+      }
+      span.text(display);
+      span.click(revnameinplaceclick);
+      $(this).replaceWith(span);
+      $.post("/characters/{{ character.id }}/{{ revision.revision }}/edit/", { revisionname: value });
+    }
+    var revnotesinplaceclick = function() {
+      var text = $(this).text();
+      var spanelement = document.createElement('span');
+      var span = jQuery(spanelement);
+      span.attr('id','revnotesinplace');
+      var textareaelement = document.createElement('textarea');
+      var textarea = jQuery(textareaelement);
+      textarea.attr('name','revnotesinplace');
+      textarea.attr('rows','5').width('50%');
+      if (text != "None") {
+        textarea.val(text);
+      }
+      textarea.blur(revnotesinplaceblur);
+      textarea.appendTo(span);
+      $(this).replaceWith(span);
+      textarea.focus();
+    }
+    var revnotesinplaceblur = function() {
+      var value = $(this).val();
+      var spanelement = document.createElement('span');
+      var span = jQuery(spanelement);
+      span.attr('id','revnotesinplace');
+      var display = value;
+      var re = /^.*[\x20-\x7e].*$/;
+      if ((display == '') || (!re.test(display)))  {
+        span.addClass('emptymessage');
+        display = "None";
+      }
+      span.text(display);
+      span.click(revnotesinplaceclick);
+      $(this).replaceWith(span);
+      $.post("/characters/{{ character.id }}/{{ revision.revision }}/edit/", { revisionnotes: value });
+    }
+    $(document).ready(function(){
+      $("span#revnameinplace").click(revnameinplaceclick);
+      $("span#revnotesinplace").click(revnotesinplaceclick);
+    });
+  </script>
+
   <div id="revisioninfo">
-    <div>
-      Revision name: {% if revision.name %}{{ revision.name }}{% else %}None{% endif %}
+    <div id="revisionname">
+      <span id="revisionnamelabel">Revision name:</span> <span id="revnameinplace" {% if not revision.name %}class="emptymessage"{% endif %}>{% if revision.name %}{{ revision.name }}{% else %}None{% endif %}</span>
     </div>
-    <div>
-      Revision notes: {% if revision.notes %}{{ revision.notes|linebreaksbr }}{% else %}None{% endif %}
+    <div id="revisionnotes">
+      <span id="revisionnoteslabel">Revision notes:</span> <span id="revnotesinplace" {% if not revision.name %}class="emptymessage"{% endif %}>{% if revision.notes %}{{ revision.notes|linebreaksbr }}{% else %}None{% endif %}</span>
     </div>
     <div class="sectionheader">&nbsp;</div>
   </div>
