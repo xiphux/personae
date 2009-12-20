@@ -305,15 +305,17 @@ def editrevision(request, character_id, revision_id):
 	modified = False
 	try:
 		revname = request.POST['revisionname']
-		revision.name = revname
-		modified = True
+		if revision.name != revname:
+			revision.name = revname
+			modified = True
 	except (KeyError):
 		pass
 
 	try:
 		revnotes = request.POST['revisionnotes']
-		revision.notes = revnotes
-		modified = True
+		if revision.notes != revnotes:
+			revision.notes = revnotes
+			modified = True
 	except (KeyError):
 		pass
 
